@@ -28,15 +28,15 @@
   </gazebo>
   
   <!-- Simulate camera at the end of big arm-->
-  <!--<link name="big_arm_dummy_camera_link"/>
+  <link name="dextre_arm_2_dummy_camera_link"/>
 
-  <joint name="big_arm_camera_joint" type="fixed">
-    <parent link="big_arm_link_8"/>
-    <child link="big_arm_dummy_camera_link"/>
-    <origin xyz="0 0 -0.50" rpy="0 1.5708 1.5708"/>
+  <joint name="dextre_2_camera_joint" type="fixed">
+    <parent link="dextre_arm_2_wrist_roll"/>
+    <child link="dextre_arm_2_dummy_camera_link"/>
+    <origin xyz="0 0 -0.96" rpy="0.0 0.0 0.0"/>
   </joint>
   
-  <gazebo reference="big_arm_dummy_camera_link">
+  <gazebo reference="dextre_arm_2_dummy_camera_link">
       <sensor type="camera" name="camera_sensor">
           <visualize>1</visualize>
           <update_rate>10.0</update_rate>
@@ -60,7 +60,7 @@
           <always_on>1</always_on>
           <topic>image_raw</topic>
       </sensor>
-  </gazebo>-->
+  </gazebo>
 
   </xacro:macro>
 

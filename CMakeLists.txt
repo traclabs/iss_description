@@ -33,9 +33,7 @@ endforeach()
 #############
 
 install(PROGRAMS
-#  scripts/ifc_convert_geometry_test.py
-#  scripts/ifc_1.py
-#  scripts/ifc_create_model.py
+  scripts/move_mss
   DESTINATION lib/${PROJECT_NAME}
 )
 

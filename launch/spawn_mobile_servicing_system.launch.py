@@ -46,7 +46,7 @@ def generate_launch_description():
 
   # Test motion with services
   mss_move = Node(
-    package="gateway_description",
+    package="iss_description",
     executable="move_mss",
     #namespace="mss",
     output="screen"
@@ -71,6 +71,43 @@ def generate_launch_description():
     output="screen",
   )
 
+  dextre_arm_1_joint_controller_spawner = Node(
+    package="controller_manager",
+    executable="spawner",
+    arguments=["dextre_arm_1_joint_trajectory_controller", "-c", "/controller_manager", "--switch-timeout", "100.0"],
+    name="start_dextre_arm_1_joint_trajectory_controller",
+    #namespace="mss",
+    output="screen",
+  )
+
+  dextre_arm_2_joint_controller_spawner = Node(
+    package="controller_manager",
+    executable="spawner",
+    arguments=["dextre_arm_2_joint_trajectory_controller", "-c", "/controller_manager", "--switch-timeout", "100.0"],
+    name="start_dextre_arm_2_joint_trajectory_controller",
+    #namespace="mss",
+    output="screen",
+  )
+
+  mobile_base_system_joint_controller_spawner = Node(
+    package="controller_manager",
+    executable="spawner",
+    arguments=["mobile_base_system_joint_trajectory_controller", "-c", "/controller_manager", "--switch-timeout", "100.0"],
+    name="start_mobile_base_system_joint_trajectory_controller",
+    #namespace="mss",
+    output="screen",
+  )
+
+  dextre_body_joint_controller_spawner = Node(
+    package="controller_manager",
+    executable="spawner",
+    arguments=["dextre_body_joint_trajectory_controller", "-c", "/controller_manager", "--switch-timeout", "100.0"],
+    name="start_dextre_body_joint_trajectory_controller",
+    #namespace="mss",
+    output="screen",
+  )
+
+
   image_bridge = Node(
     package="ros_gz_image",
     executable="image_bridge",
@@ -82,8 +119,8 @@ def generate_launch_description():
     SetParameter(name="use_sim_time", value=True),
     mss_robot_state_publisher,
     mss_spawn,
-    #mss_move,
-    #image_bridge,
+    mss_move,
+    image_bridge,
     RegisterEventHandler(
       OnProcessExit(
         target_action=mss_spawn,
@@ -93,7 +130,11 @@ def generate_launch_description():
     RegisterEventHandler(
       OnProcessExit(
         target_action=joint_state_broadcaster_spawner,
-        on_exit=[canadarm2_joint_controller_spawner],
+        on_exit=[canadarm2_joint_controller_spawner, 
+                 dextre_arm_1_joint_controller_spawner,
+                 dextre_arm_2_joint_controller_spawner,
+                 mobile_base_system_joint_controller_spawner,
+                 dextre_body_joint_controller_spawner],
       )
     )
   ])
