@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<robot name="mobile_servicing_system" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find iss_description)/urdf/canadarm2.urdf.xacro"/>
+  <xacro:include filename="$(find iss_description)/urdf/dextre.urdf.xacro"/>
+
+  <link name="world"/>
+ 
+  <link name="body">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/iss_stationary.dae" scale="1 1 1"/>
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/iss_stationary.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+  </link>
+
+  <!-- Mobile Base System -->
+  <link name="mobile_base_system">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/mobile_base_system.dae" scale="1 1 1"/>
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/mobile_base_system.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+  </link>
+
+  <link name="link_02_unity_node"/>
+  <link name="link_09_destiny"/>
+  <link name="link_14_s0_truss"/>
+
+  <joint name="joint_world" type="fixed">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <parent link="world"/>
+      <child link="body"/>
+  </joint>
+  
+  <joint name="joint_body_02" type="fixed">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <parent link="body"/>
+      <child link="link_02_unity_node"/>
+  </joint>
+
+  <joint name="joint_02_09" type="fixed">
+      <origin rpy="0 0 0" xyz="0 -2.221 0"/>
+      <parent link="link_02_unity_node"/>
+      <child link="link_09_destiny"/>
+  </joint>
+
+
+  <joint name="joint_09_14" type="fixed">
+      <origin rpy="0 0 0" xyz="0.0  -0.96651 5.0071"/>
+      <axis xyz="1 0 0"/>
+      <parent link="link_09_destiny"/>
+      <child link="link_14_s0_truss"/>
+  </joint>
+
+  
+  <joint name="joint_mbs" type="prismatic">
+      <origin rpy="0 0 0" xyz="-2.8655 -5.17 -0.59547"/>
+      <axis xyz="1 0 0"/>
+      <parent link="link_14_s0_truss"/>
+      <child link="mobile_base_system"/>
+      <limit effort="1000.0" lower="-15.0" upper="42.0" velocity="0.5"/>
+  </joint>
+
+  <xacro:dextre parent="canadarm2_link_7"/>
+  <xacro:canadarm2 parent="mobile_base_system"/>
+  
+</robot>

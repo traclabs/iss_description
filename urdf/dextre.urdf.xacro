@@ -1,0 +1,589 @@
+<?xml version="1.0"?>
+<robot name="dextre" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- DEXTRE -->
+  <xacro:macro name="dextre" params=" parent:='' ">
+
+
+  <!-- ******* Link Base *******  -->
+  <link name="dextre_base">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_base.dae" scale="1 1 1"/>
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_base.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+  </link>
+
+  <!-- ******* Link Body *******  -->
+  <link name="dextre_body">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_body.dae" scale="1 1 1"/>
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_body.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+  </link>
+
+  <!-- ******* Link Tool platform *******  -->
+  <link name="dextre_tool_platform">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_tool_platform.dae" scale="1 1 1"/>
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_tool_platform.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+  </link>
+
+  <!-- ******* Link Latching end effector*******  -->
+  <link name="dextre_latching_end_effector">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_latching_end_effector.dae" scale="1 1 1"/>
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_latching_end_effector.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+  </link>
+
+  <!-- **************** -->
+  <!-- NEUTRAL JOINTS   -->
+  <!-- **************** -->  
+
+  <!-- joint base -->
+  <joint name="joint_dextre_base" type="fixed">
+      <origin rpy="0 0 0" xyz="0.000003 0.000003 1.2033"/>
+      <parent link="${parent}"/>
+      <child link="dextre_base"/>
+  </joint>
+  
+  <!-- joint tool platform -->
+  <joint name="joint_dextre_tool_platform" type="fixed">
+      <origin rpy="0 0 0" xyz="-0.000003 -0.005982 1.9619"/>
+      <parent link="dextre_base"/>
+      <child link="dextre_tool_platform"/>
+  </joint>
+  
+  <!-- joint latching ee -->
+  <joint name="joint_dextre_latching_end_effector" type="fixed">
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.96287"/>
+      <parent link="dextre_tool_platform"/>
+      <child link="dextre_latching_end_effector"/>
+  </joint>
+
+  <!-- joint body roll -->
+  <joint name="joint_dextre_body" type="revolute">
+      <origin rpy="0 0 0" xyz="0.000004 0.000006 0.22015"/>
+      <parent link="dextre_base"/>
+      <child link="dextre_body"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+  </joint>
+
+  <!-- *********************  -->
+  <!-- ******* ARM 1 *******  -->
+  <!-- *********************  -->
+  
+  <!-- ******* Link Arm 1 Shoulder Roll *******  -->
+  <link name="dextre_arm_1_shoulder_roll">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0.785398 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_1_shoulder_roll.dae" scale="1 1 1"/>
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0.785398 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_1_shoulder_roll.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+  </link>  
+
+  <!-- ******* Link Arm 1 Shoulder Yaw *******  -->
+  <link name="dextre_arm_1_shoulder_yaw">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0.7941248 0" /> <!-- 0.0 -45.5 0.0-->
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_1_shoulder_yaw.dae" scale="1 1 1"/>
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0.7941248 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_1_shoulder_yaw.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+  </link>  
+
+  <!-- ******* Link Arm 1 Shoulder Pitch *******  -->
+  <link name="dextre_arm_1_shoulder_pitch">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_1_shoulder_pitch.dae" scale="1 1 1"/>
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_1_shoulder_pitch.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+  </link>  
+
+  <!-- ******* Link Arm 1 Elbow Pitch *******  -->
+  <link name="dextre_arm_1_elbow_pitch">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_1_elbow_pitch.dae" scale="1 1 1"/>
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_1_elbow_pitch.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+  </link>  
+
+  <!-- ******* Link Arm 1 Wrist Pitch Yaw *******  -->
+  <link name="dextre_arm_1_wrist_pitch_yaw">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_1_wrist_pitch_yaw.dae" scale="1 1 1"/>
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_1_wrist_pitch_yaw.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+  </link>  
+
+  <!-- ******* Link Arm 1 Wrist Roll *******  -->
+  <link name="dextre_arm_1_wrist_roll">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_1_wrist_roll.dae" scale="1 1 1"/>
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_1_wrist_roll.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+  </link> 
+
+
+  <!-- **************** -->
+  <!-- ARM 1 JOINTS     -->
+  <!-- **************** -->  
+
+  <!-- joint arm 1 shoulder roll -->
+  <joint name="joint_dextre_arm_1_shoulder_roll" type="revolute">
+      <origin rpy="0 -0.785398 0" xyz="-1.3798 -0.000118 1.4251"/>
+      <parent link="dextre_body"/>
+      <child link="dextre_arm_1_shoulder_roll"/>
+      <axis xyz="1 0 0"/>
+      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+  </joint>
+
+  <!-- joint arm 1 shoulder yaw -->
+  <joint name="joint_dextre_arm_1_shoulder_yaw" type="revolute">
+      <origin rpy="0 0 0" xyz="-0.33798 -0.26867 0.19223"/> <!-- -0.37492 -0.26867 -0.10307 -->
+      <parent link="dextre_arm_1_shoulder_roll"/>
+      <child link="dextre_arm_1_shoulder_yaw"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+  </joint>
+
+  <!-- joint arm 1 shoulder pitch -->
+  <joint name="joint_dextre_arm_1_shoulder_pitch" type="revolute">
+      <origin rpy="0 0 0" xyz="-0.29601 -0.14278 0.13201"/> <!-- -0.30366 -0.14278 -0.11332 -->
+      <parent link="dextre_arm_1_shoulder_yaw"/>
+      <child link="dextre_arm_1_shoulder_pitch"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+  </joint>
+
+  <!-- joint arm 1 elbow pitch -->
+  <joint name="joint_dextre_arm_1_elbow_pitch" type="revolute">
+      <origin rpy="0 0 0" xyz="-1.0873 -0.061472 0.012577"/>
+      <parent link="dextre_arm_1_shoulder_pitch"/>
+      <child link="dextre_arm_1_elbow_pitch"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+  </joint>
+
+  <!-- joint arm 1 wrist pitch yaw -->
+  <joint name="joint_dextre_arm_1_wrist_pitch_yaw" type="revolute">
+      <origin rpy="0 0 0" xyz="-1.0873 0.3271 -0.012581"/>
+      <parent link="dextre_arm_1_elbow_pitch"/>
+      <child link="dextre_arm_1_wrist_pitch_yaw"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+  </joint>
+
+  <!-- joint arm 1 wrist roll -->
+  <joint name="joint_dextre_arm_1_wrist_roll" type="revolute">
+      <origin rpy="0 0 0" xyz="-0.28177 0.11183 -0.12003"/>
+      <parent link="dextre_arm_1_wrist_pitch_yaw"/>
+      <child link="dextre_arm_1_wrist_roll"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+  </joint>
+
+  <!-- *********************  -->
+  <!-- ******* ARM 2 *******  -->
+  <!-- *********************  -->
+  
+  <!-- ******* Link Arm 2 Shoulder Roll *******  -->
+  <link name="dextre_arm_2_shoulder_roll">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 -0.785398 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_2_shoulder_roll.dae" scale="1 1 1"/>
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_2_shoulder_roll.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+  </link>  
+
+  <!-- ******* Link Arm 2 Shoulder Yaw *******  -->
+  <link name="dextre_arm_2_shoulder_yaw">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 -0.7941248 0" /> <!-- 0.0 45.5 0.0-->
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_2_shoulder_yaw.dae" scale="1 1 1"/>
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_2_shoulder_yaw.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+  </link>  
+
+ <!-- ******* Link Arm 2 Shoulder Pitch *******  -->
+  <link name="dextre_arm_2_shoulder_pitch">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_2_shoulder_pitch.dae" scale="1 1 1"/>
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_2_shoulder_pitch.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+  </link>
+   
+
+ <!-- ******* Link Arm 2 Elbow Pitch *******  -->
+  <link name="dextre_arm_2_elbow_pitch">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_2_elbow_pitch.dae" scale="1 1 1"/>
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_2_elbow_pitch.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+  </link>   
+    
+  <!-- ******* Link Arm 2 Wrist Pitch Yaw *******  -->
+  <link name="dextre_arm_2_wrist_pitch_yaw">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_2_wrist_pitch_yaw.dae" scale="1 1 1"/>
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_2_wrist_pitch_yaw.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+  </link>  
+
+  <!-- ******* Link Arm 2 Wrist Roll *******  -->
+  <link name="dextre_arm_2_wrist_roll">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_2_wrist_roll.dae" scale="1 1 1"/>
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre_arm_2_wrist_roll.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+  </link>
+    
+
+  <!-- **************** -->
+  <!-- ARM 2 JOINTS     -->
+  <!-- **************** -->  
+
+  <!-- joint arm 2 shoulder roll -->
+  <joint name="joint_dextre_arm_2_shoulder_roll" type="revolute">
+      <origin rpy="0 0.785398 0" xyz="1.3798 0.000118 1.4251"/>
+      <parent link="dextre_body"/>
+      <child link="dextre_arm_2_shoulder_roll"/>
+      <axis xyz="1 0 0"/>
+      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+  </joint>
+
+
+  <!-- joint arm 2 shoulder yaw -->
+  <joint name="joint_dextre_arm_2_shoulder_yaw" type="revolute">
+      <origin rpy="0 0 0" xyz="0.33798 -0.26867 0.19223"/>
+      <parent link="dextre_arm_2_shoulder_roll"/>
+      <child link="dextre_arm_2_shoulder_yaw"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+  </joint>
+  
+  <!-- joint arm 2 shoulder pitch -->
+  <joint name="joint_dextre_arm_2_shoulder_pitch" type="revolute">
+      <origin rpy="0 0 0" xyz="0.30367 -0.14278 0.11332"/>
+      <parent link="dextre_arm_2_shoulder_yaw"/>
+      <child link="dextre_arm_2_shoulder_pitch"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+  </joint>
+
+  <!-- joint arm 2 elbow pitch -->
+  <joint name="joint_dextre_arm_2_elbow_pitch" type="revolute">
+      <origin rpy="0 0 0" xyz="1.0873 -0.061476 0.012569"/>
+      <parent link="dextre_arm_2_shoulder_pitch"/>
+      <child link="dextre_arm_2_elbow_pitch"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+  </joint>
+
+  <!-- joint arm 2 wrist pitch yaw -->
+  <joint name="joint_dextre_arm_2_wrist_pitch_yaw" type="revolute">
+      <origin rpy="0 0 0" xyz="1.0873 0.3271 -0.012577"/>
+      <parent link="dextre_arm_2_elbow_pitch"/>
+      <child link="dextre_arm_2_wrist_pitch_yaw"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+  </joint>
+
+  <!-- joint arm 2 wrist roll -->
+  <joint name="joint_dextre_arm_2_wrist_roll" type="revolute">
+      <origin rpy="0 0 0" xyz="0.28178 0.11183 -0.12001"/>
+      <parent link="dextre_arm_2_wrist_pitch_yaw"/>
+      <child link="dextre_arm_2_wrist_roll"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+  </joint>
+  
+  </xacro:macro>
+  
+
+</robot>

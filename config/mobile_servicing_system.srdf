@@ -1,0 +1,93 @@
+<?xml version="1.0" ?>
+
+<robot name="mobile_servicing_system">
+
+    <group name="canadarm2">
+        <chain base_link="canadarm2_base" tip_link="canadarm2_link_7" />
+    </group>
+
+    <group name="dextre_arm_1">
+        <chain base_link="dextre_arm_1_shoulder_roll" tip_link="dextre_arm_1_wrist_roll" />
+    </group>
+
+    <group name="dextre_arm_2">
+        <chain base_link="dextre_arm_2_shoulder_roll" tip_link="dextre_arm_2_wrist_roll" />
+    </group>
+
+    <group name="dextre_waist">
+        <link name="dextre_base" />
+        <link name="dextre_body" />
+    </group>
+
+    <group name="mobile_base_system">
+      <link name="mobile_base_system" />
+      <joint name="joint_mbs"/>
+    </group>
+
+    <group_state group="mobile_base_system" name="zero">
+      <joint name="joint_mbs" value="0.0"/>                                    
+    </group_state>
+
+    <group_state group="mobile_base_system" name="truss_11">
+      <joint name="joint_mbs" value="4.0"/>                            
+    </group_state>
+
+    <group_state group="canadarm2" name="zero">
+      <joint name="joint_canadarm2_1" value="0.0"/>
+      <joint name="joint_canadarm2_2" value="0.0"/>
+      <joint name="joint_canadarm2_3" value="0.0"/>
+      <joint name="joint_canadarm2_4" value="0.0"/>
+      <joint name="joint_canadarm2_5" value="0.0"/>
+      <joint name="joint_canadarm2_6" value="0.0"/>
+      <joint name="joint_canadarm2_7" value="0.0"/>                                    
+    </group_state>
+    
+    <group_state group="dextre_arm_1" name="zero">
+      <joint name="joint_dextre_arm_1_shoulder_roll" value="0.0"/>
+      <joint name="joint_dextre_arm_1_shoulder_yaw" value="0.0"/>
+      <joint name="joint_dextre_arm_1_shoulder_pitch" value="0.0"/>
+      <joint name="joint_dextre_arm_1_elbow_pitch" value="0.0"/>
+      <joint name="joint_dextre_arm_1_wrist_pitch_yaw" value="0.0"/>
+      <joint name="joint_dextre_arm_1_wrist_roll" value="0.0"/>
+    </group_state>
+
+    <group_state group="dextre_arm_2" name="zero">
+      <joint name="joint_dextre_arm_2_shoulder_roll" value="0.0"/>
+      <joint name="joint_dextre_arm_2_shoulder_yaw" value="0.0"/>
+      <joint name="joint_dextre_arm_2_shoulder_pitch" value="0.0"/>
+      <joint name="joint_dextre_arm_2_elbow_pitch" value="0.0"/>
+      <joint name="joint_dextre_arm_2_wrist_pitch_yaw" value="0.0"/>
+      <joint name="joint_dextre_arm_2_wrist_roll" value="0.0"/>
+    </group_state>
+
+
+    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
+    <!--<end_effector name="canadarm2_ee" parent_link="yumi_link_7_l" group="left_gripper" parent_group="left_arm" />
+    <end_effector name="right_gripper_ee" parent_link="yumi_link_7_r" group="right_gripper" parent_group="right_arm" />-->
+
+
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="canadarm2_base" link2="canadarm2_link_1" reason="Adjacent" />    
+    <disable_collisions link1="canadarm2_link_1" link2="canadarm2_link_2" reason="Adjacent" />
+    <disable_collisions link1="canadarm2_link_2" link2="canadarm2_link_3" reason="Adjacent" />
+    <disable_collisions link1="canadarm2_link_3" link2="canadarm2_link_4" reason="Adjacent" />
+    <disable_collisions link1="canadarm2_link_4" link2="canadarm2_link_5" reason="Adjacent" />
+    <disable_collisions link1="canadarm2_link_5" link2="canadarm2_link_6" reason="Adjacent" />
+    <disable_collisions link1="canadarm2_link_6" link2="canadarm2_link_7" reason="Adjacent" />
+    <disable_collisions link1="dextre_base" link2="dextre_body" reason="Adjacent" />
+    <disable_collisions link1="dextre_body" link2="dextre_tool_platform" reason="Adjacent" />
+    <disable_collisions link1="dextre_tool_platform" link2="dextre_latching_end_effector" reason="Adjacent" />
+    <disable_collisions link1="dextre_body" link2="dextre_arm_1_shoulder_roll" reason="Adjacent" />    
+    <disable_collisions link1="dextre_arm_1_shoulder_roll" link2="dextre_arm_1_shoulder_yaw" reason="Adjacent" />
+    <disable_collisions link1="dextre_arm_1_shoulder_yaw" link2="dextre_arm_1_shoulder_pitch" reason="Adjacent" />
+    <disable_collisions link1="dextre_arm_1_shoulder_pitch" link2="dextre_arm_1_elbow_pitch" reason="Adjacent" />
+    <disable_collisions link1="dextre_arm_1_elbow_pitch" link2="dextre_arm_1_wrist_pitch_yaw" reason="Adjacent" />
+    <disable_collisions link1="dextre_arm_1_wrist_pitch_yaw" link2="dextre_arm_1_wrist_roll" reason="Adjacent" />
+    <disable_collisions link1="dextre_body" link2="dextre_arm_2_shoulder_roll" reason="Adjacent" />    
+    <disable_collisions link1="dextre_arm_2_shoulder_roll" link2="dextre_arm_2_shoulder_yaw" reason="Adjacent" />
+    <disable_collisions link1="dextre_arm_2_shoulder_yaw" link2="dextre_arm_2_shoulder_pitch" reason="Adjacent" />
+    <disable_collisions link1="dextre_arm_2_shoulder_pitch" link2="dextre_arm_2_elbow_pitch" reason="Adjacent" />
+    <disable_collisions link1="dextre_arm_2_elbow_pitch" link2="dextre_arm_2_wrist_pitch_yaw" reason="Adjacent" />
+    <disable_collisions link1="dextre_arm_2_wrist_pitch_yaw" link2="dextre_arm_2_wrist_roll" reason="Adjacent" />    
+</robot>
+
