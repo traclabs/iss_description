@@ -18,9 +18,6 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/dextre_base.dae" scale="1 1 1"/>
      </geometry>
-     <material name="Cyan">
-       <color rgba="0 1.0 1.0 1.0"/>
-     </material>
    </visual>
 
    <collision>
@@ -44,9 +41,6 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/dextre_body.dae" scale="1 1 1"/>
      </geometry>
-     <material name="Cyan">
-       <color rgba="0 1.0 1.0 1.0"/>
-     </material>
    </visual>
 
    <collision>
@@ -70,9 +64,6 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/dextre_tool_platform.dae" scale="1 1 1"/>
      </geometry>
-     <material name="Cyan">
-       <color rgba="0 1.0 1.0 1.0"/>
-     </material>
    </visual>
 
    <collision>
@@ -96,9 +87,6 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/dextre_latching_end_effector.dae" scale="1 1 1"/>
      </geometry>
-     <material name="Cyan">
-       <color rgba="0 1.0 1.0 1.0"/>
-     </material>
    </visual>
 
    <collision>
@@ -160,9 +148,6 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/dextre_arm_1_shoulder_roll.dae" scale="1 1 1"/>
      </geometry>
-     <material name="Cyan">
-       <color rgba="0 1.0 1.0 1.0"/>
-     </material>
    </visual>
 
    <collision>
@@ -186,9 +171,6 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/dextre_arm_1_shoulder_yaw.dae" scale="1 1 1"/>
      </geometry>
-     <material name="Cyan">
-       <color rgba="0 1.0 1.0 1.0"/>
-     </material>
    </visual>
 
    <collision>
@@ -212,9 +194,6 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/dextre_arm_1_shoulder_pitch.dae" scale="1 1 1"/>
      </geometry>
-     <material name="Cyan">
-       <color rgba="0 1.0 1.0 1.0"/>
-     </material>
    </visual>
 
    <collision>
@@ -238,9 +217,6 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/dextre_arm_1_elbow_pitch.dae" scale="1 1 1"/>
      </geometry>
-     <material name="Cyan">
-       <color rgba="0 1.0 1.0 1.0"/>
-     </material>
    </visual>
 
    <collision>
@@ -264,9 +240,6 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/dextre_arm_1_wrist_pitch_yaw.dae" scale="1 1 1"/>
      </geometry>
-     <material name="Cyan">
-       <color rgba="0 1.0 1.0 1.0"/>
-     </material>
    </visual>
 
    <collision>
@@ -290,9 +263,6 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/dextre_arm_1_wrist_roll.dae" scale="1 1 1"/>
      </geometry>
-     <material name="Cyan">
-       <color rgba="0 1.0 1.0 1.0"/>
-     </material>
    </visual>
 
    <collision>
@@ -379,9 +349,6 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/dextre_arm_2_shoulder_roll.dae" scale="1 1 1"/>
      </geometry>
-     <material name="Cyan">
-       <color rgba="0 1.0 1.0 1.0"/>
-     </material>
    </visual>
 
    <collision>
@@ -405,9 +372,6 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/dextre_arm_2_shoulder_yaw.dae" scale="1 1 1"/>
      </geometry>
-     <material name="Cyan">
-       <color rgba="0 1.0 1.0 1.0"/>
-     </material>
    </visual>
 
    <collision>
@@ -431,9 +395,6 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/dextre_arm_2_shoulder_pitch.dae" scale="1 1 1"/>
      </geometry>
-     <material name="Cyan">
-       <color rgba="0 1.0 1.0 1.0"/>
-     </material>
    </visual>
 
    <collision>
@@ -458,9 +419,6 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/dextre_arm_2_elbow_pitch.dae" scale="1 1 1"/>
      </geometry>
-     <material name="Cyan">
-       <color rgba="0 1.0 1.0 1.0"/>
-     </material>
    </visual>
 
    <collision>
@@ -484,9 +442,6 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/dextre_arm_2_wrist_pitch_yaw.dae" scale="1 1 1"/>
      </geometry>
-     <material name="Cyan">
-       <color rgba="0 1.0 1.0 1.0"/>
-     </material>
    </visual>
 
    <collision>
@@ -510,9 +465,6 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/dextre_arm_2_wrist_roll.dae" scale="1 1 1"/>
      </geometry>
-     <material name="Cyan">
-       <color rgba="0 1.0 1.0 1.0"/>
-     </material>
    </visual>
 
    <collision>

@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
-<robot name="mobile_servicing_system" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="mobile_base_system" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:include filename="$(find iss_description)/urdf/canadarm2.urdf.xacro"/>
-  <xacro:include filename="$(find iss_description)/urdf/dextre.urdf.xacro"/>
+  <!-- MOBILE BASE SYSTEM -->
+  <xacro:macro name="mobile_base_system" params=" parent:='world' ">
 
-  <link name="world"/>
  
   <link name="body">
    <inertial>
@@ -18,9 +17,6 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/iss_stationary.dae" scale="1 1 1"/>
      </geometry>
-     <material name="Cyan">
-       <color rgba="0 1.0 1.0 1.0"/>
-     </material>
    </visual>
 
    <collision>
@@ -44,9 +40,6 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/mobile_base_system.dae" scale="1 1 1"/>
      </geometry>
-     <material name="Cyan">
-       <color rgba="0 1.0 1.0 1.0"/>
-     </material>
    </visual>
 
    <collision>
@@ -63,7 +56,7 @@
 
   <joint name="joint_world" type="fixed">
       <origin rpy="0 0 0" xyz="0 0 0"/>
-      <parent link="world"/>
+      <parent link="${parent}"/>
       <child link="body"/>
   </joint>
   
@@ -95,8 +88,7 @@
       <child link="mobile_base_system"/>
       <limit effort="1000.0" lower="-15.0" upper="42.0" velocity="0.5"/>
   </joint>
-
-  <xacro:dextre parent="canadarm2_link_7"/>
-  <xacro:canadarm2 parent="mobile_base_system"/>
   
+  </xacro:macro> 
+ 
 </robot>

@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
-<robot name="dextre" xmlns:xacro="http://www.ros.org/wiki/xacro">
-
+<robot name="canadarm2" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <!-- CANADARM2 -->
   <xacro:macro name="canadarm2" params=" parent:='' ">
@@ -26,9 +25,6 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/canadarm2_base.dae" scale="1 1 1"/>
      </geometry>
-     <material name="Cyan">
-       <color rgba="0 1.0 1.0 1.0"/>
-     </material>
    </visual>
 
    <collision>
@@ -52,9 +48,6 @@
       <geometry>
         <mesh filename="package://iss_description/meshes/canadarm2_link_1.dae" scale="1 1 1"/>
       </geometry>
-      <material name="Cyan">
-        <color rgba="0 1.0 1.0 1.0"/>
-      </material>
     </visual>
 
     <collision>
@@ -78,9 +71,6 @@
       <geometry>
         <mesh filename="package://iss_description/meshes/canadarm2_link_2.dae" scale="1 1 1"/>
       </geometry>
-      <material name="Cyan">
-        <color rgba="0 1.0 1.0 1.0"/>
-      </material>
     </visual>
 
     <collision>
@@ -104,9 +94,6 @@
       <geometry>
         <mesh filename="package://iss_description/meshes/canadarm2_link_3.dae" scale="1 1 1"/>
       </geometry>
-      <material name="Cyan">
-        <color rgba="0 1.0 1.0 1.0"/>
-      </material>
     </visual>
 
     <collision>
@@ -131,9 +118,6 @@
       <geometry>
         <mesh filename="package://iss_description/meshes/canadarm2_link_4.dae" scale="1 1 1"/>
       </geometry>
-      <material name="Cyan">
-        <color rgba="0 1.0 1.0 1.0"/>
-      </material>
     </visual>
 
     <collision>
@@ -157,9 +141,6 @@
       <geometry>
         <mesh filename="package://iss_description/meshes/canadarm2_link_5.dae" scale="1 1 1"/>
       </geometry>
-      <material name="Cyan">
-        <color rgba="0 1.0 1.0 1.0"/>
-      </material>
     </visual>
 
     <collision>
@@ -183,9 +164,6 @@
       <geometry>
         <mesh filename="package://iss_description/meshes/canadarm2_link_6.dae" scale="1 1 1"/>
       </geometry>
-      <material name="Cyan">
-        <color rgba="0 1.0 1.0 1.0"/>
-      </material>
     </visual>
 
     <collision>
@@ -209,9 +187,6 @@
       <geometry>
         <mesh filename="package://iss_description/meshes/canadarm2_link_7.dae" scale="1 1 1"/>
       </geometry>
-      <material name="Cyan">
-        <color rgba="0 1.0 1.0 1.0"/>
-      </material>
     </visual>
 
     <collision>

@@ -1,0 +1,101 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:macro name="dextre_ros2_control_joints" params="command_interface:=position">
+
+      <joint name="joint_dextre_body">
+          <command_interface name="${command_interface}"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+
+      <!-- ARM 1 -->
+      <joint name="joint_dextre_arm_1_shoulder_roll">
+          <command_interface name="${command_interface}"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+
+      <joint name="joint_dextre_arm_1_shoulder_yaw">
+          <command_interface name="${command_interface}"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+
+      <joint name="joint_dextre_arm_1_shoulder_pitch">
+          <command_interface name="${command_interface}"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+
+      <joint name="joint_dextre_arm_1_elbow_pitch">
+          <command_interface name="${command_interface}"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+
+      <joint name="joint_dextre_arm_1_wrist_pitch_yaw">
+          <command_interface name="${command_interface}"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+
+      <joint name="joint_dextre_arm_1_wrist_roll">
+          <command_interface name="${command_interface}"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+
+      <!-- ARM 2 -->
+      <joint name="joint_dextre_arm_2_shoulder_roll">
+          <command_interface name="${command_interface}"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+
+      <joint name="joint_dextre_arm_2_shoulder_yaw">
+          <command_interface name="${command_interface}"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+
+      <joint name="joint_dextre_arm_2_shoulder_pitch">
+          <command_interface name="${command_interface}"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+
+      <joint name="joint_dextre_arm_2_elbow_pitch">
+          <command_interface name="${command_interface}"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+
+      <joint name="joint_dextre_arm_2_wrist_pitch_yaw">
+          <command_interface name="${command_interface}"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+
+      <joint name="joint_dextre_arm_2_wrist_roll">
+          <command_interface name="${command_interface}"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+
+  </xacro:macro>
+
+</robot>  

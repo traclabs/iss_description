@@ -1,0 +1,127 @@
+/controller_manager:
+  ros__parameters:
+    update_rate: 100
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    canadarm2_joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    dextre_arm_1_joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    dextre_arm_2_joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    mobile_base_system_joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    dextre_body_joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+/dextre_body_joint_trajectory_controller:
+  ros__parameters:
+    allow_nonzero_velocity_at_trajectory_end: false
+    joints:
+      - joint_dextre_body
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 100.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    constraints:
+      stopped_velocity_tolerance: 0.1
+      goal_time: 0.0
+
+/mobile_base_system_joint_trajectory_controller:
+  ros__parameters:
+    allow_nonzero_velocity_at_trajectory_end: false
+    joints:
+      - joint_mbs
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 100.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    constraints:
+      stopped_velocity_tolerance: 0.1
+      goal_time: 0.0
+
+/canadarm2_joint_trajectory_controller:
+  ros__parameters:
+    allow_nonzero_velocity_at_trajectory_end: false
+    joints:
+      - joint_canadarm2_1
+      - joint_canadarm2_2
+      - joint_canadarm2_3
+      - joint_canadarm2_4
+      - joint_canadarm2_5
+      - joint_canadarm2_6
+      - joint_canadarm2_7                            
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 100.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    constraints:
+      stopped_velocity_tolerance: 0.1
+      goal_time: 0.0
+      
+/dextre_arm_1_joint_trajectory_controller:
+  ros__parameters:
+    allow_nonzero_velocity_at_trajectory_end: false
+    joints:
+      - joint_dextre_arm_1_shoulder_roll
+      - joint_dextre_arm_1_shoulder_yaw
+      - joint_dextre_arm_1_shoulder_pitch
+      - joint_dextre_arm_1_elbow_pitch
+      - joint_dextre_arm_1_wrist_pitch_yaw
+      - joint_dextre_arm_1_wrist_roll
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 100.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    constraints:
+      stopped_velocity_tolerance: 0.1
+      goal_time: 0.0
+      
+/dextre_arm_2_joint_trajectory_controller:
+  ros__parameters:
+    allow_nonzero_velocity_at_trajectory_end: false
+    joints:
+      - joint_dextre_arm_2_shoulder_roll
+      - joint_dextre_arm_2_shoulder_yaw
+      - joint_dextre_arm_2_shoulder_pitch
+      - joint_dextre_arm_2_elbow_pitch
+      - joint_dextre_arm_2_wrist_pitch_yaw
+      - joint_dextre_arm_2_wrist_roll
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 100.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    constraints:
+      stopped_velocity_tolerance: 0.1
+      goal_time: 0.0      

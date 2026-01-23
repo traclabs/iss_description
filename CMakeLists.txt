@@ -45,13 +45,11 @@ install(PROGRAMS
 
 install(
   DIRECTORY 
-  launch 
-  rviz 
-  meshes 
-  urdf
-  config
+  launch rviz meshes robots urdf config worlds
   DESTINATION share/${PROJECT_NAME}
 )
+
+ament_environment_hooks("${CMAKE_CURRENT_SOURCE_DIR}/hooks/${PROJECT_NAME}.dsv.in")
 
 ament_export_dependencies(${THIS_PACKAGE_INCLUDE_DEPENDS})
 

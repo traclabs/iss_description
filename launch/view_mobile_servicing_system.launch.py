@@ -18,7 +18,7 @@ def generate_launch_description():
     # Urdf
     robot_dir = get_package_share_directory("iss_description")
     urdf_string = xacro.process_file(
-        os.path.join(robot_dir, "urdf/mobile_servicing_system.urdf.xacro"),
+        os.path.join(robot_dir, "robots/mobile_servicing_system.urdf.xacro"),
         #mappings ={'hand': 'true'}
     )    
     robot_description = {"robot_description": urdf_string.toxml()}
@@ -33,15 +33,15 @@ def generate_launch_description():
     )
     
     # Joint State publisher
-    panda_zero_joints = {
-      "zeros.fr3_joint4": -1.5708,
-      "zeros.fr3_joint6": 1.5708 	
+    mss_zero_joints = {
+      "zeros.joint_canadarm2_2": 0.628,
+      "zeros.joint_canadarm2_3": -0.187 	
     }
     jsp = Node(
         package='joint_state_publisher_gui',
         executable='joint_state_publisher_gui',
         name='joint_state_publisher',
-        #parameters=[panda_zero_joints],
+        parameters=[mss_zero_joints],
         output='screen')
 
     # Rviz
@@ -57,16 +57,7 @@ def generate_launch_description():
         ]
     )
 
-    # Static TF
-    static_tf = Node(
-        package="tf2_ros",
-        executable="static_transform_publisher",
-        name="static_transform_publisher",
-        output="log",
-        arguments=["0.0", "0.0", "0.0", "0.0", "0.0", "0.0", "world", "body"],
-    )
-
     return LaunchDescription(
         launch_args +
-        [rsp, jsp, rviz, static_tf]
+        [rsp, jsp, rviz]
     )
