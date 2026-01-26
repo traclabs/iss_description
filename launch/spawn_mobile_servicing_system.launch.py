@@ -1,7 +1,9 @@
 from launch import LaunchDescription
-from launch.actions import RegisterEventHandler
+from launch.actions import RegisterEventHandler, DeclareLaunchArgument
 from launch_ros.actions import Node, SetParameter
 from launch.event_handlers import OnProcessExit
+from launch.conditions import IfCondition, UnlessCondition
+from launch.substitutions import PathJoinSubstitution, LaunchConfiguration
 
 from ament_index_python.packages import get_package_share_directory
 
@@ -11,9 +13,13 @@ import xacro
 
 def generate_launch_description():
 
+  launch_args = [
+    DeclareLaunchArgument(name="move_demo", default_value="True"),
+  ]
+
   # URDF
   mss_urdf = os.path.join(get_package_share_directory("iss_description"), "robots", "mobile_servicing_system.urdf.xacro")
-  mss_doc = xacro.process_file(mss_urdf) #, mappings={'parent_link' : "world"})
+  mss_doc = xacro.process_file(mss_urdf)
   mss_urdf_content = mss_doc.toxml()
 
   # Robot state publisher
@@ -26,7 +32,6 @@ def generate_launch_description():
       {"robot_description": mss_urdf_content},
       {"use_sim_time": True},
     ],
-    #namespace="mss",
   )
 
   # Spawn in Gazebo
@@ -40,16 +45,15 @@ def generate_launch_description():
       mss_urdf_content,
       "-name", "mobile_servicing_system",
       "-allow_renaming", "true",
-    ],
-    #namespace="mss"
+    ]
   )
 
   # Test motion with services
   mss_move = Node(
     package="iss_description",
     executable="move_mss",
-    #namespace="mss",
-    output="screen"
+    output="screen",
+    condition=IfCondition(LaunchConfiguration('move_demo'))
   )
 
   # Control
@@ -58,7 +62,6 @@ def generate_launch_description():
     executable="spawner",
     arguments=["joint_state_broadcaster", "--controller-manager", "/controller_manager", "--switch-timeout", "100.0"],
     name="start_joint_state_broadcaster",
-    #namespace="mss",
     output="screen",
   )
 
@@ -67,7 +70,6 @@ def generate_launch_description():
     executable="spawner",
     arguments=["canadarm2_joint_trajectory_controller", "-c", "/controller_manager", "--switch-timeout", "100.0"],
     name="start_canadarm2_joint_trajectory_controller",
-    #namespace="mss",
     output="screen",
   )
 
@@ -76,7 +78,6 @@ def generate_launch_description():
     executable="spawner",
     arguments=["dextre_arm_1_joint_trajectory_controller", "-c", "/controller_manager", "--switch-timeout", "100.0"],
     name="start_dextre_arm_1_joint_trajectory_controller",
-    #namespace="mss",
     output="screen",
   )
 
@@ -85,7 +86,6 @@ def generate_launch_description():
     executable="spawner",
     arguments=["dextre_arm_2_joint_trajectory_controller", "-c", "/controller_manager", "--switch-timeout", "100.0"],
     name="start_dextre_arm_2_joint_trajectory_controller",
-    #namespace="mss",
     output="screen",
   )
 
@@ -94,7 +94,6 @@ def generate_launch_description():
     executable="spawner",
     arguments=["mobile_base_system_joint_trajectory_controller", "-c", "/controller_manager", "--switch-timeout", "100.0"],
     name="start_mobile_base_system_joint_trajectory_controller",
-    #namespace="mss",
     output="screen",
   )
 
@@ -103,7 +102,6 @@ def generate_launch_description():
     executable="spawner",
     arguments=["dextre_body_joint_trajectory_controller", "-c", "/controller_manager", "--switch-timeout", "100.0"],
     name="start_dextre_body_joint_trajectory_controller",
-    #namespace="mss",
     output="screen",
   )
 
@@ -115,8 +113,7 @@ def generate_launch_description():
     output="screen"
   )
 
-  return LaunchDescription([
-    SetParameter(name="use_sim_time", value=True),
+  return LaunchDescription( launch_args + [
     mss_robot_state_publisher,
     mss_spawn,
     mss_move,

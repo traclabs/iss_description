@@ -13,25 +13,15 @@ import xacro
 
 def generate_launch_description():
 
-  gz_gui = DeclareLaunchArgument(
-    'gz_gui',
-    default_value='true',
-    description='Enable/disable Gazebo GUI (true/false)'
-  )
+  launch_args = [
+    DeclareLaunchArgument(name="gz_gui", default_value="True"),
+    DeclareLaunchArgument(name="rviz", default_value="True"),    
+  ]
 
-  gui = LaunchConfiguration('gz_gui')
-
-  # Gazebo setup
-  sim_resource_path = os.pathsep.join([
-    os.environ.get("GZ_SIM_RESOURCE_PATH", default=""),
-    os.path.join(get_package_share_directory("gateway_description"), "models" )
-  ])
-  env_gz_sim = SetEnvironmentVariable("GZ_SIM_RESOURCE_PATH", sim_resource_path)
-
+  pkg_dir = get_package_share_directory("iss_description")
+  
   # World
-  leo_sdf = PathJoinSubstitution([
-    FindPackageShare("iss_description"), "worlds", "leo.sdf"
-  ])
+  leo_sdf = os.path.join(pkg_dir, "worlds/leo.sdf")
 
   # Launch gazebo world
   gz_launch_gui = IncludeLaunchDescription(
@@ -43,7 +33,7 @@ def generate_launch_description():
           " -v 4",
       ])
     ],
-    condition=IfCondition(gui)
+    condition=IfCondition(LaunchConfiguration('gz_gui'))
   )
 
     # Launch gazebo world
@@ -57,7 +47,7 @@ def generate_launch_description():
           " -s"
       ])
     ],
-    condition=UnlessCondition(gui)
+    condition=UnlessCondition(LaunchConfiguration('gz_gui'))
   )
 
   # Spawn Mobile Servicing System
@@ -66,7 +56,6 @@ def generate_launch_description():
       FindPackageShare("iss_description"), "launch", "spawn_mobile_servicing_system.launch.py"
     ])
   )
-
 
   # Make the /clock topic available in ROS
   gz_sim_bridge = Node(
@@ -77,13 +66,27 @@ def generate_launch_description():
     ],
     output="screen",
   )
+  
+  # Rviz
+  rviz_config = os.path.join(pkg_dir, "rviz/iss.rviz")
+  rviz = Node(
+      package="rviz2",
+      executable="rviz2",
+      name="rviz2",
+      output="log",
+      arguments=["-d", rviz_config],
+      parameters=[
+      {"use_sim_time": True}
+      ],
+      condition=IfCondition(LaunchConfiguration('rviz'))
+  )  
 
-  return LaunchDescription([
-    SetParameter(name="use_sim_time", value=True),
-    env_gz_sim,
-    gz_gui,
-    gz_launch_gui,
-    gz_launch_headless,
-    mss,
-    gz_sim_bridge
-  ])
+  return LaunchDescription(
+    launch_args + 
+    [
+      gz_launch_gui,
+      gz_launch_headless,
+      mss,
+      gz_sim_bridge,
+      rviz
+    ])
