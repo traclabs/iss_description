@@ -7,11 +7,11 @@
     </group>
 
     <group name="dextre_arm_1">
-        <chain base_link="dextre_arm_1_shoulder_roll" tip_link="dextre_arm_1_wrist_roll" />
+        <chain base_link="dextre_body" tip_link="dextre_arm_1_wrist_roll" />
     </group>
 
     <group name="dextre_arm_2">
-        <chain base_link="dextre_arm_2_shoulder_roll" tip_link="dextre_arm_2_wrist_roll" />
+        <chain base_link="dextre_body" tip_link="dextre_arm_2_wrist_roll" />
     </group>
 
     <group name="dextre_waist">
@@ -20,18 +20,113 @@
     </group>
 
     <group name="mobile_base_system">
-      <link name="mobile_base_system" />
-      <joint name="joint_mbs"/>
+      <chain base_link="root" tip_link="mobile_base_system" />
     </group>
 
+    <!-- GROUP: Solar Panel main axis  -->
+    <group name="sarj">
+      <joint name="joint_starboard_sarj"/>
+      <joint name="joint_port_sarj"/>      
+    </group>
+
+    <!-- Control individual angle of solar panels-->
+    <group name="port_bga">
+      <joint name="joint_port_bga_1"/>
+      <joint name="joint_port_bga_2"/>
+      <joint name="joint_port_bga_3"/>
+      <joint name="joint_port_bga_4"/>                  
+    </group>
+
+    <group name="starboard_bga">
+      <joint name="joint_starboard_bga_1"/>
+      <joint name="joint_starboard_bga_2"/>
+      <joint name="joint_starboard_bga_3"/>
+      <joint name="joint_starboard_bga_4"/>                  
+    </group>
+
+    
+    <!-- GROUP STATES: Solar Panel main axis  -->
+    <group_state group="sarj" name="zero">
+      <joint name="joint_starboard_sarj" value="0.0"/>
+      <joint name="joint_port_sarj" value="0.0"/>
+    </group_state>
+
+    <group_state group="sarj" name="default">
+      <joint name="joint_starboard_sarj" value="1.0472"/>
+      <joint name="joint_port_sarj" value="1.0472"/>
+    </group_state>
+    
+    <!-- GROUP STATES: Solar Panel individual axis  -->
+    <group_state group="port_bga" name="zero">
+      <joint name="joint_port_bga_1" value="0.0"/>
+      <joint name="joint_port_bga_2" value="0.0"/>
+      <joint name="joint_port_bga_3" value="0.0"/>
+      <joint name="joint_port_bga_4" value="0.0"/>      
+    </group_state>
+    
+    <group_state group="port_bga" name="clockwise">
+      <joint name="joint_port_bga_1" value="1.5708"/>
+      <joint name="joint_port_bga_2" value="1.5708"/>
+      <joint name="joint_port_bga_3" value="1.5708"/>
+      <joint name="joint_port_bga_4" value="1.5708"/>      
+    </group_state>
+    
+    <group_state group="port_bga" name="counterclockwise">
+      <joint name="joint_port_bga_1" value="-1.5708"/>
+      <joint name="joint_port_bga_2" value="-1.5708"/>
+      <joint name="joint_port_bga_3" value="-1.5708"/>
+      <joint name="joint_port_bga_4" value="-1.5708"/>      
+    </group_state>    
+
+    <!-- GROUP STATES: Solar Panel individual axis  -->
+    <group_state group="starboard_bga" name="zero">
+      <joint name="joint_starboard_bga_1" value="0.0"/>
+      <joint name="joint_starboard_bga_2" value="0.0"/>
+      <joint name="joint_starboard_bga_3" value="0.0"/>
+      <joint name="joint_starboard_bga_4" value="0.0"/>      
+    </group_state>
+    
+    <group_state group="starboard_bga" name="clockwise">
+      <joint name="joint_starboard_bga_1" value="1.5708"/>
+      <joint name="joint_starboard_bga_2" value="1.5708"/>
+      <joint name="joint_starboard_bga_3" value="1.5708"/>
+      <joint name="joint_starboard_bga_4" value="1.5708"/>      
+    </group_state>
+    
+    <group_state group="starboard_bga" name="counterclockwise">
+      <joint name="joint_starboard_bga_1" value="-1.5708"/>
+      <joint name="joint_starboard_bga_2" value="-1.5708"/>
+      <joint name="joint_starboard_bga_3" value="-1.5708"/>
+      <joint name="joint_starboard_bga_4" value="-1.5708"/>      
+    </group_state>
+
+    <!-- GROUP DEXTRE WAIST  -->
+    <group_state group="dextre_waist" name="zero">
+      <joint name="joint_dextre_body" value="0.0"/>                                    
+    </group_state>
+
+    <group_state group="dextre_waist" name="left">
+      <joint name="joint_dextre_body" value="1.5709"/>                                    
+    </group_state>
+
+    <group_state group="dextre_waist" name="right">
+      <joint name="joint_dextre_body" value="-1.5709"/>                                    
+    </group_state>
+
+    <!-- GROUP MOBILE BASE SYSTEM  -->
     <group_state group="mobile_base_system" name="zero">
       <joint name="joint_mbs" value="0.0"/>                                    
     </group_state>
 
-    <group_state group="mobile_base_system" name="truss_11">
-      <joint name="joint_mbs" value="4.0"/>                            
+    <group_state group="mobile_base_system" name="truss_s4">
+      <joint name="joint_mbs" value="-13.0"/>                            
     </group_state>
 
+    <group_state group="mobile_base_system" name="truss_p4">
+      <joint name="joint_mbs" value="15.0"/> 
+    </group_state>
+
+    <!-- GROUP CANADARM2  -->
     <group_state group="canadarm2" name="zero">
       <joint name="joint_canadarm2_1" value="0.0"/>
       <joint name="joint_canadarm2_2" value="0.0"/>
@@ -42,6 +137,17 @@
       <joint name="joint_canadarm2_7" value="0.0"/>                                    
     </group_state>
     
+    <group_state group="canadarm2" name="default">
+      <joint name="joint_canadarm2_1" value="0.0"/>
+      <joint name="joint_canadarm2_2" value="0.628"/>
+      <joint name="joint_canadarm2_3" value="-0.187"/>
+      <joint name="joint_canadarm2_4" value="0.0"/>
+      <joint name="joint_canadarm2_5" value="0.0"/>
+      <joint name="joint_canadarm2_6" value="0.0"/>
+      <joint name="joint_canadarm2_7" value="0.0"/>                                    
+    </group_state>    
+    
+    <!-- GROUP DEXTRE ARM 1 -->
     <group_state group="dextre_arm_1" name="zero">
       <joint name="joint_dextre_arm_1_shoulder_roll" value="0.0"/>
       <joint name="joint_dextre_arm_1_shoulder_yaw" value="0.0"/>
@@ -51,6 +157,8 @@
       <joint name="joint_dextre_arm_1_wrist_roll" value="0.0"/>
     </group_state>
 
+
+    <!-- GROUP DEXTRE ARM 2 -->
     <group_state group="dextre_arm_2" name="zero">
       <joint name="joint_dextre_arm_2_shoulder_roll" value="0.0"/>
       <joint name="joint_dextre_arm_2_shoulder_yaw" value="0.0"/>
@@ -67,6 +175,7 @@
 
 
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="root" link2="mobile_base_system" reason="Adjacent" />    
     <disable_collisions link1="canadarm2_base" link2="canadarm2_link_1" reason="Adjacent" />    
     <disable_collisions link1="canadarm2_link_1" link2="canadarm2_link_2" reason="Adjacent" />
     <disable_collisions link1="canadarm2_link_2" link2="canadarm2_link_3" reason="Adjacent" />
@@ -88,6 +197,16 @@
     <disable_collisions link1="dextre_arm_2_shoulder_yaw" link2="dextre_arm_2_shoulder_pitch" reason="Adjacent" />
     <disable_collisions link1="dextre_arm_2_shoulder_pitch" link2="dextre_arm_2_elbow_pitch" reason="Adjacent" />
     <disable_collisions link1="dextre_arm_2_elbow_pitch" link2="dextre_arm_2_wrist_pitch_yaw" reason="Adjacent" />
-    <disable_collisions link1="dextre_arm_2_wrist_pitch_yaw" link2="dextre_arm_2_wrist_roll" reason="Adjacent" />    
+    <disable_collisions link1="dextre_arm_2_wrist_pitch_yaw" link2="dextre_arm_2_wrist_roll" reason="Adjacent" /> 
+    <disable_collisions link1="root" link2="link_20_p4_truss" reason="Adjacent" />
+    <disable_collisions link1="link_20_p4_truss" link2="link_20_p4_truss_01" reason="Adjacent" />
+    <disable_collisions link1="link_20_p4_truss" link2="link_20_p4_truss_02" reason="Adjacent" />
+    <disable_collisions link1="link_20_p4_truss" link2="link_08_p6_truss_01" reason="Adjacent" />
+    <disable_collisions link1="link_20_p4_truss" link2="link_08_p6_truss_02" reason="Adjacent" />
+    <disable_collisions link1="root" link2="link_23_s4_truss" reason="Adjacent" />
+    <disable_collisions link1="link_23_s4_truss" link2="link_23_s4_truss_01" reason="Adjacent" />
+    <disable_collisions link1="link_23_s4_truss" link2="link_23_s4_truss_02" reason="Adjacent" />
+    <disable_collisions link1="link_23_s4_truss" link2="link_32_s6_truss_01" reason="Adjacent" />
+    <disable_collisions link1="link_23_s4_truss" link2="link_32_s6_truss_02" reason="Adjacent" />            
 </robot>
 

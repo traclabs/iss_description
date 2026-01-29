@@ -5,7 +5,7 @@
   <xacro:macro name="mobile_base_system" params=" parent:='world' ">
 
  
-  <link name="body">
+  <link name="root">
    <inertial>
      <origin xyz="0 0 0.0" rpy="0 0 0"/>
      <mass value="1"/>
@@ -50,37 +50,434 @@
    </collision>
   </link>
 
+  <!-- Modules in the ISS -->
   <link name="link_02_unity_node"/>
   <link name="link_09_destiny"/>
   <link name="link_14_s0_truss"/>
 
+  <!-- *****************-->
+  <!-- Left             -->
+  <!-- *****************-->  
+  <link name="link_16_s1_truss"/>
+  <link name="link_22_s3_truss"/>
+  <link name="link_24_s5_truss"/>
+  <link name="link_32_s6_truss"/>
+  
+  <!-- Solar Panel -->
+  <link name="link_32_s6_truss_01">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s6_truss_32_01.dae" scale="1 1 1"/>
+     </geometry>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s6_truss_32_01.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>  
+  </link>
+
+  <!-- Solar Panel -->  
+  <link name="link_32_s6_truss_02">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s6_truss_32_02.dae" scale="1 1 1"/>
+     </geometry>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s6_truss_32_02.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>    
+  </link>
+
+  <!-- Solar Panel -->        
+  <link name="link_23_s4_truss_01">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_01.dae" scale="1 1 1"/>
+     </geometry>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_01.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>    
+  </link>
+  
+  <!-- Solar Panel -->
+  <link name="link_23_s4_truss_02">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_02.dae" scale="1 1 1"/>
+     </geometry>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_02.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>   
+  </link>
+      
+  <!-- Main truss left -->      
+  <link name="link_23_s4_truss">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23.dae" scale="1 1 1"/>
+     </geometry>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+  </link>
+  
+  <!-- Right -->
+  <link name="link_17_p1_truss"/>
+  <link name="link_19_p3_truss"/>
+  <link name="link_21_p5_truss"/>
+  <link name="link_08_p6_truss"/>
+  
+    
+  <!-- Main truss right -->      
+  <link name="link_20_p4_truss">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/p4_truss_20.dae" scale="1 1 1"/>
+     </geometry>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/p4_truss_20.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+  </link>
+  
+  <link name="link_08_p6_truss_01">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/p6_truss_08_01.dae" scale="1 1 1"/>
+     </geometry>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/p6_truss_08_01.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>  
+  </link>
+
+  <link name="link_08_p6_truss_02">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/p6_truss_08_02.dae" scale="1 1 1"/>
+     </geometry>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/p6_truss_08_02.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>    
+  </link>
+  
+  <link name="link_20_p4_truss_01">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/p4_truss_20_01.dae" scale="1 1 1"/>
+     </geometry>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/p4_truss_20_01.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>    
+  </link>  
+    
+  <link name="link_20_p4_truss_02">
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/p4_truss_20_02.dae" scale="1 1 1"/>
+     </geometry>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/p4_truss_20_02.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>      
+  </link>
+      
+  <!-- ************************* -->    
+  <!-- Joints for common modules -->  
+  <!-- ************************* -->    
+
   <joint name="joint_world" type="fixed">
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <parent link="${parent}"/>
-      <child link="body"/>
+      <child link="root"/>
   </joint>
   
-  <joint name="joint_body_02" type="fixed">
+  <!-- Joint for 02 Unity Node 1-->
+  <joint name="joint_02_unity" type="fixed">
       <origin rpy="0 0 0" xyz="0 0 0"/>
-      <parent link="body"/>
+      <parent link="root"/>
       <child link="link_02_unity_node"/>
   </joint>
 
-  <joint name="joint_02_09" type="fixed">
+  <!-- Joint for 09 Destiny Space Laboratory -->
+  <joint name="joint_09_destiny" type="fixed">
       <origin rpy="0 0 0" xyz="0 -2.221 0"/>
       <parent link="link_02_unity_node"/>
       <child link="link_09_destiny"/>
   </joint>
 
-
-  <joint name="joint_09_14" type="fixed">
+  <!-- Joint for 14 S0 Truss -->
+  <joint name="joint_14_s0_truss" type="fixed">
       <origin rpy="0 0 0" xyz="0.0  -0.96651 5.0071"/>
       <axis xyz="1 0 0"/>
       <parent link="link_09_destiny"/>
       <child link="link_14_s0_truss"/>
   </joint>
 
-  
+  <!-- ************************* -->
+  <!-- Joints for right modules   -->
+  <!-- ************************* -->
+  <joint name="joint_17_p1_truss" type="fixed">
+      <origin rpy="0 0 0" xyz="6.8218 -1.5045 2.2372"/>
+      <parent link="link_14_s0_truss"/>
+      <child link="link_17_p1_truss"/>
+  </joint>
+
+  <joint name="joint_19_p3_truss" type="fixed">
+      <origin rpy="0 0 0" xyz="17.042 -0.1105 -2.2321"/>
+      <parent link="link_17_p1_truss"/>
+      <child link="link_19_p3_truss"/>
+  </joint>
+
+  <joint name="joint_21_p5_truss" type="fixed">
+      <origin rpy="0 0 0" xyz="8.1391 1.2336 -0.008705"/>
+      <parent link="link_20_p4_truss"/>
+      <child link="link_21_p5_truss"/>
+  </joint>
+
+  <joint name="joint_08_p6_truss" type="fixed">
+      <origin rpy="0 0 0" xyz="1.4447 -0.84866 0.0"/>
+      <parent link="link_21_p5_truss"/>
+      <child link="link_08_p6_truss"/>
+  </joint>
+
+
+  <!-- Joint to rotate 4 solar panels around main axis -->
+  <joint name="joint_port_sarj" type="revolute">
+      <origin rpy="0 0 0" xyz="3.0156 0.034101 0.009779"/>
+      <axis xyz="1 0 0"/>
+      <parent link="link_19_p3_truss"/>
+      <child link="link_20_p4_truss"/>
+      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+  </joint>
+
+  <!-- Joint to rotate individually panel 1-->
+  <joint name="joint_port_bga_1" type="revolute">
+      <origin rpy="0 0 0" xyz="13.492 -1.5342 -0.682"/>
+      <axis xyz="0 1 0"/>
+      <parent link="link_08_p6_truss"/>
+      <child link="link_08_p6_truss_01"/>
+      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+  </joint>
+
+  <!-- Joint to rotate individually panel 2 -->
+  <joint name="joint_port_bga_2" type="revolute">
+      <origin rpy="0 0 0" xyz="13.492 1.5217 0.6834"/>
+      <axis xyz="0 1 0"/>
+      <parent link="link_08_p6_truss"/>
+      <child link="link_08_p6_truss_02"/>
+      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+  </joint>
+
+  <!-- Joint to rotate individually panel 3 -->
+  <joint name="joint_port_bga_3" type="revolute">
+      <origin rpy="0 0 0" xyz="-0.48725 -2.3908 -0.68074"/>
+      <axis xyz="0 1 0"/>
+      <parent link="link_21_p5_truss"/>
+      <child link="link_20_p4_truss_01"/>
+      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+  </joint>
+
+  <!-- Joint to rotate individually panel 4 -->
+  <joint name="joint_port_bga_4" type="revolute">
+      <origin rpy="0 0 0" xyz="-0.48726 0.66506 0.68466"/>
+      <axis xyz="0 1 0"/>
+      <parent link="link_21_p5_truss"/>
+      <child link="link_20_p4_truss_02"/>
+      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+  </joint>
+
+  <!-- ************************* -->
+  <!-- Joints for left modules   -->
+  <!-- ************************* -->
+  <joint name="joint_16_s1_truss" type="fixed">
+      <origin rpy="0 0 0" xyz="-13.808 -2.4374 0.000073"/>
+      <parent link="link_14_s0_truss"/>
+      <child link="link_16_s1_truss"/>
+  </joint>
+
+  <joint name="joint_22_s3_truss" type="fixed">
+      <origin rpy="0 0 0" xyz="-10.048 0.8224 0.005095"/>
+      <parent link="link_16_s1_truss"/>
+      <child link="link_22_s3_truss"/>
+  </joint>
+
+
+  <joint name="joint_24_s5_truss" type="fixed">
+      <origin rpy="0 0 0" xyz="-8.1391 -1.2336 -0.008703"/>
+      <parent link="link_23_s4_truss"/>
+      <child link="link_24_s5_truss"/>
+  </joint>
+
+  <joint name="joint_32_s6_truss" type="fixed">
+      <origin rpy="0 0 0" xyz="-1.4447 0.84866 0.0"/>
+      <parent link="link_24_s5_truss"/>
+      <child link="link_32_s6_truss"/>
+  </joint>
+
+  <!-- Joint to rotate 4 solar panels around main axis -->
+  <joint name="joint_starboard_sarj" type="revolute">
+      <origin rpy="0 0 0" xyz="-3.0228 0.013129 -0.026546"/>
+      <axis xyz="1 0 0"/>
+      <parent link="link_22_s3_truss"/>
+      <child link="link_23_s4_truss"/>
+      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+  </joint>
+
+  <!-- Joint to rotate individually panel 1-->
+  <joint name="joint_starboard_bga_1" type="revolute">
+      <origin rpy="0 0 0" xyz="0.48726 -0.66507 0.68466"/>
+      <axis xyz="0 1 0"/>
+      <parent link="link_24_s5_truss"/>
+      <child link="link_23_s4_truss_01"/>
+      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+  </joint>
+
+  <!-- Joint to rotate individually panel 2 -->
+  <joint name="joint_starboard_bga_2" type="revolute">
+      <origin rpy="0 0 0" xyz="0.48725 2.3908 -0.68074"/>
+      <axis xyz="0 1 0"/>
+      <parent link="link_24_s5_truss"/>
+      <child link="link_23_s4_truss_02"/>
+      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+  </joint>
+
+  <!-- Joint to rotate individually panel 3 -->
+  <joint name="joint_starboard_bga_3" type="revolute">
+      <origin rpy="0 0 0" xyz="-13.492 -1.5217 0.6834"/>
+      <axis xyz="0 1 0"/>
+      <parent link="link_32_s6_truss"/>
+      <child link="link_32_s6_truss_01"/>
+      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+  </joint>
+
+  <!-- Joint to rotate individually panel 4 -->
+  <joint name="joint_starboard_bga_4" type="revolute">
+      <origin rpy="0 0 0" xyz="-13.492 1.5342 -0.682"/>
+      <axis xyz="0 1 0"/>
+      <parent link="link_32_s6_truss"/>
+      <child link="link_32_s6_truss_02"/>
+      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+  </joint>
+
+
+  <!-- *********************************************** -->
+  <!-- Joint for Mobile base system w.r.t. to S0 Truss -->
+  <!-- *********************************************** -->    
   <joint name="joint_mbs" type="prismatic">
       <origin rpy="0 0 0" xyz="-2.8655 -5.17 -0.59547"/>
       <axis xyz="1 0 0"/>

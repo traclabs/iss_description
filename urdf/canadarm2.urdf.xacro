@@ -23,14 +23,14 @@
    <visual>
      <origin xyz="0 0 0" rpy="0.35691983 0.0 0.572468" />
      <geometry>
-       <mesh filename="package://iss_description/meshes/canadarm2_base.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/canadarm2/base.dae" scale="1 1 1"/>
      </geometry>
    </visual>
 
    <collision>
      <origin xyz="0 0 0" rpy="0 0 0"/>
      <geometry>
-       <mesh filename="package://iss_description/meshes/canadarm2_base.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/canadarm2/base.dae" scale="1 1 1"/>
      </geometry>
    </collision>
   </link>
@@ -46,14 +46,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0.0 -0.488692 0.663225" /> <!-- Blender: 0 -28 38-->
       <geometry>
-        <mesh filename="package://iss_description/meshes/canadarm2_link_1.dae" scale="1 1 1"/>
+        <mesh filename="package://iss_description/meshes/canadarm2/link_1.dae" scale="1 1 1"/>
       </geometry>
     </visual>
 
     <collision>
       <origin xyz="0 0 0" rpy="0.0 -0.488692 0.663225"/>
       <geometry>
-        <mesh filename="package://iss_description/meshes/canadarm2_link_1.dae" scale="1 1 1"/>
+        <mesh filename="package://iss_description/meshes/canadarm2/link_1.dae" scale="1 1 1"/>
       </geometry>
     </collision>
    </link>
@@ -69,14 +69,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 -0.49131018 0" /> <!-- Blender: 0.0 -28.15 0.0-->
       <geometry>
-        <mesh filename="package://iss_description/meshes/canadarm2_link_2.dae" scale="1 1 1"/>
+        <mesh filename="package://iss_description/meshes/canadarm2/link_2.dae" scale="1 1 1"/>
       </geometry>
     </visual>
 
     <collision>
       <origin xyz="0 0 0" rpy="0 -0.49131018 0"/>
       <geometry>
-        <mesh filename="package://iss_description/meshes/canadarm2_link_2.dae" scale="1 1 1"/>
+        <mesh filename="package://iss_description/meshes/canadarm2/link_2.dae" scale="1 1 1"/>
       </geometry>
     </collision>
    </link>
@@ -92,14 +92,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://iss_description/meshes/canadarm2_link_3.dae" scale="1 1 1"/>
+        <mesh filename="package://iss_description/meshes/canadarm2/link_3.dae" scale="1 1 1"/>
       </geometry>
     </visual>
 
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://iss_description/meshes/canadarm2_link_3.dae" scale="1 1 1"/>
+        <mesh filename="package://iss_description/meshes/canadarm2/link_3.dae" scale="1 1 1"/>
       </geometry>
     </collision>
    </link>
@@ -116,14 +116,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://iss_description/meshes/canadarm2_link_4.dae" scale="1 1 1"/>
+        <mesh filename="package://iss_description/meshes/canadarm2/link_4.dae" scale="1 1 1"/>
       </geometry>
     </visual>
 
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://iss_description/meshes/canadarm2_link_4.dae" scale="1 1 1"/>
+        <mesh filename="package://iss_description/meshes/canadarm2/link_4.dae" scale="1 1 1"/>
       </geometry>
     </collision>
    </link>
@@ -139,14 +139,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://iss_description/meshes/canadarm2_link_5.dae" scale="1 1 1"/>
+        <mesh filename="package://iss_description/meshes/canadarm2/link_5.dae" scale="1 1 1"/>
       </geometry>
     </visual>
 
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://iss_description/meshes/canadarm2_link_5.dae" scale="1 1 1"/>
+        <mesh filename="package://iss_description/meshes/canadarm2/link_5.dae" scale="1 1 1"/>
       </geometry>
     </collision>
    </link>
@@ -162,14 +162,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://iss_description/meshes/canadarm2_link_6.dae" scale="1 1 1"/>
+        <mesh filename="package://iss_description/meshes/canadarm2/link_6.dae" scale="1 1 1"/>
       </geometry>
     </visual>
 
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://iss_description/meshes/canadarm2_link_6.dae" scale="1 1 1"/>
+        <mesh filename="package://iss_description/meshes/canadarm2/link_6.dae" scale="1 1 1"/>
       </geometry>
     </collision>
    </link>
@@ -185,14 +185,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://iss_description/meshes/canadarm2_link_7.dae" scale="1 1 1"/>
+        <mesh filename="package://iss_description/meshes/canadarm2/link_7.dae" scale="1 1 1"/>
       </geometry>
     </visual>
 
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://iss_description/meshes/canadarm2_link_7.dae" scale="1 1 1"/>
+        <mesh filename="package://iss_description/meshes/canadarm2/link_7.dae" scale="1 1 1"/>
       </geometry>
     </collision>
    </link>   

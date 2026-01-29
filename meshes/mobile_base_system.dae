@@ -233,16 +233,16 @@
   </library_effects>
   <library_images>
     <image id="ISS_01_png" name="ISS_01_png">
-      <init_from>ISS_01.png</init_from>
+      <init_from>textures/ISS_01.png</init_from>
     </image>
     <image id="ISS_02_png" name="ISS_02_png">
-      <init_from>ISS_02.png</init_from>
+      <init_from>textures/ISS_02.png</init_from>
     </image>
     <image id="ISS_03_png" name="ISS_03_png">
-      <init_from>ISS_03.png</init_from>
+      <init_from>textures/ISS_03.png</init_from>
     </image>
     <image id="ISS_AO_05_png" name="ISS_AO_05_png">
-      <init_from>ISS_AO_05.png</init_from>
+      <init_from>textures/ISS_AO_05.png</init_from>
     </image>
   </library_images>
   <library_materials>
