@@ -20,7 +20,7 @@ def generate_launch_description():
     urdf_string = xacro.process_file(
         os.path.join(robot_dir, "robots/mobile_servicing_system.urdf.xacro"),
         #mappings ={'hand': 'true'}
-    )    
+    )
     robot_description = {"robot_description": urdf_string.toxml()}
 
     # Robot state publisher
@@ -31,11 +31,11 @@ def generate_launch_description():
         output="both",
         parameters=[robot_description],
     )
-    
+
     # Joint State publisher
     mss_zero_joints = {
       "zeros.joint_canadarm2_2": 0.628,
-      "zeros.joint_canadarm2_3": -0.187 	
+      "zeros.joint_canadarm2_3": -0.187
     }
     jsp = Node(
         package='joint_state_publisher_gui',
@@ -55,6 +55,8 @@ def generate_launch_description():
         parameters=[
         robot_description
         ]
+        ,
+        condition=IfCondition(LaunchConfiguration("rviz")),
     )
 
     return LaunchDescription(
