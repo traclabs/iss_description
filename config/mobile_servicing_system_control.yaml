@@ -20,6 +20,16 @@
     dextre_body_joint_trajectory_controller:
       type: joint_trajectory_controller/JointTrajectoryController
 
+    sarj_joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    port_bga_joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    starboard_bga_joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
 /dextre_body_joint_trajectory_controller:
   ros__parameters:
     allow_nonzero_velocity_at_trajectory_end: false
@@ -125,3 +135,65 @@
     constraints:
       stopped_velocity_tolerance: 0.1
       goal_time: 0.0      
+      
+/sarj_joint_trajectory_controller:
+  ros__parameters:
+    allow_nonzero_velocity_at_trajectory_end: false
+    joints:
+      - joint_starboard_sarj
+      - joint_port_sarj
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 100.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    constraints:
+      stopped_velocity_tolerance: 0.1
+      goal_time: 0.0      
+      
+/port_bga_joint_trajectory_controller:
+  ros__parameters:
+    allow_nonzero_velocity_at_trajectory_end: false
+    joints:
+      - joint_port_bga_1
+      - joint_port_bga_2
+      - joint_port_bga_3
+      - joint_port_bga_4                  
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 100.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    constraints:
+      stopped_velocity_tolerance: 0.1
+      goal_time: 0.0      
+
+/starboard_bga_joint_trajectory_controller:
+  ros__parameters:
+    allow_nonzero_velocity_at_trajectory_end: false
+    joints:
+      - joint_starboard_bga_1
+      - joint_starboard_bga_2
+      - joint_starboard_bga_3
+      - joint_starboard_bga_4                  
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 100.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    constraints:
+      stopped_velocity_tolerance: 0.1
+      goal_time: 0.0      
+      

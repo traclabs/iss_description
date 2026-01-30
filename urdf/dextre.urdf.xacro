@@ -16,14 +16,14 @@
    <visual>
      <origin xyz="0 0 0" rpy="0 0 0" />
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_base.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/base.dae" scale="1 1 1"/>
      </geometry>
    </visual>
 
    <collision>
      <origin xyz="0 0 0" rpy="0 0 0"/>
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_base.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/base.dae" scale="1 1 1"/>
      </geometry>
    </collision>
   </link>
@@ -39,14 +39,14 @@
    <visual>
      <origin xyz="0 0 0" rpy="0 0 0" />
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_body.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/body.dae" scale="1 1 1"/>
      </geometry>
    </visual>
 
    <collision>
      <origin xyz="0 0 0" rpy="0 0 0"/>
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_body.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/body.dae" scale="1 1 1"/>
      </geometry>
    </collision>
   </link>
@@ -62,14 +62,14 @@
    <visual>
      <origin xyz="0 0 0" rpy="0 0 0" />
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_tool_platform.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/tool_platform.dae" scale="1 1 1"/>
      </geometry>
    </visual>
 
    <collision>
      <origin xyz="0 0 0" rpy="0 0 0"/>
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_tool_platform.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/tool_platform.dae" scale="1 1 1"/>
      </geometry>
    </collision>
   </link>
@@ -85,14 +85,14 @@
    <visual>
      <origin xyz="0 0 0" rpy="0 0 0" />
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_latching_end_effector.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/latching_end_effector.dae" scale="1 1 1"/>
      </geometry>
    </visual>
 
    <collision>
      <origin xyz="0 0 0" rpy="0 0 0"/>
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_latching_end_effector.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/latching_end_effector.dae" scale="1 1 1"/>
      </geometry>
    </collision>
   </link>
@@ -146,14 +146,14 @@
    <visual>
      <origin xyz="0 0 0" rpy="0 0.785398 0" />
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_1_shoulder_roll.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_1/shoulder_roll.dae" scale="1 1 1"/>
      </geometry>
    </visual>
 
    <collision>
      <origin xyz="0 0 0" rpy="0 0.785398 0"/>
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_1_shoulder_roll.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_1/shoulder_roll.dae" scale="1 1 1"/>
      </geometry>
    </collision>
   </link>  
@@ -169,14 +169,14 @@
    <visual>
      <origin xyz="0 0 0" rpy="0 0.7941248 0" /> <!-- 0.0 -45.5 0.0-->
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_1_shoulder_yaw.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_1/shoulder_yaw.dae" scale="1 1 1"/>
      </geometry>
    </visual>
 
    <collision>
      <origin xyz="0 0 0" rpy="0 0.7941248 0"/>
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_1_shoulder_yaw.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_1/shoulder_yaw.dae" scale="1 1 1"/>
      </geometry>
    </collision>
   </link>  
@@ -192,14 +192,14 @@
    <visual>
      <origin xyz="0 0 0" rpy="0 0 0" />
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_1_shoulder_pitch.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_1/shoulder_pitch.dae" scale="1 1 1"/>
      </geometry>
    </visual>
 
    <collision>
      <origin xyz="0 0 0" rpy="0 0 0"/>
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_1_shoulder_pitch.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_1/shoulder_pitch.dae" scale="1 1 1"/>
      </geometry>
    </collision>
   </link>  
@@ -215,14 +215,14 @@
    <visual>
      <origin xyz="0 0 0" rpy="0 0 0" />
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_1_elbow_pitch.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_1/elbow_pitch.dae" scale="1 1 1"/>
      </geometry>
    </visual>
 
    <collision>
      <origin xyz="0 0 0" rpy="0 0 0"/>
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_1_elbow_pitch.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_1/elbow_pitch.dae" scale="1 1 1"/>
      </geometry>
    </collision>
   </link>  
@@ -238,14 +238,14 @@
    <visual>
      <origin xyz="0 0 0" rpy="0 0 0" />
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_1_wrist_pitch_yaw.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_1/wrist_pitch_yaw.dae" scale="1 1 1"/>
      </geometry>
    </visual>
 
    <collision>
      <origin xyz="0 0 0" rpy="0 0 0"/>
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_1_wrist_pitch_yaw.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_1/wrist_pitch_yaw.dae" scale="1 1 1"/>
      </geometry>
    </collision>
   </link>  
@@ -261,14 +261,14 @@
    <visual>
      <origin xyz="0 0 0" rpy="0 0 0" />
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_1_wrist_roll.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_1/wrist_roll.dae" scale="1 1 1"/>
      </geometry>
    </visual>
 
    <collision>
      <origin xyz="0 0 0" rpy="0 0 0"/>
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_1_wrist_roll.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_1/wrist_roll.dae" scale="1 1 1"/>
      </geometry>
    </collision>
   </link> 
@@ -347,14 +347,14 @@
    <visual>
      <origin xyz="0 0 0" rpy="0 -0.785398 0" />
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_2_shoulder_roll.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_2/shoulder_roll.dae" scale="1 1 1"/>
      </geometry>
    </visual>
 
    <collision>
      <origin xyz="0 0 0" rpy="0 0 0"/>
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_2_shoulder_roll.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_2/shoulder_roll.dae" scale="1 1 1"/>
      </geometry>
    </collision>
   </link>  
@@ -370,14 +370,14 @@
    <visual>
      <origin xyz="0 0 0" rpy="0 -0.7941248 0" /> <!-- 0.0 45.5 0.0-->
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_2_shoulder_yaw.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_2/shoulder_yaw.dae" scale="1 1 1"/>
      </geometry>
    </visual>
 
    <collision>
      <origin xyz="0 0 0" rpy="0 0 0"/>
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_2_shoulder_yaw.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_2/shoulder_yaw.dae" scale="1 1 1"/>
      </geometry>
    </collision>
   </link>  
@@ -393,14 +393,14 @@
    <visual>
      <origin xyz="0 0 0" rpy="0 0 0" />
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_2_shoulder_pitch.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_2/shoulder_pitch.dae" scale="1 1 1"/>
      </geometry>
    </visual>
 
    <collision>
      <origin xyz="0 0 0" rpy="0 0 0"/>
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_2_shoulder_pitch.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_2/shoulder_pitch.dae" scale="1 1 1"/>
      </geometry>
    </collision>
   </link>
@@ -417,14 +417,14 @@
    <visual>
      <origin xyz="0 0 0" rpy="0 0 0" />
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_2_elbow_pitch.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_2/elbow_pitch.dae" scale="1 1 1"/>
      </geometry>
    </visual>
 
    <collision>
      <origin xyz="0 0 0" rpy="0 0 0"/>
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_2_elbow_pitch.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_2/elbow_pitch.dae" scale="1 1 1"/>
      </geometry>
    </collision>
   </link>   
@@ -440,14 +440,14 @@
    <visual>
      <origin xyz="0 0 0" rpy="0 0 0" />
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_2_wrist_pitch_yaw.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_2/wrist_pitch_yaw.dae" scale="1 1 1"/>
      </geometry>
    </visual>
 
    <collision>
      <origin xyz="0 0 0" rpy="0 0 0"/>
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_2_wrist_pitch_yaw.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_2/wrist_pitch_yaw.dae" scale="1 1 1"/>
      </geometry>
    </collision>
   </link>  
@@ -463,14 +463,14 @@
    <visual>
      <origin xyz="0 0 0" rpy="0 0 0" />
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_2_wrist_roll.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_2/wrist_roll.dae" scale="1 1 1"/>
      </geometry>
    </visual>
 
    <collision>
      <origin xyz="0 0 0" rpy="0 0 0"/>
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre_arm_2_wrist_roll.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_2/wrist_roll.dae" scale="1 1 1"/>
      </geometry>
    </collision>
   </link>

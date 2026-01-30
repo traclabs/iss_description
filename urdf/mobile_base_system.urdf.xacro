@@ -5,7 +5,7 @@
   <xacro:macro name="mobile_base_system" params=" parent:='world' ">
 
  
-  <link name="body">
+  <link name="root">
    <inertial>
      <origin xyz="0 0 0.0" rpy="0 0 0"/>
      <mass value="1"/>
@@ -50,37 +50,48 @@
    </collision>
   </link>
 
+  <!-- Modules in the ISS -->
   <link name="link_02_unity_node"/>
   <link name="link_09_destiny"/>
   <link name="link_14_s0_truss"/>
 
+      
+  <!-- ************************* -->    
+  <!-- Joints for common modules -->  
+  <!-- ************************* -->    
+
   <joint name="joint_world" type="fixed">
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <parent link="${parent}"/>
-      <child link="body"/>
+      <child link="root"/>
   </joint>
   
-  <joint name="joint_body_02" type="fixed">
+  <!-- Joint for 02 Unity Node 1-->
+  <joint name="joint_02_unity" type="fixed">
       <origin rpy="0 0 0" xyz="0 0 0"/>
-      <parent link="body"/>
+      <parent link="root"/>
       <child link="link_02_unity_node"/>
   </joint>
 
-  <joint name="joint_02_09" type="fixed">
+  <!-- Joint for 09 Destiny Space Laboratory -->
+  <joint name="joint_09_destiny" type="fixed">
       <origin rpy="0 0 0" xyz="0 -2.221 0"/>
       <parent link="link_02_unity_node"/>
       <child link="link_09_destiny"/>
   </joint>
 
-
-  <joint name="joint_09_14" type="fixed">
+  <!-- Joint for 14 S0 Truss -->
+  <joint name="joint_14_s0_truss" type="fixed">
       <origin rpy="0 0 0" xyz="0.0  -0.96651 5.0071"/>
       <axis xyz="1 0 0"/>
       <parent link="link_09_destiny"/>
       <child link="link_14_s0_truss"/>
   </joint>
 
-  
+
+  <!-- *********************************************** -->
+  <!-- Joint for Mobile base system w.r.t. to S0 Truss -->
+  <!-- *********************************************** -->    
   <joint name="joint_mbs" type="prismatic">
       <origin rpy="0 0 0" xyz="-2.8655 -5.17 -0.59547"/>
       <axis xyz="1 0 0"/>

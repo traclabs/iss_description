@@ -4,7 +4,8 @@
   <xacro:include filename="$(find iss_description)/urdf/mobile_base_system.gazebo.xacro"/>
   <xacro:include filename="$(find iss_description)/urdf/canadarm2.gazebo.xacro"/>
   <xacro:include filename="$(find iss_description)/urdf/dextre.gazebo.xacro"/>
-  
+  <xacro:include filename="$(find iss_description)/urdf/solar_panels.gazebo.xacro"/>
+    
   <xacro:macro name="mobile_servicing_system_gazebo" params="command_interface:=position">
 
     <ros2_control name="GazeboSystem" type="system">
@@ -14,7 +15,8 @@
 
       <xacro:mobile_base_system_ros2_control_joints command_interface="${command_interface}"/>      
       <xacro:canadarm2_ros2_control_joints command_interface="${command_interface}"/>
-      <xacro:dextre_ros2_control_joints command_interface="${command_interface}"/> 
+      <xacro:dextre_ros2_control_joints command_interface="${command_interface}"/>
+      <xacro:solar_panels_ros2_control_joints command_interface="${command_interface}"/>       
     </ros2_control>
 
   <gazebo>

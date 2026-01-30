@@ -105,6 +105,30 @@ def generate_launch_description():
     output="screen",
   )
 
+  sarj_joint_controller_spawner = Node(
+    package="controller_manager",
+    executable="spawner",
+    arguments=["sarj_joint_trajectory_controller", "-c", "/controller_manager", "--switch-timeout", "100.0"],
+    name="start_sarj_joint_trajectory_controller",
+    output="screen",
+  )
+
+  port_bga_joint_controller_spawner = Node(
+    package="controller_manager",
+    executable="spawner",
+    arguments=["port_bga_joint_trajectory_controller", "-c", "/controller_manager", "--switch-timeout", "100.0"],
+    name="start_port_bga_joint_trajectory_controller",
+    output="screen",
+  )
+
+  starboard_bga_joint_controller_spawner = Node(
+    package="controller_manager",
+    executable="spawner",
+    arguments=["starboard_bga_joint_trajectory_controller", "-c", "/controller_manager", "--switch-timeout", "100.0"],
+    name="start_starboard_bga_joint_trajectory_controller",
+    output="screen",
+  )
+
 
   image_bridge = Node(
     package="ros_gz_image",
@@ -131,7 +155,10 @@ def generate_launch_description():
                  dextre_arm_1_joint_controller_spawner,
                  dextre_arm_2_joint_controller_spawner,
                  mobile_base_system_joint_controller_spawner,
-                 dextre_body_joint_controller_spawner],
+                 dextre_body_joint_controller_spawner,
+                 sarj_joint_controller_spawner,
+                 starboard_bga_joint_controller_spawner,
+                 port_bga_joint_controller_spawner],
       )
     )
   ])
