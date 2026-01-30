@@ -4,7 +4,8 @@
   <xacro:include filename="$(find iss_description)/urdf/mobile_base_system.urdf.xacro"/>
   <xacro:include filename="$(find iss_description)/urdf/canadarm2.urdf.xacro"/>
   <xacro:include filename="$(find iss_description)/urdf/dextre.urdf.xacro"/>
-
+  <xacro:include filename="$(find iss_description)/urdf/solar_panels.urdf.xacro"/>
+  
   <!-- Gazebo -->
   <xacro:include filename="$(find iss_description)/urdf/mobile_servicing_system.gazebo.xacro"/>
   <xacro:mobile_servicing_system_gazebo command_interface="position"/>
@@ -13,6 +14,9 @@
   <link name="world"/>
   <xacro:mobile_base_system parent="world"/>
   
+  <!-- Solar Panels -->
+  <xacro:solar_panels parent="link_14_s0_truss"/>
+    
   <!-- Canadarm2 and Dextre -->
   <xacro:dextre parent="canadarm2_link_7"/>
   <xacro:canadarm2 parent="mobile_base_system"/>
