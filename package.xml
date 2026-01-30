@@ -17,6 +17,8 @@
   <depend>std_srvs</depend>
   <depend>rviz_rendering</depend>
 
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+
   <export>
     <build_type>ament_cmake</build_type>
   </export>
