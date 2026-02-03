@@ -13,6 +13,8 @@ def generate_launch_description():
 
     launch_args = [
         DeclareLaunchArgument(name="rviz", default_value="True"),
+        DeclareLaunchArgument(name="robot_publisher", default_value="True"),
+        DeclareLaunchArgument(name="joint_publisher", default_value="True"),
     ]
 
     # Urdf
@@ -30,6 +32,7 @@ def generate_launch_description():
         name="robot_state_publisher",
         output="both",
         parameters=[robot_description],
+        condition=IfCondition(LaunchConfiguration('robot_publisher'))
     )
 
     # Joint State publisher
@@ -42,7 +45,9 @@ def generate_launch_description():
         executable='joint_state_publisher_gui',
         name='joint_state_publisher',
         parameters=[mss_zero_joints],
-        output='screen')
+        output='screen',
+        condition=IfCondition(LaunchConfiguration('joint_publisher'))
+    )
 
     # Rviz
     rviz_config = os.path.join(robot_dir, "rviz/iss.rviz")
