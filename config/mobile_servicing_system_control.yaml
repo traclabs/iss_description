@@ -76,7 +76,7 @@
       - joint_canadarm2_4
       - joint_canadarm2_5
       - joint_canadarm2_6
-      - joint_canadarm2_7                            
+      - joint_canadarm2_7
     interface_name: position
     command_interfaces:
       - position
@@ -89,7 +89,7 @@
     constraints:
       stopped_velocity_tolerance: 0.1
       goal_time: 0.0
-      
+
 /dextre_arm_1_joint_trajectory_controller:
   ros__parameters:
     allow_nonzero_velocity_at_trajectory_end: false
@@ -112,7 +112,7 @@
     constraints:
       stopped_velocity_tolerance: 0.1
       goal_time: 0.0
-      
+
 /dextre_arm_2_joint_trajectory_controller:
   ros__parameters:
     allow_nonzero_velocity_at_trajectory_end: false
@@ -134,8 +134,8 @@
     allow_partial_joints_goal: false
     constraints:
       stopped_velocity_tolerance: 0.1
-      goal_time: 0.0      
-      
+      goal_time: 0.0
+
 /sarj_joint_trajectory_controller:
   ros__parameters:
     allow_nonzero_velocity_at_trajectory_end: false
@@ -153,8 +153,8 @@
     allow_partial_joints_goal: false
     constraints:
       stopped_velocity_tolerance: 0.1
-      goal_time: 0.0      
-      
+      goal_time: 0.0
+
 /port_bga_joint_trajectory_controller:
   ros__parameters:
     allow_nonzero_velocity_at_trajectory_end: false
@@ -162,7 +162,7 @@
       - joint_port_bga_1
       - joint_port_bga_2
       - joint_port_bga_3
-      - joint_port_bga_4                  
+      - joint_port_bga_4
     interface_name: position
     command_interfaces:
       - position
@@ -174,7 +174,7 @@
     allow_partial_joints_goal: false
     constraints:
       stopped_velocity_tolerance: 0.1
-      goal_time: 0.0      
+      goal_time: 0.0
 
 /starboard_bga_joint_trajectory_controller:
   ros__parameters:
@@ -183,7 +183,7 @@
       - joint_starboard_bga_1
       - joint_starboard_bga_2
       - joint_starboard_bga_3
-      - joint_starboard_bga_4                  
+      - joint_starboard_bga_4
     interface_name: position
     command_interfaces:
       - position
@@ -195,5 +195,10 @@
     allow_partial_joints_goal: false
     constraints:
       stopped_velocity_tolerance: 0.1
-      goal_time: 0.0      
-      
+      goal_time: 0.0
+
+/gz_ros_control:
+  ros__parameters:
+    # P-gain across all joints in gazebo's position interface
+    # https://control.ros.org/humble/doc/gz_ros2_control/doc/index.html#notes-on-the-command-interface
+    position_proportional_gain: 0.05
