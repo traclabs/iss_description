@@ -6,12 +6,12 @@
 
   <!-- *****************-->
   <!-- Left             -->
-  <!-- *****************-->  
+  <!-- *****************-->
   <link name="link_16_s1_truss"/>
   <link name="link_22_s3_truss"/>
   <link name="link_24_s5_truss"/>
   <link name="link_32_s6_truss"/>
-  
+
   <!-- Solar Panel -->
   <link name="link_32_s6_truss_01">
    <inertial>
@@ -32,10 +32,10 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/s6_truss_32_01.dae" scale="1 1 1"/>
      </geometry>
-   </collision>  
+   </collision>
   </link>
 
-  <!-- Solar Panel -->  
+  <!-- Solar Panel -->
   <link name="link_32_s6_truss_02">
    <inertial>
      <origin xyz="0 0 0.0" rpy="0 0 0"/>
@@ -55,10 +55,10 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/s6_truss_32_02.dae" scale="1 1 1"/>
      </geometry>
-   </collision>    
+   </collision>
   </link>
 
-  <!-- Solar Panel -->        
+  <!-- Solar Panel -->
   <link name="link_23_s4_truss_01">
    <inertial>
      <origin xyz="0 0 0.0" rpy="0 0 0"/>
@@ -78,9 +78,9 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/s4_truss_23_01.dae" scale="1 1 1"/>
      </geometry>
-   </collision>    
+   </collision>
   </link>
-  
+
   <!-- Solar Panel -->
   <link name="link_23_s4_truss_02">
    <inertial>
@@ -101,10 +101,10 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/s4_truss_23_02.dae" scale="1 1 1"/>
      </geometry>
-   </collision>   
+   </collision>
   </link>
-      
-  <!-- Main truss left -->      
+
+  <!-- Main truss left -->
   <link name="link_23_s4_truss">
    <inertial>
      <origin xyz="0 0 0.0" rpy="0 0 0"/>
@@ -126,15 +126,15 @@
      </geometry>
    </collision>
   </link>
-  
+
   <!-- Right -->
   <link name="link_17_p1_truss"/>
   <link name="link_19_p3_truss"/>
   <link name="link_21_p5_truss"/>
   <link name="link_08_p6_truss"/>
-  
-    
-  <!-- Main truss right -->      
+
+
+  <!-- Main truss right -->
   <link name="link_20_p4_truss">
    <inertial>
      <origin xyz="0 0 0.0" rpy="0 0 0"/>
@@ -156,7 +156,7 @@
      </geometry>
    </collision>
   </link>
-  
+
   <link name="link_08_p6_truss_01">
    <inertial>
      <origin xyz="0 0 0.0" rpy="0 0 0"/>
@@ -176,7 +176,7 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/p6_truss_08_01.dae" scale="1 1 1"/>
      </geometry>
-   </collision>  
+   </collision>
   </link>
 
   <link name="link_08_p6_truss_02">
@@ -198,9 +198,9 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/p6_truss_08_02.dae" scale="1 1 1"/>
      </geometry>
-   </collision>    
+   </collision>
   </link>
-  
+
   <link name="link_20_p4_truss_01">
    <inertial>
      <origin xyz="0 0 0.0" rpy="0 0 0"/>
@@ -220,9 +220,9 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/p4_truss_20_01.dae" scale="1 1 1"/>
      </geometry>
-   </collision>    
-  </link>  
-    
+   </collision>
+  </link>
+
   <link name="link_20_p4_truss_02">
    <inertial>
      <origin xyz="0 0 0.0" rpy="0 0 0"/>
@@ -242,9 +242,9 @@
      <geometry>
        <mesh filename="package://iss_description/meshes/p4_truss_20_02.dae" scale="1 1 1"/>
      </geometry>
-   </collision>      
+   </collision>
   </link>
-      
+
 
   <!-- ************************* -->
   <!-- Joints for right modules   -->
@@ -280,7 +280,7 @@
       <axis xyz="1 0 0"/>
       <parent link="link_19_p3_truss"/>
       <child link="link_20_p4_truss"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- Joint to rotate individually panel 1-->
@@ -289,7 +289,7 @@
       <axis xyz="0 1 0"/>
       <parent link="link_08_p6_truss"/>
       <child link="link_08_p6_truss_01"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- Joint to rotate individually panel 2 -->
@@ -298,7 +298,7 @@
       <axis xyz="0 1 0"/>
       <parent link="link_08_p6_truss"/>
       <child link="link_08_p6_truss_02"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- Joint to rotate individually panel 3 -->
@@ -307,7 +307,7 @@
       <axis xyz="0 1 0"/>
       <parent link="link_21_p5_truss"/>
       <child link="link_20_p4_truss_01"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- Joint to rotate individually panel 4 -->
@@ -316,7 +316,7 @@
       <axis xyz="0 1 0"/>
       <parent link="link_21_p5_truss"/>
       <child link="link_20_p4_truss_02"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- ************************* -->
@@ -353,7 +353,7 @@
       <axis xyz="1 0 0"/>
       <parent link="link_22_s3_truss"/>
       <child link="link_23_s4_truss"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- Joint to rotate individually panel 1-->
@@ -362,7 +362,7 @@
       <axis xyz="0 1 0"/>
       <parent link="link_24_s5_truss"/>
       <child link="link_23_s4_truss_01"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- Joint to rotate individually panel 2 -->
@@ -371,7 +371,7 @@
       <axis xyz="0 1 0"/>
       <parent link="link_24_s5_truss"/>
       <child link="link_23_s4_truss_02"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- Joint to rotate individually panel 3 -->
@@ -380,7 +380,7 @@
       <axis xyz="0 1 0"/>
       <parent link="link_32_s6_truss"/>
       <child link="link_32_s6_truss_01"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- Joint to rotate individually panel 4 -->
@@ -389,11 +389,11 @@
       <axis xyz="0 1 0"/>
       <parent link="link_32_s6_truss"/>
       <child link="link_32_s6_truss_02"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
 
-  
-  </xacro:macro> 
- 
+
+  </xacro:macro>
+
 </robot>
