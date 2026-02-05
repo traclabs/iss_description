@@ -80,7 +80,7 @@
       </geometry>
     </collision>
    </link>
-   
+
   <!-- ******* Link 3 *******  -->
   <link name="canadarm2_link_3">
     <inertial>
@@ -150,7 +150,7 @@
       </geometry>
     </collision>
    </link>
-   
+
   <!-- ******* Link 6 *******  -->
   <link name="canadarm2_link_6">
     <inertial>
@@ -195,17 +195,17 @@
         <mesh filename="package://iss_description/meshes/canadarm2/link_7.dae" scale="1 1 1"/>
       </geometry>
     </collision>
-   </link>   
+   </link>
 
   <joint name="joint_pdgf" type="fixed">
       <origin rpy="0 0 0" xyz="-1.4347 -0.19847 1.5901"/>
       <parent link="${parent}"/>
       <child link="pdgf"/>
   </joint>
-  
+
 
   <joint name="joint_canadarm2_base" type="fixed">
-      <origin rpy="-0.35691983 0.0 -0.572468" xyz="0 0 0"/> 
+      <origin rpy="-0.35691983 0.0 -0.572468" xyz="0 0 0"/>
       <parent link="pdgf"/>
       <child link="canadarm2_base"/>
   </joint>
@@ -216,7 +216,7 @@
       <parent link="canadarm2_base"/>
       <child link="canadarm2_link_1"/>
       <axis xyz="0 1 0"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- joint 2 -->
@@ -225,7 +225,7 @@
       <parent link="canadarm2_link_1"/>
       <child link="canadarm2_link_2"/>
       <axis xyz="0 0 1"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- joint 3 -->
@@ -234,45 +234,45 @@
       <parent link="canadarm2_link_2"/>
       <child link="canadarm2_link_3"/>
       <axis xyz="0 1 0"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
-  
+
   <!-- joint 4 -->
   <joint name="joint_canadarm2_4" type="revolute">
       <origin rpy="0 0 0" xyz="-7.3435 -0.57517 0.004392"/>
       <parent link="canadarm2_link_3"/>
       <child link="canadarm2_link_4"/>
       <axis xyz="0 1 0"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
-  </joint>  
-  
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
+  </joint>
+
   <!-- joint 5 -->
   <joint name="joint_canadarm2_5" type="revolute">
       <origin rpy="0 0 0" xyz="0.004395 -0.57517 7.3435"/>
       <parent link="canadarm2_link_4"/>
       <child link="canadarm2_link_5"/>
       <axis xyz="0 1 0"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
-  </joint>   
-  
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
+  </joint>
+
   <!-- joint 6 -->
   <joint name="joint_canadarm2_6" type="revolute">
       <origin rpy="0 0 0" xyz="-0.28758 -0.3134 0.002192"/>
       <parent link="canadarm2_link_5"/>
       <child link="canadarm2_link_6"/>
       <axis xyz="1 0 0"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
-  </joint> 
-  
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
+  </joint>
+
   <!-- joint 7 -->
   <joint name="joint_canadarm2_7" type="revolute">
       <origin rpy="0 0 0" xyz="-0.31341 -0.002199 0.28759"/>
       <parent link="canadarm2_link_6"/>
       <child link="canadarm2_link_7"/>
       <axis xyz="0 0 1"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
-  </joint> 
-  
- </xacro:macro> 
-    
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
+  </joint>
+
+ </xacro:macro>
+
 </robot>

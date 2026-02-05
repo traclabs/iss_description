@@ -4,7 +4,7 @@
   <!-- MOBILE BASE SYSTEM -->
   <xacro:macro name="mobile_base_system" params=" parent:='world' ">
 
- 
+
   <link name="root">
    <inertial>
      <origin xyz="0 0 0.0" rpy="0 0 0"/>
@@ -55,17 +55,17 @@
   <link name="link_09_destiny"/>
   <link name="link_14_s0_truss"/>
 
-      
-  <!-- ************************* -->    
-  <!-- Joints for common modules -->  
-  <!-- ************************* -->    
+
+  <!-- ************************* -->
+  <!-- Joints for common modules -->
+  <!-- ************************* -->
 
   <joint name="joint_world" type="fixed">
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <parent link="${parent}"/>
       <child link="root"/>
   </joint>
-  
+
   <!-- Joint for 02 Unity Node 1-->
   <joint name="joint_02_unity" type="fixed">
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -91,15 +91,15 @@
 
   <!-- *********************************************** -->
   <!-- Joint for Mobile base system w.r.t. to S0 Truss -->
-  <!-- *********************************************** -->    
+  <!-- *********************************************** -->
   <joint name="joint_mbs" type="prismatic">
       <origin rpy="0 0 0" xyz="-2.8655 -5.17 -0.59547"/>
       <axis xyz="1 0 0"/>
       <parent link="link_14_s0_truss"/>
       <child link="mobile_base_system"/>
-      <limit effort="1000.0" lower="-15.0" upper="42.0" velocity="0.5"/>
+      <limit effort="10000.0" lower="-15.0" upper="42.0" velocity="2.0"/>
   </joint>
-  
-  </xacro:macro> 
- 
+
+  </xacro:macro>
+
 </robot>
