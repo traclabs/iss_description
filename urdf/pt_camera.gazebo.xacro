@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!--
+    Pan-Tilt Camera Gazebo Configuration
+
+    Adds Gazebo camera sensor with optional lens flare plugin.
+
+    Parameters:
+      - prefix: Camera instance identifier (must match pt_camera macro)
+      - image_width: Image width in pixels (default: 1024)
+      - image_height: Image height in pixels (default: 1024)
+      - image_format: Image format (default: R8G8B8)
+      - horizontal_fov: Horizontal field of view in radians (default: 0.896)
+      - clip_near: Near clipping plane (default: 0.1)
+      - clip_far: Far clipping plane (default: 100.0)
+      - update_rate: Camera update rate in Hz (default: 30.0)
+      - enable_lens_flare: Enable lens flare plugin (default: true)
+      - lens_flare_scale: Lens flare intensity (default: 5.0)
+      - lens_flare_color: Lens flare RGB color (default: '1.0 1.0 0.8')
+      - lens_flare_occlusion_steps: Occlusion detection steps (default: 10)
+      - sun_light_name: Name of sun light in world (default: 'sun_model::link::sun_light')
+  -->
+  <xacro:macro name="pt_camera_gazebo" params="
+    prefix
+    image_width:=1024
+    image_height:=1024
+    image_format:=R8G8B8
+    horizontal_fov:=0.896
+    clip_near:=0.1
+    clip_far:=100.0
+    update_rate:=30.0
+    enable_lens_flare:=true
+    lens_flare_scale:=5.0
+    lens_flare_color:='1.0 1.0 0.8'
+    lens_flare_occlusion_steps:=10
+    sun_light_name:='sun_model::link::sun_light'
+    ">
+
+    <gazebo reference="${prefix}_camera_link">
+      <sensor name="${prefix}_camera" type="camera">
+        <camera>
+          <horizontal_fov>${horizontal_fov}</horizontal_fov>
+          <image>
+            <width>${image_width}</width>
+            <height>${image_height}</height>
+            <format>${image_format}</format>
+          </image>
+          <clip>
+            <near>${clip_near}</near>
+            <far>${clip_far}</far>
+          </clip>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>${update_rate}</update_rate>
+        <visualize>true</visualize>
+        <topic>${prefix}/image_raw</topic>
+
+        <!-- Lens Flare Plugin (optional, realistic sun effects) -->
+        <xacro:if value="${enable_lens_flare}">
+          <plugin
+            filename="gz-sim-lens-flare-system"
+            name="gz::sim::systems::LensFlare">
+            <light_name>${sun_light_name}</light_name>
+            <scale>${lens_flare_scale}</scale>
+            <color>${lens_flare_color}</color>
+            <occlusion_steps>${lens_flare_occlusion_steps}</occlusion_steps>
+          </plugin>
+        </xacro:if>
+      </sensor>
+    </gazebo>
+
+    <!-- Gazebo material for camera body -->
+    <gazebo reference="${prefix}_camera_link">
+      <material>Gazebo/Black</material>
+    </gazebo>
+
+    <!-- Gazebo material for pan link -->
+    <gazebo reference="${prefix}_pan_link">
+      <material>Gazebo/DarkGrey</material>
+    </gazebo>
+
+    <!-- Gazebo material for tilt link -->
+    <gazebo reference="${prefix}_tilt_link">
+      <material>Gazebo/Grey</material>
+    </gazebo>
+
+  </xacro:macro>
+
+  <!--
+    Pan-Tilt Camera ros2_control Configuration
+
+    Adds ros2_control interfaces for pan and tilt joints.
+
+    Parameters:
+      - prefix: Camera instance identifier (must match pt_camera macro)
+  -->
+  <xacro:macro name="pt_camera_ros2_control" params="prefix">
+    <joint name="${prefix}_pan_joint">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="${prefix}_tilt_joint">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+  </xacro:macro>
+
+</robot>
