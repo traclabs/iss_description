@@ -29,6 +29,9 @@
     starboard_bga_joint_trajectory_controller:
       type: joint_trajectory_controller/JointTrajectoryController
 
+    camera_joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
 
 /dextre_body_joint_trajectory_controller:
   ros__parameters:
@@ -197,8 +200,36 @@
       stopped_velocity_tolerance: 0.1
       goal_time: 0.0
 
-/gz_ros_control:
+/camera_joint_trajectory_controller:
   ros__parameters:
-    # P-gain across all joints in gazebo's position interface
-    # https://control.ros.org/humble/doc/gz_ros2_control/doc/index.html#notes-on-the-command-interface
-    position_proportional_gain: 0.05
+    allow_nonzero_velocity_at_trajectory_end: false
+    joints:
+      - boom_a_clpa_pan_joint
+      - boom_a_clpa_tilt_joint
+      - boom_b_clpa_pan_joint
+      - boom_b_clpa_tilt_joint
+      - outrigger_1_clpa_pan_joint
+      - outrigger_1_clpa_tilt_joint
+      - outrigger_2_clpa_pan_joint
+      - outrigger_2_clpa_tilt_joint
+      - etvcg_cp3_pan_joint
+      - etvcg_cp3_tilt_joint
+      - etvcg_cp8_pan_joint
+      - etvcg_cp8_tilt_joint
+      - etvcg_cp9_pan_joint
+      - etvcg_cp9_tilt_joint
+      - etvcg_cp13_pan_joint
+      - etvcg_cp13_tilt_joint
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 100.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: true
+    constraints:
+      stopped_velocity_tolerance: 0.1
+      goal_time: 0.0
+

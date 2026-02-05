@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<robot name="pt_camera" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!--
+    Pan-Tilt Camera Macro
+
+    Creates a pan-tilt camera unit with controllable joints and optical frame.
+
+    Parameters:
+      - prefix: Unique identifier for this camera instance
+      - parent_link: Link to attach the camera base to
+      - *origin: Transform from parent_link to camera base
+      - pan_lower: Lower limit for pan joint (default: -π)
+      - pan_upper: Upper limit for pan joint (default: π)
+      - tilt_lower: Lower limit for tilt joint (default: -π/2)
+      - tilt_upper: Upper limit for tilt joint (default: π/2)
+      - camera_mass: Mass of camera body (default: 0.1 kg)
+      - camera_size: Size of camera box visual (default: 0.05 m)
+  -->
+  <xacro:macro name="pt_camera" params="
+    prefix
+    parent_link
+    *origin
+    pan_lower:=-3.14159265359
+    pan_upper:=3.14159265359
+    tilt_lower:=-1.57079632679
+    tilt_upper:=1.57079632679
+    camera_mass:=0.1
+    camera_size:=0.05
+    ">
+
+    <!-- Base Link: Attachment point to parent -->
+    <link name="${prefix}_base_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.01"/>
+        <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+      </inertial>
+    </link>
+
+    <!-- Base Joint: Fixed connection to parent -->
+    <joint name="${prefix}_base_joint" type="fixed">
+      <xacro:insert_block name="origin"/>
+      <parent link="${parent_link}"/>
+      <child link="${prefix}_base_link"/>
+    </joint>
+
+    <!-- Pan Link: Rotates about Z-axis -->
+    <link name="${prefix}_pan_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.05"/>
+        <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0.01" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.02" length="0.02"/>
+        </geometry>
+        <material name="${prefix}_pan_material">
+          <color rgba="0.3 0.3 0.3 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0.01" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.02" length="0.02"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- Pan Joint: Revolute about Z-axis -->
+    <joint name="${prefix}_pan_joint" type="revolute">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="${prefix}_base_link"/>
+      <child link="${prefix}_pan_link"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="10.0" lower="${pan_lower}" upper="${pan_upper}" velocity="1.0"/>
+      <dynamics damping="0.1" friction="0.1"/>
+    </joint>
+
+    <!-- Tilt Link: Rotates about X-axis (local after pan) -->
+    <link name="${prefix}_tilt_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.05"/>
+        <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+      </inertial>
+      <visual>
+        <origin xyz="0.01 0 0" rpy="0 1.5708 0"/>
+        <geometry>
+          <cylinder radius="0.015" length="0.02"/>
+        </geometry>
+        <material name="${prefix}_tilt_material">
+          <color rgba="0.4 0.4 0.4 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0.01 0 0" rpy="0 1.5708 0"/>
+        <geometry>
+          <cylinder radius="0.015" length="0.02"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- Tilt Joint: Revolute about X-axis -->
+    <joint name="${prefix}_tilt_joint" type="revolute">
+      <origin xyz="0 0 0.02" rpy="0 0 0"/>
+      <parent link="${prefix}_pan_link"/>
+      <child link="${prefix}_tilt_link"/>
+      <axis xyz="1 0 0"/>
+      <limit effort="10.0" lower="${tilt_lower}" upper="${tilt_upper}" velocity="1.0"/>
+      <dynamics damping="0.1" friction="0.1"/>
+    </joint>
+
+    <!-- Camera Link: Physical camera body -->
+    <link name="${prefix}_camera_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="${camera_mass}"/>
+        <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="${camera_size} ${camera_size} ${camera_size}"/>
+        </geometry>
+        <material name="${prefix}_camera_material">
+          <color rgba="0.1 0.1 0.1 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="${camera_size} ${camera_size} ${camera_size}"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- Camera Joint: Fixed connection from tilt to camera -->
+    <joint name="${prefix}_camera_joint" type="fixed">
+      <origin xyz="0.02 0 0" rpy="0 0 0"/>
+      <parent link="${prefix}_tilt_link"/>
+      <child link="${prefix}_camera_link"/>
+    </joint>
+
+    <!-- Optical Frame: ROS camera convention (X-right, Y-down, Z-forward) -->
+    <link name="${prefix}_optical_frame"/>
+
+    <!-- Optical Joint: Transform to ROS camera convention -->
+    <joint name="${prefix}_optical_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="-1.5707963267948966 0 -1.5707963267948966"/>
+      <parent link="${prefix}_camera_link"/>
+      <child link="${prefix}_optical_frame"/>
+    </joint>
+
+  </xacro:macro>
+
+</robot>

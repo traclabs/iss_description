@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <robot name="dextre" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+  <xacro:include filename="$(find iss_description)/urdf/pt_camera.urdf.xacro"/>
+  <xacro:include filename="$(find iss_description)/urdf/pt_camera.gazebo.xacro"/>
+
   <!-- DEXTRE -->
   <xacro:macro name="dextre" params=" parent:='' ">
 
@@ -99,7 +102,7 @@
 
   <!-- **************** -->
   <!-- NEUTRAL JOINTS   -->
-  <!-- **************** -->  
+  <!-- **************** -->
 
   <!-- joint base -->
   <joint name="joint_dextre_base" type="fixed">
@@ -107,14 +110,14 @@
       <parent link="${parent}"/>
       <child link="dextre_base"/>
   </joint>
-  
+
   <!-- joint tool platform -->
   <joint name="joint_dextre_tool_platform" type="fixed">
       <origin rpy="0 0 0" xyz="-0.000003 -0.005982 1.9619"/>
       <parent link="dextre_base"/>
       <child link="dextre_tool_platform"/>
   </joint>
-  
+
   <!-- joint latching ee -->
   <joint name="joint_dextre_latching_end_effector" type="fixed">
       <origin rpy="0 0 0" xyz="0.0 0.0 0.96287"/>
@@ -134,7 +137,7 @@
   <!-- *********************  -->
   <!-- ******* ARM 1 *******  -->
   <!-- *********************  -->
-  
+
   <!-- ******* Link Arm 1 Shoulder Roll *******  -->
   <link name="dextre_arm_1_shoulder_roll">
    <inertial>
@@ -156,7 +159,7 @@
        <mesh filename="package://iss_description/meshes/dextre/arm_1/shoulder_roll.dae" scale="1 1 1"/>
      </geometry>
    </collision>
-  </link>  
+  </link>
 
   <!-- ******* Link Arm 1 Shoulder Yaw *******  -->
   <link name="dextre_arm_1_shoulder_yaw">
@@ -179,7 +182,7 @@
        <mesh filename="package://iss_description/meshes/dextre/arm_1/shoulder_yaw.dae" scale="1 1 1"/>
      </geometry>
    </collision>
-  </link>  
+  </link>
 
   <!-- ******* Link Arm 1 Shoulder Pitch *******  -->
   <link name="dextre_arm_1_shoulder_pitch">
@@ -202,7 +205,7 @@
        <mesh filename="package://iss_description/meshes/dextre/arm_1/shoulder_pitch.dae" scale="1 1 1"/>
      </geometry>
    </collision>
-  </link>  
+  </link>
 
   <!-- ******* Link Arm 1 Elbow Pitch *******  -->
   <link name="dextre_arm_1_elbow_pitch">
@@ -225,7 +228,7 @@
        <mesh filename="package://iss_description/meshes/dextre/arm_1/elbow_pitch.dae" scale="1 1 1"/>
      </geometry>
    </collision>
-  </link>  
+  </link>
 
   <!-- ******* Link Arm 1 Wrist Pitch Yaw *******  -->
   <link name="dextre_arm_1_wrist_pitch_yaw">
@@ -248,7 +251,7 @@
        <mesh filename="package://iss_description/meshes/dextre/arm_1/wrist_pitch_yaw.dae" scale="1 1 1"/>
      </geometry>
    </collision>
-  </link>  
+  </link>
 
   <!-- ******* Link Arm 1 Wrist Roll *******  -->
   <link name="dextre_arm_1_wrist_roll">
@@ -271,12 +274,12 @@
        <mesh filename="package://iss_description/meshes/dextre/arm_1/wrist_roll.dae" scale="1 1 1"/>
      </geometry>
    </collision>
-  </link> 
+  </link>
 
 
   <!-- **************** -->
   <!-- ARM 1 JOINTS     -->
-  <!-- **************** -->  
+  <!-- **************** -->
 
   <!-- joint arm 1 shoulder roll -->
   <joint name="joint_dextre_arm_1_shoulder_roll" type="revolute">
@@ -335,7 +338,7 @@
   <!-- *********************  -->
   <!-- ******* ARM 2 *******  -->
   <!-- *********************  -->
-  
+
   <!-- ******* Link Arm 2 Shoulder Roll *******  -->
   <link name="dextre_arm_2_shoulder_roll">
    <inertial>
@@ -357,7 +360,7 @@
        <mesh filename="package://iss_description/meshes/dextre/arm_2/shoulder_roll.dae" scale="1 1 1"/>
      </geometry>
    </collision>
-  </link>  
+  </link>
 
   <!-- ******* Link Arm 2 Shoulder Yaw *******  -->
   <link name="dextre_arm_2_shoulder_yaw">
@@ -380,7 +383,7 @@
        <mesh filename="package://iss_description/meshes/dextre/arm_2/shoulder_yaw.dae" scale="1 1 1"/>
      </geometry>
    </collision>
-  </link>  
+  </link>
 
  <!-- ******* Link Arm 2 Shoulder Pitch *******  -->
   <link name="dextre_arm_2_shoulder_pitch">
@@ -404,7 +407,7 @@
      </geometry>
    </collision>
   </link>
-   
+
 
  <!-- ******* Link Arm 2 Elbow Pitch *******  -->
   <link name="dextre_arm_2_elbow_pitch">
@@ -427,8 +430,8 @@
        <mesh filename="package://iss_description/meshes/dextre/arm_2/elbow_pitch.dae" scale="1 1 1"/>
      </geometry>
    </collision>
-  </link>   
-    
+  </link>
+
   <!-- ******* Link Arm 2 Wrist Pitch Yaw *******  -->
   <link name="dextre_arm_2_wrist_pitch_yaw">
    <inertial>
@@ -450,7 +453,7 @@
        <mesh filename="package://iss_description/meshes/dextre/arm_2/wrist_pitch_yaw.dae" scale="1 1 1"/>
      </geometry>
    </collision>
-  </link>  
+  </link>
 
   <!-- ******* Link Arm 2 Wrist Roll *******  -->
   <link name="dextre_arm_2_wrist_roll">
@@ -474,11 +477,11 @@
      </geometry>
    </collision>
   </link>
-    
+
 
   <!-- **************** -->
   <!-- ARM 2 JOINTS     -->
-  <!-- **************** -->  
+  <!-- **************** -->
 
   <!-- joint arm 2 shoulder roll -->
   <joint name="joint_dextre_arm_2_shoulder_roll" type="revolute">
@@ -498,7 +501,7 @@
       <axis xyz="0 0 1"/>
       <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
   </joint>
-  
+
   <!-- joint arm 2 shoulder pitch -->
   <joint name="joint_dextre_arm_2_shoulder_pitch" type="revolute">
       <origin rpy="0 0 0" xyz="0.30367 -0.14278 0.11332"/>
@@ -534,8 +537,36 @@
       <axis xyz="0 0 1"/>
       <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
   </joint>
-  
+
+  <!-- Outrigger 1 CLPA Camera on tool_platform -->
+  <xacro:pt_camera prefix="outrigger_1_clpa" parent_link="dextre_tool_platform">
+    <origin xyz="1.368 0.300 0.314" rpy="1.5708 0.0 0.0"/>
+  </xacro:pt_camera>
+
+  <xacro:pt_camera_gazebo
+    prefix="outrigger_1_clpa"
+    image_width="1024"
+    image_height="1024"
+    horizontal_fov="0.896"
+    update_rate="30.0"
+    enable_lens_flare="true"
+    lens_flare_scale="5.0"/>
+
+  <!-- Outrigger 2 CLPA Camera on tool_platform -->
+  <xacro:pt_camera prefix="outrigger_2_clpa" parent_link="dextre_tool_platform">
+    <origin xyz="-1.368 0.300 0.314" rpy="1.5708 0.0 0.0"/>
+  </xacro:pt_camera>
+
+  <xacro:pt_camera_gazebo
+    prefix="outrigger_2_clpa"
+    image_width="1024"
+    image_height="1024"
+    horizontal_fov="0.896"
+    update_rate="30.0"
+    enable_lens_flare="true"
+    lens_flare_scale="5.0"/>
+
   </xacro:macro>
-  
+
 
 </robot>
