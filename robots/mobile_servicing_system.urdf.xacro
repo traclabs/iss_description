@@ -7,9 +7,12 @@
   <xacro:include filename="$(find iss_description)/urdf/solar_panels.urdf.xacro"/>
   <xacro:include filename="$(find iss_description)/urdf/etvcg_cameras.urdf.xacro"/>
 
+  <xacro:arg name="etv_cg_cameras" default="True" />
+  <xacro:arg name="pt_cameras" default="True" />
+
   <!-- Gazebo -->
   <xacro:include filename="$(find iss_description)/urdf/mobile_servicing_system.gazebo.xacro"/>
-  <xacro:mobile_servicing_system_gazebo command_interface="position"/>
+  <xacro:mobile_servicing_system_gazebo command_interface="position" etv_cg_cameras="$(arg etv_cg_cameras)" pt_cameras="$(arg pt_cameras)"/>
 
   <!-- ISS and Mobile Base System -->
   <link name="world"/>
@@ -19,10 +22,12 @@
   <xacro:solar_panels parent="link_14_s0_truss"/>
 
   <!-- Canadarm2 and Dextre -->
-  <xacro:dextre parent="canadarm2_link_7"/>
-  <xacro:canadarm2 parent="mobile_base_system"/>
+  <xacro:dextre parent="canadarm2_link_7" pt_cameras="$(arg pt_cameras)"/>
+  <xacro:canadarm2 parent="mobile_base_system" pt_cameras="$(arg pt_cameras)"/>
 
   <!-- ETV-CG Cameras -->
-  <xacro:etvcg_cameras parent="root"/>
-
+  <xacro:if value="$(arg etv_cg_cameras)">
+    <xacro:etvcg_cameras parent="root"/>
+  </xacro:if>
+    
 </robot>

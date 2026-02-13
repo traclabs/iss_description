@@ -7,7 +7,7 @@
   <xacro:include filename="$(find iss_description)/urdf/solar_panels.gazebo.xacro"/>
   <xacro:include filename="$(find iss_description)/urdf/pt_camera.gazebo.xacro"/>
 
-  <xacro:macro name="mobile_servicing_system_gazebo" params="command_interface:=position">
+  <xacro:macro name="mobile_servicing_system_gazebo" params="command_interface:=position pt_cameras:=True etv_cg_cameras:=True">
 
     <ros2_control name="GazeboSystem" type="system">
       <hardware>
@@ -20,14 +20,18 @@
       <xacro:solar_panels_ros2_control_joints command_interface="${command_interface}"/>
 
       <!-- Pan-Tilt Camera Joints -->
-      <xacro:pt_camera_ros2_control prefix="boom_a_clpa"/>
-      <xacro:pt_camera_ros2_control prefix="boom_b_clpa"/>
-      <xacro:pt_camera_ros2_control prefix="outrigger_1_clpa"/>
-      <xacro:pt_camera_ros2_control prefix="outrigger_2_clpa"/>
-      <xacro:pt_camera_ros2_control prefix="etvcg_cp3"/>
-      <xacro:pt_camera_ros2_control prefix="etvcg_cp8"/>
-      <xacro:pt_camera_ros2_control prefix="etvcg_cp9"/>
-      <xacro:pt_camera_ros2_control prefix="etvcg_cp13"/>
+      <xacro:if value="${pt_cameras}">
+        <xacro:pt_camera_ros2_control prefix="boom_a_clpa"/>
+        <xacro:pt_camera_ros2_control prefix="boom_b_clpa"/>
+        <xacro:pt_camera_ros2_control prefix="outrigger_1_clpa"/>
+        <xacro:pt_camera_ros2_control prefix="outrigger_2_clpa"/>
+      </xacro:if>
+      <xacro:if value="${etv_cg_cameras}">
+        <xacro:pt_camera_ros2_control prefix="etvcg_cp3"/>
+        <xacro:pt_camera_ros2_control prefix="etvcg_cp8"/>
+        <xacro:pt_camera_ros2_control prefix="etvcg_cp9"/>
+        <xacro:pt_camera_ros2_control prefix="etvcg_cp13"/>
+      </xacro:if>
     </ros2_control>
 
   <gazebo>
