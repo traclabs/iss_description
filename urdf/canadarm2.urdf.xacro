@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
 <robot name="canadarm2" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <!-- CANADARM2 -->
+  <xacro:include filename="$(find iss_description)/urdf/pt_camera.urdf.xacro"/>
+  <xacro:include filename="$(find iss_description)/urdf/pt_camera.gazebo.xacro"/>
+
   <xacro:macro name="canadarm2" params=" parent:='' ">
 
   <link name="pdgf"/>
@@ -12,12 +14,11 @@
       <child link="pdgf_forward"/>
   </joint>
 
-  <!-- ******* Link Base *******  -->
   <link name="canadarm2_base">
    <inertial>
      <origin xyz="0 0 0.0" rpy="0 0 0"/>
-     <mass value="1"/>
-     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+     <mass value="200.0"/>
+     <inertia ixx="10.0"  ixy="0"  ixz="0" iyy="10.0" iyz="0" izz="10.0" />
    </inertial>
 
    <visual>
@@ -35,16 +36,15 @@
    </collision>
   </link>
 
-  <!-- ******* Link 1 *******  -->
   <link name="canadarm2_link_1">
     <inertial>
-      <origin xyz="0 0 0.0" rpy="0 0 0"/>
-      <mass value="1"/>
-      <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+      <origin xyz="0 -0.5 0.0" rpy="0 0 0"/>
+      <mass value="140.0"/>
+      <inertia ixx="8.0"  ixy="0"  ixz="0" iyy="5.0" iyz="0" izz="8.0" />
     </inertial>
 
     <visual>
-      <origin xyz="0 0 0" rpy="0.0 -0.488692 0.663225" /> <!-- Blender: 0 -28 38-->
+      <origin xyz="0 0 0" rpy="0.0 -0.488692 0.663225" />
       <geometry>
         <mesh filename="package://iss_description/meshes/canadarm2/link_1.dae" scale="1 1 1"/>
       </geometry>
@@ -58,16 +58,15 @@
     </collision>
    </link>
 
-  <!-- ******* Link 2 *******  -->
   <link name="canadarm2_link_2">
     <inertial>
       <origin xyz="0 0 0.0" rpy="0 0 0"/>
-      <mass value="1"/>
-      <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+      <mass value="120.0"/>
+      <inertia ixx="8.0"  ixy="0"  ixz="0" iyy="8.0" iyz="0" izz="5.0" />
     </inertial>
 
     <visual>
-      <origin xyz="0 0 0" rpy="0 -0.49131018 0" /> <!-- Blender: 0.0 -28.15 0.0-->
+      <origin xyz="0 0 0" rpy="0 -0.49131018 0" />
       <geometry>
         <mesh filename="package://iss_description/meshes/canadarm2/link_2.dae" scale="1 1 1"/>
       </geometry>
@@ -80,13 +79,12 @@
       </geometry>
     </collision>
    </link>
-   
-  <!-- ******* Link 3 *******  -->
+
   <link name="canadarm2_link_3">
     <inertial>
-      <origin xyz="0 0 0.0" rpy="0 0 0"/>
-      <mass value="1"/>
-      <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+      <origin xyz="-3.0 0 0.0" rpy="0 0 0"/>
+      <mass value="100.0"/>
+      <inertia ixx="5.0"  ixy="0"  ixz="0" iyy="200.0" iyz="0" izz="200.0" />
     </inertial>
 
     <visual>
@@ -104,13 +102,11 @@
     </collision>
    </link>
 
-
-  <!-- ******* Link 4 *******  -->
   <link name="canadarm2_link_4">
     <inertial>
-      <origin xyz="0 0 0.0" rpy="0 0 0"/>
-      <mass value="1"/>
-      <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+      <origin xyz="0 -3.5 0.0" rpy="0 0 0"/>
+      <mass value="150.0"/>
+      <inertia ixx="615.0"  ixy="0"  ixz="0" iyy="5.0" iyz="0" izz="615.0" />
     </inertial>
 
     <visual>
@@ -128,12 +124,11 @@
     </collision>
    </link>
 
-  <!-- ******* Link 5 *******  -->
   <link name="canadarm2_link_5">
     <inertial>
-      <origin xyz="0 0 0.0" rpy="0 0 0"/>
-      <mass value="1"/>
-      <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+      <origin xyz="0 0 3.5" rpy="0 0 0"/>
+      <mass value="150.0"/>
+      <inertia ixx="615.0"  ixy="0"  ixz="0" iyy="615.0" iyz="0" izz="5.0" />
     </inertial>
 
     <visual>
@@ -150,13 +145,12 @@
       </geometry>
     </collision>
    </link>
-   
-  <!-- ******* Link 6 *******  -->
+
   <link name="canadarm2_link_6">
     <inertial>
       <origin xyz="0 0 0.0" rpy="0 0 0"/>
-      <mass value="1"/>
-      <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+      <mass value="120.0"/>
+      <inertia ixx="8.0"  ixy="0"  ixz="0" iyy="8.0" iyz="0" izz="5.0" />
     </inertial>
 
     <visual>
@@ -174,12 +168,11 @@
     </collision>
    </link>
 
-  <!-- ******* Link 7 *******  -->
   <link name="canadarm2_link_7">
     <inertial>
       <origin xyz="0 0 0.0" rpy="0 0 0"/>
-      <mass value="1"/>
-      <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+      <mass value="200.0"/>
+      <inertia ixx="10.0"  ixy="0"  ixz="0" iyy="10.0" iyz="0" izz="10.0" />
     </inertial>
 
     <visual>
@@ -195,84 +188,102 @@
         <mesh filename="package://iss_description/meshes/canadarm2/link_7.dae" scale="1 1 1"/>
       </geometry>
     </collision>
-   </link>   
+   </link>
 
   <joint name="joint_pdgf" type="fixed">
       <origin rpy="0 0 0" xyz="-1.4347 -0.19847 1.5901"/>
       <parent link="${parent}"/>
       <child link="pdgf"/>
   </joint>
-  
 
   <joint name="joint_canadarm2_base" type="fixed">
-      <origin rpy="-0.35691983 0.0 -0.572468" xyz="0 0 0"/> 
+      <origin rpy="-0.35691983 0.0 -0.572468" xyz="0 0 0"/>
       <parent link="pdgf"/>
       <child link="canadarm2_base"/>
   </joint>
 
-  <!-- joint 1 -->
   <joint name="joint_canadarm2_1" type="revolute">
-      <origin rpy="0 0 0" xyz="0.0 -1.2388 0.0"/> <!-- -0.66927 -0.97994 0.3556 -->
+      <origin rpy="0 0 0" xyz="0.0 -1.2388 0.0"/>
       <parent link="canadarm2_base"/>
       <child link="canadarm2_link_1"/>
       <axis xyz="0 1 0"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="0.04"/>
   </joint>
 
-  <!-- joint 2 -->
   <joint name="joint_canadarm2_2" type="revolute">
       <origin rpy="0 0 0" xyz="-0.005874 -0.22963 0.35801"/>
       <parent link="canadarm2_link_1"/>
       <child link="canadarm2_link_2"/>
       <axis xyz="0 0 1"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="0.04"/>
   </joint>
 
-  <!-- joint 3 -->
   <joint name="joint_canadarm2_3" type="revolute">
       <origin rpy="0 0 0" xyz="0.13387 -0.31415 0.25363"/>
       <parent link="canadarm2_link_2"/>
       <child link="canadarm2_link_3"/>
       <axis xyz="0 1 0"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="0.04"/>
   </joint>
-  
-  <!-- joint 4 -->
+
   <joint name="joint_canadarm2_4" type="revolute">
       <origin rpy="0 0 0" xyz="-7.3435 -0.57517 0.004392"/>
       <parent link="canadarm2_link_3"/>
       <child link="canadarm2_link_4"/>
       <axis xyz="0 1 0"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
-  </joint>  
-  
-  <!-- joint 5 -->
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="0.04"/>
+  </joint>
+
   <joint name="joint_canadarm2_5" type="revolute">
       <origin rpy="0 0 0" xyz="0.004395 -0.57517 7.3435"/>
       <parent link="canadarm2_link_4"/>
       <child link="canadarm2_link_5"/>
       <axis xyz="0 1 0"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
-  </joint>   
-  
-  <!-- joint 6 -->
+      <limit effort="5000.0" lower="-3.1416" upper="3.1416" velocity="0.04"/>
+  </joint>
+
   <joint name="joint_canadarm2_6" type="revolute">
       <origin rpy="0 0 0" xyz="-0.28758 -0.3134 0.002192"/>
       <parent link="canadarm2_link_5"/>
       <child link="canadarm2_link_6"/>
       <axis xyz="1 0 0"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
-  </joint> 
-  
-  <!-- joint 7 -->
+      <limit effort="5000.0" lower="-3.1416" upper="3.1416" velocity="0.04"/>
+  </joint>
+
   <joint name="joint_canadarm2_7" type="revolute">
       <origin rpy="0 0 0" xyz="-0.31341 -0.002199 0.28759"/>
       <parent link="canadarm2_link_6"/>
       <child link="canadarm2_link_7"/>
       <axis xyz="0 0 1"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
-  </joint> 
-  
- </xacro:macro> 
-    
+      <limit effort="5000.0" lower="-3.1416" upper="3.1416" velocity="0.04"/>
+  </joint>
+
+  <xacro:pt_camera prefix="boom_a_clpa" parent_link="canadarm2_link_3">
+    <origin xyz="-4.591 0.259 0.0" rpy="1.5708 0.0 1.5708"/>
+  </xacro:pt_camera>
+
+  <xacro:pt_camera_gazebo
+    prefix="boom_a_clpa"
+    image_width="1024"
+    image_height="1024"
+    horizontal_fov="0.896"
+    update_rate="30.0"
+    enable_lens_flare="true"
+    lens_flare_scale="5.0"/>
+
+  <xacro:pt_camera prefix="boom_b_clpa" parent_link="canadarm2_link_4">
+    <origin xyz="0.142 -0.847 2.735" rpy="0.0 0.0 0.0"/>
+  </xacro:pt_camera>
+
+  <xacro:pt_camera_gazebo
+    prefix="boom_b_clpa"
+    image_width="1024"
+    image_height="1024"
+    horizontal_fov="0.896"
+    update_rate="30.0"
+    enable_lens_flare="true"
+    lens_flare_scale="5.0"/>
+
+ </xacro:macro>
+
 </robot>

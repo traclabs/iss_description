@@ -1,111 +1,101 @@
 #!/usr/bin/env python3
 
+import sys
 import rclpy
+from rclpy.action import ActionClient
 from rclpy.node import Node
 from builtin_interfaces.msg import Duration
-
-from std_msgs.msg import String, Float64
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
-from std_srvs.srv import Empty
+from control_msgs.action import FollowJointTrajectory
+from itertools import zip_longest
 
-class MoveArm(Node):
+# Helper function to send a goal and return the result future (non-blocking)
+def start_trajectory(node, client, joint_names, positions):
+    if positions is None:
+        return None
 
-    def __init__(self):
-        super().__init__('arm_node')
-        self.canadarm2_publisher_ = self.create_publisher(JointTrajectory, '/canadarm2_joint_trajectory_controller/joint_trajectory', 10)
-        self.mbs_publisher_ = self.create_publisher(JointTrajectory, '/mobile_base_system_joint_trajectory_controller/joint_trajectory', 10)
-        
-        self.canadarm2_pose_0_srv = self.create_service(Empty, 'canadarm2_pose_0', self.canadarm2_pose_0_callback)
-        self.canadarm2_pose_1_srv = self.create_service(Empty, 'canadarm2_pose_1', self.canadarm2_pose_1_callback)
+    traj = JointTrajectory()
+    traj.joint_names = joint_names
+    point = JointTrajectoryPoint()
+    point.positions = positions
+    point.time_from_start = Duration(sec=30)
+    traj.points.append(point)
 
-        self.mbs_pose_0_srv = self.create_service(Empty, 'mbs_pose_0', self.mbs_pose_0_callback)
-        self.mbs_pose_1_srv = self.create_service(Empty, 'mbs_pose_1', self.mbs_pose_1_callback)
-        self.mbs_pose_2_srv = self.create_service(Empty, 'mbs_pose_2', self.mbs_pose_1_callback)
+    goal_msg = FollowJointTrajectory.Goal()
+    goal_msg.trajectory = traj
 
-        self.canadarm2_joints = ["joint_canadarm2_1", "joint_canadarm2_2", "joint_canadarm2_3", "joint_canadarm2_4", "joint_canadarm2_5", "joint_canadarm2_6", "joint_canadarm2_7"]
+    # Send goal
+    print(f"Sending goal to {client._action_name}...")
+    send_goal_future = client.send_goal_async(goal_msg)
 
-        self.mbs_joints = ["joint_mbs"]
+    # Wait strictly for the server to ACCEPT the goal (fast)
+    rclpy.spin_until_future_complete(node, send_goal_future)
+    goal_handle = send_goal_future.result()
 
-    def canadarm2_pose_0_callback(self, request, response):
-        traj = JointTrajectory()
-        traj.joint_names = self.canadarm2_joints
-        
-        point1 = JointTrajectoryPoint()
-        point1.positions = [0.0, 0.628, -0.187, 0.0, 0.0, 0.0, 0.0]
-        point1.time_from_start = Duration(sec=30)
+    if not goal_handle.accepted:
+        print(f"Goal rejected for {client._action_name}")
+        return None
 
-        traj.points.append(point1)
-        self.canadarm2_publisher_.publish(traj)
+    # Return the future that tracks the actual execution (slow)
+    return goal_handle.get_result_async()
 
-        return response
+def main():
+    rclpy.init()
+    node = rclpy.create_node('simple_arm_mover')
 
-    def canadarm2_pose_1_callback(self, request, response):
-        traj = JointTrajectory()
-        traj.joint_names = self.canadarm2_joints
-        
-        point1 = JointTrajectoryPoint()
-        point1.positions = [0.51, 1.48, -0.677, 0.534, -0.062, -0.645, -0.755]
-        point1.time_from_start = Duration(sec=30)
+    # 1. Setup Data
+    canadarm2_joints = [
+        "joint_canadarm2_1", "joint_canadarm2_2", "joint_canadarm2_3",
+        "joint_canadarm2_4", "joint_canadarm2_5", "joint_canadarm2_6",
+        "joint_canadarm2_7"
+    ]
+    mbs_joints = ["joint_mbs"]
 
-        traj.points.append(point1)
-        self.canadarm2_publisher_.publish(traj)
+    canadarm2_poses = [
+        [0.51, 1.48, -0.677, 0.534, -0.062, -0.645, -0.755],
+        [0.0, 0.628, -0.187, 0.0, 0.0, 0.0, 0.0]
+    ]
+    mbs_poses = [
+        [0.0],
+        [8.0],
+        [-4.0]
+    ]
 
-        return response
+    # 2. Setup Clients
+    arm_client = ActionClient(
+        node, FollowJointTrajectory,
+        '/canadarm2_joint_trajectory_controller/follow_joint_trajectory'
+    )
+    mbs_client = ActionClient(
+        node, FollowJointTrajectory,
+        '/mobile_base_system_joint_trajectory_controller/follow_joint_trajectory'
+    )
 
-    def mbs_pose_0_callback(self, request, response):
-        traj = JointTrajectory()
-        traj.joint_names = self.mbs_joints
-        
-        point1 = JointTrajectoryPoint()
-        point1.positions = [0.0]
-        point1.time_from_start = Duration(sec=30)
+    print("Waiting for action servers...")
+    arm_client.wait_for_server()
+    mbs_client.wait_for_server()
+    print("Servers ready.")
 
-        traj.points.append(point1)
-        self.mbs_publisher_.publish(traj)
+    # 3. Iterate through poses (zipping ensures we handle different list lengths)
+    # zip_longest allows the shorter list to return 'None' while the longer continues
+    for i, (arm_pos, mbs_pos) in enumerate(zip_longest(canadarm2_poses, mbs_poses)):
 
-        return response
+        print(f"\n--- Starting Pose Set {i} ---")
 
-    def mbs_pose_1_callback(self, request, response):
-        traj = JointTrajectory()
-        traj.joint_names = self.mbs_joints
-        
-        point1 = JointTrajectoryPoint()
-        point1.positions = [8.0]
-        point1.time_from_start = Duration(sec=30)
+        # Start both movements concurrently
+        future_arm = start_trajectory(node, arm_client, canadarm2_joints, arm_pos)
+        future_mbs = start_trajectory(node, mbs_client, mbs_joints, mbs_pos)
 
-        traj.points.append(point1)
-        self.mbs_publisher_.publish(traj)
+        # Wait until BOTH are done
+        while (future_arm and not future_arm.done()) or (future_mbs and not future_mbs.done()):
+            rclpy.spin_once(node, timeout_sec=0.1)
 
-        return response
+        print(f"Pose Set {i} complete.")
 
-    def mbs_pose_2_callback(self, request, response):
-        traj = JointTrajectory()
-        traj.joint_names = self.mbs_joints
-        
-        point1 = JointTrajectoryPoint()
-        point1.positions = [-4.0]
-        point1.time_from_start = Duration(sec=30)
-
-        traj.points.append(point1)
-        self.mbs_publisher_.publish(traj)
-
-        return response
-
-
-
-
-def main(args=None):
-    rclpy.init(args=args)
-
-    arm_node = MoveArm()
-
-    rclpy.spin(arm_node)
-    # Destroy the node explicitly
-    # (optional - otherwise it will be done automatically
-    # when the garbage collector destroys the node object)
-    arm_node.destroy_node()
+    # 4. Cleanup and Exit
+    print("\nAll poses finished. Exiting.")
+    node.destroy_node()
     rclpy.shutdown()
-
 
 if __name__ == '__main__':
     main()
