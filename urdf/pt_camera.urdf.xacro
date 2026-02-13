@@ -103,12 +103,12 @@
       </collision>
     </link>
 
-    <!-- Tilt Joint: Revolute about X-axis -->
+    <!-- Tilt Joint: Revolute about Y-axis -->
     <joint name="${prefix}_tilt_joint" type="revolute">
       <origin xyz="0 0 0.02" rpy="0 0 0"/>
       <parent link="${prefix}_pan_link"/>
       <child link="${prefix}_tilt_link"/>
-      <axis xyz="1 0 0"/>
+      <axis xyz="0 1 0"/>
       <limit effort="10.0" lower="${tilt_lower}" upper="${tilt_upper}" velocity="1.0"/>
       <dynamics damping="0.1" friction="0.1"/>
     </joint>
