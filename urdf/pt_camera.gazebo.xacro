@@ -55,7 +55,7 @@
         <update_rate>${update_rate}</update_rate>
         <visualize>true</visualize>
         <topic>${prefix}/image_raw</topic>
-
+        <gz_frame_id>${prefix}_optical_frame</gz_frame_id>
         <!-- Lens Flare Plugin (optional, realistic sun effects) -->
         <xacro:if value="${enable_lens_flare}">
           <plugin

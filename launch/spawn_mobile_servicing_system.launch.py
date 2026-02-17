@@ -165,7 +165,6 @@ def generate_launch_description():
 
   camera_bridges = []
   for camera_name in camera_names:
-    # Bridge image_raw topic to temporary topic (frame_id will be wrong)
     camera_bridges.append(
       Node(
         package="ros_gz_image",
@@ -187,18 +186,9 @@ def generate_launch_description():
           arguments=[f"/{camera_name}/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo"],
           output="screen",
           name=f"{camera_name}_info_bridge",
-      ),
-    )
-    # provide static transforms so info renders correctly
-    camera_bridges.append(
-      # 2. The TF Alias (The "Fix")
-      Node(
-          package='tf2_ros',
-          executable='static_transform_publisher',
-          arguments=['0', '0', '0', '0', '0', '0', '1',
-                    f'{camera_name}_optical_frame', # Parent (The Real Frame)
-                    f'{camera_name}_camera'],       # Child (The Gazebo Frame)
-          name=f'tf_alias_{camera_name}'
+          parameters=[{
+                'use_sim_time': True,
+          }]
       )
     )
 
