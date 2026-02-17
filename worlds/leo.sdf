@@ -1,14 +1,33 @@
+<?xml version="1.0" ?>
 <sdf version="1.8">
   <world name="default">
 
     <scene>
       <ambient>0.4 0.4 0.4 1</ambient>
-      <background>0.0 0.0 0.0 1</background>
+      <background>0 0 0 1</background>
+      <shadows>true</shadows>
       <grid>false</grid>
-    </scene>   
+    </scene>
+
+    <model name="sun_model">
+      <static>true</static>
+      <pose>0 0 10000 0 0 0</pose>
+      <link name="link">
+
+        <light type="directional" name="sun_light">
+          <pose>0 0 0 0 0 0</pose>
+          <cast_shadows>true</cast_shadows>
+          <direction>0 0 -1</direction>
+          <diffuse>1.0 1.0 1.0 1</diffuse>
+          <specular>1.0 1.0 1.0 1</specular>
+          <intensity>2.0</intensity>
+        </light>
+
+      </link>
+    </model>
 
     <gui fullscreen="0">
- 
+
       <!-- 3D scene -->
       <plugin filename="MinimalScene" name="3D View">
         <gz-gui>
@@ -16,7 +35,6 @@
           <property type="bool" key="showTitleBar">false</property>
           <property type="string" key="state">docked</property>
         </gz-gui>
- 
         <engine>ogre2</engine>
         <scene>scene</scene>
         <camera_pose>-10.0 -12 8.0 0 0.5 0.3</camera_pose>
@@ -39,66 +57,29 @@
           <property key="showTitleBar" type="bool">false</property>
         </gz-gui>
       </plugin>
- 
+
       <plugin filename="ImageDisplay" name="Image Display">
         <gz-gui>
           <property key="state" type="string">floating</property>
         </gz-gui>
-      </plugin> 
- 
+      </plugin>
+
     </gui>
 
-    <physics name='default_physics' default='1' type='ignored'>
+    <physics name='default_physics' default='1' type='ode'>
       <max_step_size>0.01</max_step_size>
       <real_time_factor>1</real_time_factor>
       <real_time_update_rate>100</real_time_update_rate>
     </physics>
 
-    <plugin
-      filename="gz-sim-physics-system"
-      name="gz::sim::systems::Physics">
-    </plugin>
-
-    <plugin
-      filename="gz-sim-user-commands-system"
-      name="gz::sim::systems::UserCommands">
-    </plugin>
-
-    <plugin
-      filename="gz-sim-scene-broadcaster-system"
-      name="gz::sim::systems::SceneBroadcaster">
-    </plugin> 
-
-    <plugin
-      filename="gz-sim-sensors-system"
-      name="gz::sim::systems::Sensors">
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"></plugin>
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"></plugin>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"></plugin>
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
       <render_engine>ogre2</render_engine>
     </plugin>
 
-
-    <light type="directional" name="sun">
-      <cast_shadows>true</cast_shadows>
-      <pose>0 -10 10 0 0 0</pose>
-      <diffuse>0.8 0.8 0.8 1</diffuse>
-      <specular>0.2 0.2 0.2 1</specular>
-      <attenuation>
-        <range>1000</range>
-        <constant>0.9</constant>
-        <linear>0.01</linear>
-        <quadratic>0.001</quadratic>
-      </attenuation>
-      <direction>10 10 -0.9</direction>
-    </light>
     <gravity>0 0 0</gravity>
 
-    <!-- Moon -->
-    <!--<include>
-      <uri>model://moon</uri>      
-      <name>moon</name>
-      <pose>170 0 -50 0 0 0.0</pose>
-    </include>-->
-
-
   </world>
-   
 </sdf>

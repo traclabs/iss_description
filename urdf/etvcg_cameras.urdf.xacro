@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<robot name="etvcg_cameras" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find iss_description)/urdf/pt_camera.urdf.xacro"/>
+  <xacro:include filename="$(find iss_description)/urdf/pt_camera.gazebo.xacro"/>
+
+  <!--
+    ETV-CG Cameras Macro
+
+    Creates 4 pan-tilt cameras mounted on the ISS structure (ETV-CG camera positions).
+    These cameras are attached to the root/world frame of the ISS.
+
+    Parameters:
+      - parent: Parent link to attach cameras to (typically 'root')
+  -->
+  <xacro:macro name="etvcg_cameras" params="parent:=''">
+
+    <!-- CP3: Camera Position 3 -->
+    <xacro:pt_camera prefix="etvcg_cp3" parent_link="${parent}">
+      <origin xyz="-15.528 -6.700 3.407" rpy="0.6435 0.0 0.0"/>
+    </xacro:pt_camera>
+
+    <xacro:pt_camera_gazebo
+      prefix="etvcg_cp3"
+      image_width="1024"
+      image_height="1024"
+      horizontal_fov="0.896"
+      update_rate="30.0"
+      enable_lens_flare="true"
+      lens_flare_scale="5.0"/>
+
+    <!-- CP8: Camera Position 8 -->
+    <xacro:pt_camera prefix="etvcg_cp8" parent_link="${parent}">
+      <origin xyz="19.207 -4.983 8.827" rpy="1.0297 -1.0192 1.0472"/>
+    </xacro:pt_camera>
+
+    <xacro:pt_camera_gazebo
+      prefix="etvcg_cp8"
+      image_width="1024"
+      image_height="1024"
+      horizontal_fov="0.896"
+      update_rate="30.0"
+      enable_lens_flare="true"
+      lens_flare_scale="5.0"/>
+
+    <!-- CP9: Camera Position 9 -->
+    <xacro:pt_camera prefix="etvcg_cp9" parent_link="${parent}">
+      <origin xyz="19.304 -5.129 1.685" rpy="1.0123 -1.0472 -1.0297"/>
+    </xacro:pt_camera>
+
+    <xacro:pt_camera_gazebo
+      prefix="etvcg_cp9"
+      image_width="1024"
+      image_height="1024"
+      horizontal_fov="0.896"
+      update_rate="30.0"
+      enable_lens_flare="true"
+      lens_flare_scale="5.0"/>
+
+    <!-- CP13: Camera Position 13 -->
+    <xacro:pt_camera prefix="etvcg_cp13" parent_link="${parent}">
+      <origin xyz="-4.055 -10.533 -0.403" rpy="0.4712 0.4487 -1.4311"/>
+    </xacro:pt_camera>
+
+    <xacro:pt_camera_gazebo
+      prefix="etvcg_cp13"
+      image_width="1024"
+      image_height="1024"
+      horizontal_fov="0.896"
+      update_rate="30.0"
+      enable_lens_flare="true"
+      lens_flare_scale="5.0"/>
+
+  </xacro:macro>
+
+</robot>

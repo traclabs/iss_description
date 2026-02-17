@@ -34,6 +34,7 @@ endforeach()
 
 install(PROGRAMS
   scripts/move_mss
+  scripts/move_sun.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
@@ -42,7 +43,7 @@ install(PROGRAMS
 #)
 
 install(
-  DIRECTORY 
+  DIRECTORY
   launch rviz meshes robots urdf config worlds
   DESTINATION share/${PROJECT_NAME}
 )
