@@ -34,11 +34,12 @@ def generate_launch_description():
       Node(
         package="ros_gz_image",
         executable="image_bridge",
+        name=f"{camera_name}_image_bridge",
         arguments=[f"/{camera_name}/image_raw"],
         output="screen",
-        name=f"{camera_name}_image_bridge",
-        remappings=[(f"/{camera_name}/image_raw", f"/{camera_name}/image_raw_gz")],
-        parameters=sim_time_params, # Ensure bridges use sim time
+        parameters=[{
+          "use_sim_time": True,
+        }],
       )
     )
     # Bridge camera_info topic to temporary topic (frame_id will be wrong)
@@ -48,20 +49,12 @@ def generate_launch_description():
         executable="parameter_bridge",
         arguments=[f"/{camera_name}/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo"],
         output="screen",
-        name=f"{camera_name}_camera_info_bridge",
-        remappings=[(f"/{camera_name}/camera_info", f"/{camera_name}/camera_info_gz")],
-        parameters=sim_time_params,
+        name=f"{camera_name}_info_bridge",
+        parameters=[{
+          'use_sim_time': True,
+        }]
       )
     )
-
-  # Frame ID remapper node to fix camera_info and image_raw frame_id
-  camera_frame_remapper = Node(
-    package="iss_description",
-    executable="camera_info_frame_remapper.py",
-    output="screen",
-    name="camera_frame_remapper",
-    parameters=sim_time_params,
-  )
 
   camera_joint_controller_spawner = Node(
     package="controller_manager",
@@ -73,8 +66,7 @@ def generate_launch_description():
   )
 
   return LaunchDescription( 
-    [camera_frame_remapper,
-     camera_joint_controller_spawner] + 
+    [camera_joint_controller_spawner] + 
     camera_bridges
   )  
   

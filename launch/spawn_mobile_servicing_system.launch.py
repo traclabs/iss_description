@@ -9,18 +9,18 @@ from ament_index_python.packages import get_package_share_directory
 
 import os
 import xacro
-import yaml
 
-
-def evaluate_nodes(context, *args, **kwargs):
+def evaluate_rsp(context, *args, **kwargs):
 
     simulate_cameras = LaunchConfiguration("simulate_cameras").perform(context)
 
     # URDF
     mss_urdf = os.path.join(get_package_share_directory("iss_description"), "robots", "mobile_servicing_system.urdf.xacro")
-    mapping_dict = "{'etv_cg_cameras' : '" + simulate_cameras + "', 'pt_cameras' : '" + simulate_cameras + "'}"
-    mapping_yaml = yaml.safe_load(mapping_dict)
-    mss_doc = xacro.process_file(mss_urdf, mapping=mapping_yaml)
+    mappings = {
+      'etv_cg_cameras' : simulate_cameras,
+      'pt_cameras' : simulate_cameras
+    }
+    mss_doc = xacro.process_file(mss_urdf, mappings=mappings)
     mss_urdf_content = mss_doc.toprettyxml(
         indent="  "
     )
@@ -37,21 +37,7 @@ def evaluate_nodes(context, *args, **kwargs):
       ],
     )
 
-    # Spawn in Gazebo
-    mss_spawn = Node(
-      package="ros_gz_sim",
-      executable="create",
-      name="spawn",
-      output="screen",
-      arguments=[
-        "-string",
-        mss_urdf_content,
-        "-name", "mobile_servicing_system",
-        "-allow_renaming", "true",
-      ]
-    )
-
-    return [mss_robot_state_publisher, mss_spawn]
+    return [mss_robot_state_publisher]
     
 
 def generate_launch_description():
@@ -64,8 +50,23 @@ def generate_launch_description():
   # Common parameters for all nodes
   sim_time_params = [{"use_sim_time": True}]
 
-  # Robot state publisher and spawn
-  eval_nodes=OpaqueFunction(function=evaluate_nodes)
+  # Robot state publisher
+  eval_rsp=OpaqueFunction(function=evaluate_rsp)
+
+  # Spawn in Gazebo
+  mss_spawn = Node(
+      package="ros_gz_sim",
+      executable="create",
+      name="spawn",
+      output="screen",
+      arguments=[
+        "-topic",
+        "robot_description",
+        "-name", "mobile_servicing_system",
+        "-allow_renaming", "true",
+      ]
+  )
+
 
   # Test motion with services
   mss_move = Node(
@@ -160,19 +161,19 @@ def generate_launch_description():
 
   sim_cameras = IncludeLaunchDescription(
     PathJoinSubstitution([FindPackageShare("iss_description"), "launch", "simulate_cameras.launch.py"]),
-    condition=UnlessCondition(LaunchConfiguration('simulate_cameras'))
+    condition=IfCondition(LaunchConfiguration('simulate_cameras'))
   )
 
   return LaunchDescription( launch_args + [
-    eval_nodes,
+    eval_rsp,
+    mss_spawn,
     mss_move,
-    joint_state_broadcaster_spawner,
-    #RegisterEventHandler(
-    #  OnProcessExit(
-    #    target_action=eval_nodes,
-    #    on_exit=[joint_state_broadcaster_spawner],
-    #  )
-    #),
+    RegisterEventHandler(
+      OnProcessExit(
+        target_action=mss_spawn,
+        on_exit=[joint_state_broadcaster_spawner],
+      )
+    ),
     RegisterEventHandler(
       OnProcessExit(
         target_action=joint_state_broadcaster_spawner,
@@ -183,8 +184,8 @@ def generate_launch_description():
                  dextre_body_joint_controller_spawner,
                  sarj_joint_controller_spawner,
                  starboard_bga_joint_controller_spawner,
-                 port_bga_joint_controller_spawner],
+                 port_bga_joint_controller_spawner,
+                 sim_cameras],
       )
-    ),
-    sim_cameras
+    )
   ])
