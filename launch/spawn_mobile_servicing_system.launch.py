@@ -170,40 +170,43 @@ def generate_launch_description():
       Node(
         package="ros_gz_image",
         executable="image_bridge",
+        name=f"{camera_name}_image_bridge",
         arguments=[f"/{camera_name}/image_raw"],
         output="screen",
-        name=f"{camera_name}_image_bridge",
-        remappings=[(f"/{camera_name}/image_raw", f"/{camera_name}/image_raw_gz")],
-        parameters=sim_time_params, # Ensure bridges use sim time
+        parameters=[{
+            "use_sim_time": True,
+            "frame_id": f"{camera_name}_optical_frame"
+        }],
       )
     )
-    # Bridge camera_info topic to temporary topic (frame_id will be wrong)
+    # Bridge camera_info topic, frame is wrong but handled by static tf
     camera_bridges.append(
       Node(
-        package="ros_gz_bridge",
-        executable="parameter_bridge",
-        arguments=[f"/{camera_name}/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo"],
-        output="screen",
-        name=f"{camera_name}_camera_info_bridge",
-        remappings=[(f"/{camera_name}/camera_info", f"/{camera_name}/camera_info_gz")],
-        parameters=sim_time_params,
+          package="ros_gz_bridge",
+          executable="parameter_bridge",
+          arguments=[f"/{camera_name}/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo"],
+          output="screen",
+          name=f"{camera_name}_info_bridge",
+      ),
+    )
+    # provide static transforms so info renders correctly
+    camera_bridges.append(
+      # 2. The TF Alias (The "Fix")
+      Node(
+          package='tf2_ros',
+          executable='static_transform_publisher',
+          arguments=['0', '0', '0', '0', '0', '0', '1',
+                    f'{camera_name}_optical_frame', # Parent (The Real Frame)
+                    f'{camera_name}_camera'],       # Child (The Gazebo Frame)
+          name=f'tf_alias_{camera_name}'
       )
     )
 
-  # Frame ID remapper node to fix camera_info and image_raw frame_id
-  camera_frame_remapper = Node(
-    package="iss_description",
-    executable="camera_info_frame_remapper.py",
-    output="screen",
-    name="camera_frame_remapper",
-    parameters=sim_time_params,
-  )
 
   return LaunchDescription( launch_args + [
     mss_robot_state_publisher,
     mss_spawn,
     mss_move,
-    camera_frame_remapper,
     ] + camera_bridges + [
     RegisterEventHandler(
       OnProcessExit(

@@ -35,7 +35,6 @@ endforeach()
 install(PROGRAMS
   scripts/move_mss
   scripts/move_sun.py
-  scripts/camera_info_frame_remapper.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
