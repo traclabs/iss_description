@@ -38,7 +38,7 @@ def evaluate_rsp(context, *args, **kwargs):
     )
 
     return [mss_robot_state_publisher]
-    
+
 
 def generate_launch_description():
 
@@ -160,8 +160,7 @@ def generate_launch_description():
   )
 
   sim_cameras = IncludeLaunchDescription(
-    PathJoinSubstitution([FindPackageShare("iss_description"), "launch", "simulate_cameras.launch.py"]),
-    condition=IfCondition(LaunchConfiguration('simulate_cameras'))
+    PathJoinSubstitution([FindPackageShare("iss_description"), "launch", "simulate_cameras.launch.py"])
   )
 
   return LaunchDescription( launch_args + [
@@ -184,8 +183,14 @@ def generate_launch_description():
                  dextre_body_joint_controller_spawner,
                  sarj_joint_controller_spawner,
                  starboard_bga_joint_controller_spawner,
-                 port_bga_joint_controller_spawner,
-                 sim_cameras],
+                 port_bga_joint_controller_spawner]
       )
-    )
+    ),
+    RegisterEventHandler(
+      OnProcessExit(
+        target_action=joint_state_broadcaster_spawner,
+        on_exit=[sim_cameras],
+      ),
+      condition=IfCondition(LaunchConfiguration('simulate_cameras'))
+    ),
   ])
