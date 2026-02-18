@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 4.4.3 commit date:2025-04-29, commit time:14:09, hash:802179c51ccc</authoring_tool>
+    </contributor>
+    <created>2026-02-18T15:16:49</created>
+    <modified>2026-02-18T15:16:49</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_cameras>
+    <camera id="Camera_004-camera" name="Camera.004">
+      <optics>
+        <technique_common>
+          <perspective>
+            <xfov sid="xfov">39.59775</xfov>
+            <aspect_ratio>1.777778</aspect_ratio>
+            <znear sid="znear">0.1</znear>
+            <zfar sid="zfar">100</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+      <extra>
+        <technique profile="blender">
+          <shiftx sid="shiftx" type="float">0</shiftx>
+          <shifty sid="shifty" type="float">0</shifty>
+          <dof_distance sid="dof_distance" type="float">10</dof_distance>
+        </technique>
+      </extra>
+    </camera>
+    <camera id="Camera_002-camera" name="Camera.002">
+      <optics>
+        <technique_common>
+          <perspective>
+            <xfov sid="xfov">39.59775</xfov>
+            <aspect_ratio>1.777778</aspect_ratio>
+            <znear sid="znear">0.1</znear>
+            <zfar sid="zfar">100</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+      <extra>
+        <technique profile="blender">
+          <shiftx sid="shiftx" type="float">0</shiftx>
+          <shifty sid="shifty" type="float">0</shifty>
+          <dof_distance sid="dof_distance" type="float">10</dof_distance>
+        </technique>
+      </extra>
+    </camera>
+    <camera id="Camera_001-camera" name="Camera.001">
+      <optics>
+        <technique_common>
+          <perspective>
+            <xfov sid="xfov">39.59775</xfov>
+            <aspect_ratio>1.777778</aspect_ratio>
+            <znear sid="znear">0.1</znear>
+            <zfar sid="zfar">100</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+      <extra>
+        <technique profile="blender">
+          <shiftx sid="shiftx" type="float">0</shiftx>
+          <shifty sid="shifty" type="float">0</shifty>
+          <dof_distance sid="dof_distance" type="float">10</dof_distance>
+        </technique>
+      </extra>
+    </camera>
+    <camera id="Camera_003-camera" name="Camera.003">
+      <optics>
+        <technique_common>
+          <perspective>
+            <xfov sid="xfov">39.59775</xfov>
+            <aspect_ratio>1.777778</aspect_ratio>
+            <znear sid="znear">0.1</znear>
+            <zfar sid="zfar">100</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+      <extra>
+        <technique profile="blender">
+          <shiftx sid="shiftx" type="float">0</shiftx>
+          <shifty sid="shifty" type="float">0</shifty>
+          <dof_distance sid="dof_distance" type="float">10</dof_distance>
+        </technique>
+      </extra>
+    </camera>
+    <camera id="Camera-camera" name="Camera">
+      <optics>
+        <technique_common>
+          <perspective>
+            <xfov sid="xfov">39.59775</xfov>
+            <aspect_ratio>1.777778</aspect_ratio>
+            <znear sid="znear">0.1</znear>
+            <zfar sid="zfar">100</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+      <extra>
+        <technique profile="blender">
+          <shiftx sid="shiftx" type="float">0</shiftx>
+          <shifty sid="shifty" type="float">0</shifty>
+          <dof_distance sid="dof_distance" type="float">10</dof_distance>
+        </technique>
+      </extra>
+    </camera>
+  </library_cameras>
+  <library_lights>
+    <light id="Light_001-light" name="Light.001">
+      <technique_common>
+        <point>
+          <color sid="color">1000 1000 1000</color>
+          <constant_attenuation>1</constant_attenuation>
+          <linear_attenuation>0</linear_attenuation>
+          <quadratic_attenuation>0</quadratic_attenuation>
+        </point>
+      </technique_common>
+      <extra>
+        <technique profile="blender">
+          <type sid="type" type="int">0</type>
+          <flag sid="flag" type="int">0</flag>
+          <mode sid="mode" type="int">2097153</mode>
+          <red sid="red" type="float">1</red>
+          <green sid="green" type="float">1</green>
+          <blue sid="blue" type="float">1</blue>
+          <energy sid="blender_energy" type="float">1000</energy>
+          <spotsize sid="spotsize" type="float">75</spotsize>
+          <spotblend sid="spotblend" type="float">0.15</spotblend>
+          <clipsta sid="clipsta" type="float">0.04999995</clipsta>
+          <clipend sid="clipend" type="float">40</clipend>
+          <radius sid="radius" type="float">0.1</radius>
+          <area_shape sid="area_shape" type="int">1</area_shape>
+          <area_size sid="area_size" type="float">0.1</area_size>
+          <area_sizey sid="area_sizey" type="float">0.1</area_sizey>
+          <area_sizez sid="area_sizez" type="float">1</area_sizez>
+        </technique>
+      </extra>
+    </light>
+    <light id="Light-light" name="Light">
+      <technique_common>
+        <point>
+          <color sid="color">1000 1000 1000</color>
+          <constant_attenuation>1</constant_attenuation>
+          <linear_attenuation>0</linear_attenuation>
+          <quadratic_attenuation>0</quadratic_attenuation>
+        </point>
+      </technique_common>
+      <extra>
+        <technique profile="blender">
+          <type sid="type" type="int">0</type>
+          <flag sid="flag" type="int">0</flag>
+          <mode sid="mode" type="int">2097153</mode>
+          <red sid="red" type="float">1</red>
+          <green sid="green" type="float">1</green>
+          <blue sid="blue" type="float">1</blue>
+          <energy sid="blender_energy" type="float">1000</energy>
+          <spotsize sid="spotsize" type="float">75</spotsize>
+          <spotblend sid="spotblend" type="float">0.15</spotblend>
+          <clipsta sid="clipsta" type="float">0.04999995</clipsta>
+          <clipend sid="clipend" type="float">40</clipend>
+          <radius sid="radius" type="float">0.1</radius>
+          <area_shape sid="area_shape" type="int">1</area_shape>
+          <area_size sid="area_size" type="float">0.1</area_size>
+          <area_sizey sid="area_sizey" type="float">0.1</area_sizey>
+          <area_sizez sid="area_sizez" type="float">1</area_sizez>
+        </technique>
+      </extra>
+    </light>
+  </library_lights>
+  <library_effects>
+    <effect id="ISS_02_dull-effect">
+      <profile_COMMON>
+        <newparam sid="ISS_02_png-surface">
+          <surface type="2D">
+            <init_from>ISS_02_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="ISS_02_png-sampler">
+          <sampler2D>
+            <source>ISS_02_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="ISS_02_png-sampler" texcoord="p6_ani_000-mesh-map-0"/>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">0.5</float>
+            </reflectivity>
+            <index_of_refraction>
+              <float sid="ior">1.5</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="ISS_02_dark__-effect">
+      <profile_COMMON>
+        <newparam sid="ISS_02_png-surface">
+          <surface type="2D">
+            <init_from>ISS_02_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="ISS_02_png-sampler">
+          <sampler2D>
+            <source>ISS_02_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="ISS_02_png-sampler" texcoord="p6_ani_000-mesh-map-0"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.5</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="ISS_01_dull-effect">
+      <profile_COMMON>
+        <newparam sid="ISS_01_png-surface">
+          <surface type="2D">
+            <init_from>ISS_01_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="ISS_01_png-sampler">
+          <sampler2D>
+            <source>ISS_01_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="ISS_01_png-sampler" texcoord="p6_ani_000-mesh-map-0"/>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">0.25</float>
+            </reflectivity>
+            <index_of_refraction>
+              <float sid="ior">1.5</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="ISS_AO_03-effect">
+      <profile_COMMON>
+        <newparam sid="ISS_AO_03_png-surface">
+          <surface type="2D">
+            <init_from>ISS_AO_03_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="ISS_AO_03_png-sampler">
+          <sampler2D>
+            <source>ISS_AO_03_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="ISS_AO_03_png-sampler" texcoord="p6_ani_000-mesh-map-0"/>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">0.5</float>
+            </reflectivity>
+            <index_of_refraction>
+              <float sid="ior">1.5</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="ISS_AO_05-effect">
+      <profile_COMMON>
+        <newparam sid="ISS_AO_05_png-surface">
+          <surface type="2D">
+            <init_from>ISS_AO_05_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="ISS_AO_05_png-sampler">
+          <sampler2D>
+            <source>ISS_AO_05_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="ISS_AO_05_png-sampler" texcoord="p6_ani_000-mesh-map-0"/>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">0.5</float>
+            </reflectivity>
+            <index_of_refraction>
+              <float sid="ior">1.5</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images>
+    <image id="ISS_01_png" name="ISS_01_png">
+      <init_from>textures/ISS_01.png</init_from>
+    </image>
+    <image id="ISS_02_png" name="ISS_02_png">
+      <init_from>textures/ISS_02.png</init_from>
+    </image>
+    <image id="ISS_AO_03_png" name="ISS_AO_03_png">
+      <init_from>textures/ISS_AO_03.png</init_from>
+    </image>
+    <image id="ISS_AO_05_png" name="ISS_AO_05_png">
+      <init_from>textures/ISS_AO_05.png</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="ISS_02_dull-material" name="ISS_02_dull">
+      <instance_effect url="#ISS_02_dull-effect"/>
+    </material>
+    <material id="ISS_02_dark__-material" name="ISS_02_dark *">
+      <instance_effect url="#ISS_02_dark__-effect"/>
+    </material>
+    <material id="ISS_01_dull-material" name="ISS_01_dull">
+      <instance_effect url="#ISS_01_dull-effect"/>
+    </material>
+    <material id="ISS_AO_03-material" name="ISS_AO_03">
+      <instance_effect url="#ISS_AO_03-effect"/>
+    </material>
+    <material id="ISS_AO_05-material" name="ISS_AO_05">
+      <instance_effect url="#ISS_AO_05-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="p6_ani_000-mesh" name="p6_ani.000">
+      <mesh>
+        <source id="p6_ani_000-mesh-positions">
+          <float_array id="p6_ani_000-mesh-positions-array" count="180">0.7141887 0.2625798 0.4595509 0.7142388 -0.2625797 -0.4594758 0.7142388 0.2625798 -0.4594758 0.7141887 -0.2625797 0.4595509 -0.2310953 0.2625797 0.4595022 0.7141887 -0.2625797 0.4595509 0.7141887 0.2625798 0.4595509 -0.2310953 -0.2625797 0.4595022 -0.3361092 -0.2625797 0.1522777 -0.2310752 0.2625797 0.1522838 -0.3361092 0.2625797 0.1522777 -0.2310752 -0.2625797 0.1522838 -0.3361092 -0.2625797 0.1522777 -0.3360942 0.2625797 -0.152314 -0.3360942 -0.2625797 -0.152314 -0.3361092 0.2625797 0.1522777 -0.2310602 -0.2625797 -0.1523077 -0.3360942 0.2625797 -0.152314 -0.2310602 0.2625797 -0.1523077 -0.3360942 -0.2625797 -0.152314 0.7142388 -0.2625797 -0.4594758 -0.2310452 0.2625797 -0.4595259 0.7142388 0.2625798 -0.4594758 -0.2310452 -0.2625797 -0.4595259 -0.2310602 -0.2625797 -0.1523077 -0.3361092 -0.2625797 0.1522777 -0.3360942 -0.2625797 -0.152314 -0.2310752 -0.2625797 0.1522838 0.7141887 -0.2625797 0.4595509 -0.2310602 -0.2625797 -0.1523077 0.7142388 -0.2625797 -0.4594758 -0.2310752 -0.2625797 0.1522838 0.7141887 -0.2625797 0.4595509 -0.2310953 -0.2625797 0.4595022 -0.2310752 -0.2625797 0.1522838 -0.2310602 -0.2625797 -0.1523077 -0.2310452 -0.2625797 -0.4595259 0.7142388 -0.2625797 -0.4594758 -0.2310953 -0.2625797 0.4595022 -0.2310752 0.2625797 0.1522838 -0.2310752 -0.2625797 0.1522838 -0.2310953 0.2625797 0.4595022 -0.2310602 -0.2625797 -0.1523077 -0.2310452 0.2625797 -0.4595259 -0.2310452 -0.2625797 -0.4595259 -0.2310602 0.2625797 -0.1523077 -0.3361092 0.2625797 0.1522777 -0.2310602 0.2625797 -0.1523077 -0.3360942 0.2625797 -0.152314 -0.2310752 0.2625797 0.1522838 -0.2310602 0.2625797 -0.1523077 0.7141887 0.2625798 0.4595509 0.7142388 0.2625798 -0.4594758 -0.2310752 0.2625797 0.1522838 0.7142388 0.2625798 -0.4594758 -0.2310452 0.2625797 -0.4595259 -0.2310602 0.2625797 -0.1523077 -0.2310752 0.2625797 0.1522838 -0.2310953 0.2625797 0.4595022 0.7141887 0.2625798 0.4595509</float_array>
+          <technique_common>
+            <accessor source="#p6_ani_000-mesh-positions-array" count="60" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="p6_ani_000-mesh-normals">
+          <float_array id="p6_ani_000-mesh-normals-array" count="75">1 0 5.44793e-5 1 0 5.44793e-5 -5.16292e-5 0 1 -5.15691e-5 0 1 -5.86218e-5 0 1 -5.83517e-5 0 1 -1 0 -4.93131e-5 -1 0 -4.93131e-5 5.99726e-5 0 -1 6.02427e-5 0 -1 5.30505e-5 0 -1 5.30099e-5 0 -1 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 -1 0 -6.51887e-5 -1 0 -4.88916e-5 0 1 0 0 1 0 -1.2611e-7 1 0 -1.2611e-7 1 0 -1.26109e-7 1 0 -1.26109e-7 1 0</float_array>
+          <technique_common>
+            <accessor source="#p6_ani_000-mesh-normals-array" count="25" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="p6_ani_000-mesh-map-0">
+          <float_array id="p6_ani_000-mesh-map-0-array" count="168">0.6059127 0.5023488 0.6059159 0.4482931 0.6059159 0.4482931 0.6059127 0.5023488 0.6059127 0.5023488 0.6059159 0.4482931 0.5464883 0.502346 0.6059127 0.5023488 0.6059127 0.5023488 0.5464883 0.502346 0.6059127 0.5023488 0.5464883 0.502346 0.5398867 0.4842755 0.5464897 0.4842759 0.5398867 0.4842755 0.5398867 0.4842755 0.5464897 0.4842759 0.5464897 0.4842759 0.5975551 0.4840624 0.5597246 0.4621208 0.5975551 0.4621208 0.5975551 0.4840624 0.5597246 0.4840624 0.5597246 0.4621208 0.5464906 0.4663602 0.5398879 0.4663599 0.5464906 0.4663602 0.5464906 0.4663602 0.5398879 0.4663599 0.5398879 0.4663599 0.6059159 0.4482931 0.5464914 0.4482901 0.6059159 0.4482931 0.6059159 0.4482931 0.5464914 0.4482901 0.5464914 0.4482901 0.5464906 0.4663602 0.5398867 0.4842755 0.5398879 0.4663599 0.5464897 0.4842759 0.5398867 0.4842755 0.5464906 0.4663602 0.6059127 0.5023488 0.5464906 0.4663602 0.6059159 0.4482931 0.6059127 0.5023488 0.5464897 0.4842759 0.5464906 0.4663602 0.6059127 0.5023488 0.5464883 0.502346 0.5464897 0.4842759 0.5464906 0.4663602 0.5464914 0.4482901 0.6059159 0.4482931 0.5920785 0.4734848 0.5605559 0.4550442 0.5920785 0.4550442 0.5920785 0.4734848 0.5605559 0.4734848 0.5605559 0.4550442 0.5911789 0.4740934 0.5596563 0.4556527 0.5911789 0.4556527 0.5911789 0.4740934 0.5596563 0.4740934 0.5596563 0.4556527 0.5398867 0.4842755 0.5464906 0.4663602 0.5398879 0.4663599 0.5398867 0.4842755 0.5464897 0.4842759 0.5464906 0.4663602 0.5464906 0.4663602 0.6059127 0.5023488 0.6059159 0.4482931 0.5464897 0.4842759 0.6059127 0.5023488 0.5464906 0.4663602 0.6059159 0.4482931 0.5464914 0.4482901 0.5464906 0.4663602 0.5464897 0.4842759 0.5464883 0.502346 0.6059127 0.5023488</float_array>
+          <technique_common>
+            <accessor source="#p6_ani_000-mesh-map-0-array" count="84" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="p6_ani_000-mesh-vertices">
+          <input semantic="POSITION" source="#p6_ani_000-mesh-positions"/>
+        </vertices>
+        <triangles material="ISS_02_dull-material" count="18">
+          <input semantic="VERTEX" source="#p6_ani_000-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#p6_ani_000-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#p6_ani_000-mesh-map-0" offset="2" set="0"/>
+          <p>0 0 0 1 0 1 2 0 2 0 1 3 3 1 4 1 1 5 4 2 6 5 2 7 6 2 8 7 3 9 5 3 10 4 3 11 8 4 12 9 4 13 10 4 14 8 5 15 11 5 16 9 5 17 12 6 18 13 6 19 14 6 20 12 7 21 15 7 22 13 7 23 16 8 24 17 8 25 18 8 26 16 9 27 19 9 28 17 9 29 20 10 30 21 10 31 22 10 32 20 11 33 23 11 34 21 11 35 24 12 36 25 12 37 26 12 38 27 13 39 25 13 40 24 13 41 28 14 42 29 14 43 30 14 44 28 15 45 31 15 46 29 15 47 32 16 48 33 16 49 34 16 50 35 14 51 36 14 52 37 14 53</p>
+        </triangles>
+        <triangles material="ISS_02_dark__-material" count="10">
+          <input semantic="VERTEX" source="#p6_ani_000-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#p6_ani_000-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#p6_ani_000-mesh-map-0" offset="2" set="0"/>
+          <p>38 17 54 39 17 55 40 17 56 38 17 57 41 17 58 39 17 59 42 18 60 43 18 61 44 18 62 42 18 63 45 18 64 43 18 65 46 19 66 47 19 67 48 19 68 46 20 69 49 20 70 47 20 71 50 21 72 51 21 73 52 21 74 53 22 75 51 22 76 50 22 77 54 23 78 55 23 79 56 23 80 57 24 81 58 24 82 59 24 83</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Light_001" name="Light.001" type="NODE">
+        <matrix sid="transform">-0.2908646 -0.7711008 0.5663933 4.076245 0.9551712 -0.1998833 0.2183913 1.005454 -0.05518912 0.6045247 0.7946723 5.903862 0 0 0 1</matrix>
+        <instance_light url="#Light_001-light"/>
+      </node>
+      <node id="Camera_004" name="Camera.004" type="NODE">
+        <matrix sid="transform">0.6859207 -0.3240135 0.6515582 7.358891 0.7276763 0.3054209 -0.6141704 -6.925791 -4.01133e-9 0.8953956 0.4452714 4.958309 0 0 0 1</matrix>
+        <instance_camera url="#Camera_004-camera"/>
+      </node>
+      <node id="Camera_002" name="Camera.002" type="NODE">
+        <matrix sid="transform">0.6859207 -0.3240135 0.6515582 7.358891 0.7276763 0.3054209 -0.6141704 -6.925791 -4.01133e-9 0.8953956 0.4452714 4.958309 0 0 0 1</matrix>
+        <instance_camera url="#Camera_002-camera"/>
+      </node>
+      <node id="_3_S4_Truss" name="23 S4 Truss" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#p6_ani_000-mesh" name="23 S4 Truss">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="ISS_02_dull-material" target="#ISS_02_dull-material">
+                <bind_vertex_input semantic="p6_ani_000-mesh-map-0" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="ISS_02_dark__-material" target="#ISS_02_dark__-material">
+                <bind_vertex_input semantic="p6_ani_000-mesh-map-0" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="ISS_01_dull-material" target="#ISS_01_dull-material">
+                <bind_vertex_input semantic="p6_ani_000-mesh-map-0" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="ISS_AO_03-material" target="#ISS_AO_03-material">
+                <bind_vertex_input semantic="p6_ani_000-mesh-map-0" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="ISS_AO_05-material" target="#ISS_AO_05-material">
+                <bind_vertex_input semantic="p6_ani_000-mesh-map-0" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="_root" name="_root" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+      </node>
+      <node id="Camera_001" name="Camera.001" type="NODE">
+        <matrix sid="transform">0.6859207 -0.3240135 0.6515582 7.358891 0.7276763 0.3054209 -0.6141704 -6.925791 -4.01133e-9 0.8953956 0.4452714 4.958309 0 0 0 1</matrix>
+        <instance_camera url="#Camera_001-camera"/>
+      </node>
+      <node id="Camera_003" name="Camera.003" type="NODE">
+        <matrix sid="transform">0.6859207 -0.3240135 0.6515582 7.358891 0.7276763 0.3054209 -0.6141704 -6.925791 -4.01133e-9 0.8953956 0.4452714 4.958309 0 0 0 1</matrix>
+        <instance_camera url="#Camera_003-camera"/>
+      </node>
+      <node id="Camera" name="Camera" type="NODE">
+        <matrix sid="transform">0.6859207 -0.3240135 0.6515582 7.358891 0.7276763 0.3054208 -0.6141704 -6.925791 0 0.8953956 0.4452714 4.958309 0 0 0 1</matrix>
+        <instance_camera url="#Camera-camera"/>
+      </node>
+      <node id="Light" name="Light" type="NODE">
+        <matrix sid="transform">-0.2908646 -0.7711008 0.5663932 4.076245 0.9551712 -0.1998834 0.2183912 1.005454 -0.05518906 0.6045247 0.7946723 5.903862 0 0 0 1</matrix>
+        <instance_light url="#Light-light"/>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

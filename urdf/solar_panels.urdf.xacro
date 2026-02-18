@@ -103,8 +103,8 @@
      </geometry>
    </collision>   
   </link>
-      
-  <!-- Main truss left -->      
+
+  <!-- Main truss left -->
   <link name="link_23_s4_truss">
    <inertial>
      <origin xyz="0 0 0.0" rpy="0 0 0"/>
@@ -115,18 +115,160 @@
    <visual>
      <origin xyz="0 0 0" rpy="0 0 0" />
      <geometry>
-       <mesh filename="package://iss_description/meshes/s4_truss_23.dae" scale="1 1 1"/>
+       <!--<mesh filename="package://iss_description/meshes/s4_truss_23.dae" scale="1 1 1"/> -->
+       <mesh filename="package://iss_description/meshes/s4_truss_23_minus_all_batteries.dae" scale="1 1 1"/>
      </geometry>
    </visual>
 
    <collision>
      <origin xyz="0 0 0" rpy="0 0 0"/>
      <geometry>
-       <mesh filename="package://iss_description/meshes/s4_truss_23.dae" scale="1 1 1"/>
+       <!--<mesh filename="package://iss_description/meshes/s4_truss_23.dae" scale="1 1 1"/>-->
+       <mesh filename="package://iss_description/meshes/s4_truss_23_minus_all_batteries.dae" scale="1 1 1"/>
      </geometry>
    </collision>
+
   </link>
   
+  <!-- Batteries that are not going to be manipulated -->
+  <link name="link_23_s4_truss_batteries">
+
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+
+   <!-- Battery Mid Right -->
+   <visual>
+     <origin xyz="-2.1381 -1.1503 -0.11272" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_battery_mid_right.dae" scale="1 1 1"/>
+     </geometry>
+   </visual>
+
+   <collision>
+     <origin xyz="-2.1381 -1.1503 -0.11272" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_battery_mid_right.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+
+   <!-- Battery Bottom Right  -->
+   <visual>
+     <origin xyz="-2.1381 -0.94274 -0.95647" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_battery_bottom_right.dae" scale="1 1 1"/>
+     </geometry>
+   </visual>
+
+   <collision>
+     <origin xyz="-2.1381 -0.94274 -0.95647" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_battery_bottom_right.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+
+   <!-- Battery Middle  -->
+   <visual>
+     <origin xyz="-3.6924 -1.0769 -0.081281" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_battery_middle.dae" scale="1 1 1"/>
+     </geometry>
+   </visual>
+
+   <collision>
+     <origin xyz="-3.6924 -1.0769 -0.081281" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_battery_middle.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+
+
+   <!-- Battery Mid Left -->
+   <visual>
+     <origin xyz="-5.1678 -1.1385 -0.11288" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_battery_mid_left.dae" scale="1 1 1"/>
+     </geometry>
+   </visual>
+
+   <collision>
+     <origin xyz="-5.1678 -1.1385 -0.11288" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_battery_mid_left.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+
+   <!-- Battery Bottom Left  -->
+   <visual>
+     <origin xyz="-5.1678 -0.93013 -0.95659" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_battery_bottom_left.dae" scale="1 1 1"/>
+     </geometry>
+   </visual>
+
+   <collision>
+     <origin xyz="-5.1678 -0.93013 -0.95659" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_battery_bottom_left.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+
+  </link>
+
+
+   <!-- Battery Top Right -->
+  <link name="link_23_s4_truss_battery_top_right">
+
+    <inertial>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://iss_description/meshes/s4_truss_23_battery_top_right.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://iss_description/meshes/s4_truss_23_battery_top_right.dae" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+  </link>
+
+   <!-- Battery Top Left -->
+  <link name="link_23_s4_truss_battery_top_left">
+
+    <inertial>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://iss_description/meshes/s4_truss_23_battery_top_left.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://iss_description/meshes/s4_truss_23_battery_top_left.dae" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+  </link>
+
   <!-- Right -->
   <link name="link_17_p1_truss"/>
   <link name="link_19_p3_truss"/>
@@ -345,6 +487,25 @@
       <origin rpy="0 0 0" xyz="-1.4447 0.84866 0.0"/>
       <parent link="link_24_s5_truss"/>
       <child link="link_32_s6_truss"/>
+  </joint>
+
+  <!-- Joint for batteries (useful for battery change demos) -->
+  <joint name="joint_23_s4_truss_batteries" type="fixed">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <parent link="link_23_s4_truss"/>
+      <child link="link_23_s4_truss_batteries"/>
+  </joint>
+
+  <joint name="joint_23_s4_truss_battery_top_left" type="fixed">
+      <origin rpy="0 0 0" xyz="-5.1678 -1.1385 0.82541"/>
+      <parent link="link_23_s4_truss"/>
+      <child link="link_23_s4_truss_battery_top_left"/>
+  </joint>
+
+  <joint name="joint_23_s4_truss_battery_top_right" type="fixed">
+      <origin rpy="0 0 0" xyz="-2.1179 -1.1503 0.83782"/>
+      <parent link="link_23_s4_truss"/>
+      <child link="link_23_s4_truss_battery_top_right"/>
   </joint>
 
   <!-- Joint to rotate 4 solar panels around main axis -->
