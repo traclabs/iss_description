@@ -5,7 +5,7 @@
   <xacro:include filename="$(find iss_description)/urdf/pt_camera.gazebo.xacro"/>
 
   <!-- DEXTRE -->
-  <xacro:macro name="dextre" params=" parent:='' ">
+  <xacro:macro name="dextre" params=" parent:='' pt_cameras:=True">
 
 
   <!-- ******* Link Base *******  -->
@@ -538,33 +538,38 @@
       <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
   </joint>
 
-  <!-- Outrigger 1 CLPA Camera on tool_platform -->
-  <xacro:pt_camera prefix="outrigger_1_clpa" parent_link="dextre_tool_platform">
-    <origin xyz="1.368 0.300 0.314" rpy="1.5708 0.0 0.0"/>
-  </xacro:pt_camera>
 
-  <xacro:pt_camera_gazebo
-    prefix="outrigger_1_clpa"
-    image_width="1024"
-    image_height="1024"
-    horizontal_fov="0.896"
-    update_rate="30.0"
-    enable_lens_flare="true"
-    lens_flare_scale="5.0"/>
+  <xacro:if value="${pt_cameras}">
 
-  <!-- Outrigger 2 CLPA Camera on tool_platform -->
-  <xacro:pt_camera prefix="outrigger_2_clpa" parent_link="dextre_tool_platform">
-    <origin xyz="-1.368 0.300 0.314" rpy="1.5708 0.0 0.0"/>
-  </xacro:pt_camera>
+    <!-- Outrigger 1 CLPA Camera on tool_platform -->
+    <xacro:pt_camera prefix="outrigger_1_clpa" parent_link="dextre_tool_platform">
+      <origin xyz="1.368 0.300 0.314" rpy="1.5708 0.0 0.0"/>
+    </xacro:pt_camera>
 
-  <xacro:pt_camera_gazebo
-    prefix="outrigger_2_clpa"
-    image_width="1024"
-    image_height="1024"
-    horizontal_fov="0.896"
-    update_rate="30.0"
-    enable_lens_flare="true"
-    lens_flare_scale="5.0"/>
+    <xacro:pt_camera_gazebo
+      prefix="outrigger_1_clpa"
+      image_width="1024"
+      image_height="1024"
+      horizontal_fov="0.896"
+      update_rate="30.0"
+      enable_lens_flare="true"
+      lens_flare_scale="5.0"/>
+
+    <!-- Outrigger 2 CLPA Camera on tool_platform -->
+    <xacro:pt_camera prefix="outrigger_2_clpa" parent_link="dextre_tool_platform">
+      <origin xyz="-1.368 0.300 0.314" rpy="1.5708 0.0 0.0"/>
+    </xacro:pt_camera>
+
+    <xacro:pt_camera_gazebo
+      prefix="outrigger_2_clpa"
+      image_width="1024"
+      image_height="1024"
+      horizontal_fov="0.896"
+      update_rate="30.0"
+      enable_lens_flare="true"
+      lens_flare_scale="5.0"/>
+
+  </xacro:if>
 
   </xacro:macro>
 

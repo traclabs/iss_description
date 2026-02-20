@@ -15,7 +15,8 @@ def generate_launch_description():
 
   launch_args = [
     DeclareLaunchArgument(name="gz_gui", default_value="True"),
-    DeclareLaunchArgument(name="rviz", default_value="True"),    
+    DeclareLaunchArgument(name="rviz", default_value="True"),
+    DeclareLaunchArgument(name="simulate_cameras", default_value="True")  
   ]
 
   pkg_dir = get_package_share_directory("iss_description")
@@ -54,7 +55,8 @@ def generate_launch_description():
   mss = IncludeLaunchDescription(
     PathJoinSubstitution([
       FindPackageShare("iss_description"), "launch", "spawn_mobile_servicing_system.launch.py"
-    ])
+    ]),
+    launch_arguments={"simulate_cameras": LaunchConfiguration("simulate_cameras")}.items()
   )
 
   # Make the /clock topic available in ROS

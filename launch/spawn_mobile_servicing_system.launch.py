@@ -1,55 +1,72 @@
 from launch import LaunchDescription
-from launch.actions import RegisterEventHandler, DeclareLaunchArgument
+from launch.actions import RegisterEventHandler, DeclareLaunchArgument, OpaqueFunction, IncludeLaunchDescription
 from launch_ros.actions import Node, SetParameter
 from launch.event_handlers import OnProcessExit
 from launch.conditions import IfCondition, UnlessCondition
 from launch.substitutions import PathJoinSubstitution, LaunchConfiguration
-
+from launch_ros.substitutions import FindPackageShare
 from ament_index_python.packages import get_package_share_directory
 
 import os
 import xacro
 
+def evaluate_rsp(context, *args, **kwargs):
+
+    simulate_cameras = LaunchConfiguration("simulate_cameras").perform(context)
+
+    # URDF
+    mss_urdf = os.path.join(get_package_share_directory("iss_description"), "robots", "mobile_servicing_system.urdf.xacro")
+    mappings = {
+      'etv_cg_cameras' : simulate_cameras,
+      'pt_cameras' : simulate_cameras
+    }
+    mss_doc = xacro.process_file(mss_urdf, mappings=mappings)
+    mss_urdf_content = mss_doc.toprettyxml(
+        indent="  "
+    )
+
+    # Robot state publisher
+    mss_robot_state_publisher = Node(
+      package="robot_state_publisher",
+      executable="robot_state_publisher",
+      name="robot_state_publisher",
+      output="screen",
+      parameters=[
+        {"robot_description": mss_urdf_content},
+        {"use_sim_time": True},
+      ],
+    )
+
+    return [mss_robot_state_publisher]
+
 
 def generate_launch_description():
 
   launch_args = [
+    DeclareLaunchArgument(name="simulate_cameras", default_value="True"),
     DeclareLaunchArgument(name="move_demo", default_value="False"),
   ]
 
   # Common parameters for all nodes
   sim_time_params = [{"use_sim_time": True}]
 
-  # URDF
-  mss_urdf = os.path.join(get_package_share_directory("iss_description"), "robots", "mobile_servicing_system.urdf.xacro")
-  mss_doc = xacro.process_file(mss_urdf)
-  mss_urdf_content = mss_doc.toxml()
-
   # Robot state publisher
-  mss_robot_state_publisher = Node(
-    package="robot_state_publisher",
-    executable="robot_state_publisher",
-    name="robot_state_publisher",
-    output="screen",
-    parameters=[
-      {"robot_description": mss_urdf_content},
-      {"use_sim_time": True},
-    ],
-  )
+  eval_rsp=OpaqueFunction(function=evaluate_rsp)
 
   # Spawn in Gazebo
   mss_spawn = Node(
-    package="ros_gz_sim",
-    executable="create",
-    name="spawn",
-    output="screen",
-    arguments=[
-      "-string",
-      mss_urdf_content,
-      "-name", "mobile_servicing_system",
-      "-allow_renaming", "true",
-    ]
+      package="ros_gz_sim",
+      executable="create",
+      name="spawn",
+      output="screen",
+      arguments=[
+        "-topic",
+        "robot_description",
+        "-name", "mobile_servicing_system",
+        "-allow_renaming", "true",
+      ]
   )
+
 
   # Test motion with services
   mss_move = Node(
@@ -142,61 +159,14 @@ def generate_launch_description():
     parameters=sim_time_params,
   )
 
-  camera_joint_controller_spawner = Node(
-    package="controller_manager",
-    executable="spawner",
-    arguments=["camera_joint_trajectory_controller", "-c", "/controller_manager", "--switch-timeout", "100.0"],
-    name="start_camera_joint_trajectory_controller",
-    output="screen",
-    parameters=sim_time_params,
+  sim_cameras = IncludeLaunchDescription(
+    PathJoinSubstitution([FindPackageShare("iss_description"), "launch", "simulate_cameras.launch.py"])
   )
 
-  # Bridge nodes for pan-tilt cameras
-  camera_names = [
-    "boom_a_clpa",
-    "boom_b_clpa",
-    "outrigger_1_clpa",
-    "outrigger_2_clpa",
-    "etvcg_cp3",
-    "etvcg_cp8",
-    "etvcg_cp9",
-    "etvcg_cp13"
-  ]
-
-  camera_bridges = []
-  for camera_name in camera_names:
-    camera_bridges.append(
-      Node(
-        package="ros_gz_image",
-        executable="image_bridge",
-        name=f"{camera_name}_image_bridge",
-        arguments=[f"/{camera_name}/image_raw"],
-        output="screen",
-        parameters=[{
-            "use_sim_time": True,
-        }],
-      )
-    )
-    # Bridge camera_info topic, frame is wrong but handled by static tf
-    camera_bridges.append(
-      Node(
-          package="ros_gz_bridge",
-          executable="parameter_bridge",
-          arguments=[f"/{camera_name}/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo"],
-          output="screen",
-          name=f"{camera_name}_info_bridge",
-          parameters=[{
-                'use_sim_time': True,
-          }]
-      )
-    )
-
-
   return LaunchDescription( launch_args + [
-    mss_robot_state_publisher,
+    eval_rsp,
     mss_spawn,
     mss_move,
-    ] + camera_bridges + [
     RegisterEventHandler(
       OnProcessExit(
         target_action=mss_spawn,
@@ -213,8 +183,14 @@ def generate_launch_description():
                  dextre_body_joint_controller_spawner,
                  sarj_joint_controller_spawner,
                  starboard_bga_joint_controller_spawner,
-                 port_bga_joint_controller_spawner,
-                 camera_joint_controller_spawner],
+                 port_bga_joint_controller_spawner]
       )
-    )
+    ),
+    RegisterEventHandler(
+      OnProcessExit(
+        target_action=joint_state_broadcaster_spawner,
+        on_exit=[sim_cameras],
+      ),
+      condition=IfCondition(LaunchConfiguration('simulate_cameras'))
+    ),
   ])

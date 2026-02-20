@@ -1,28 +1,13 @@
 <?xml version="1.0"?>
 <robot name="mobile_servicing_system" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:include filename="$(find iss_description)/urdf/mobile_base_system.urdf.xacro"/>
-  <xacro:include filename="$(find iss_description)/urdf/canadarm2.urdf.xacro"/>
-  <xacro:include filename="$(find iss_description)/urdf/dextre.urdf.xacro"/>
-  <xacro:include filename="$(find iss_description)/urdf/solar_panels.urdf.xacro"/>
-  <xacro:include filename="$(find iss_description)/urdf/etvcg_cameras.urdf.xacro"/>
+  <xacro:include filename="$(find iss_description)/urdf/mobile_servicing_system.macro.xacro"/>
 
-  <!-- Gazebo -->
-  <xacro:include filename="$(find iss_description)/urdf/mobile_servicing_system.gazebo.xacro"/>
-  <xacro:mobile_servicing_system_gazebo command_interface="position"/>
+  <xacro:arg name="etv_cg_cameras" default="True"/>
+  <xacro:arg name="pt_cameras" default="True"/>
 
-  <!-- ISS and Mobile Base System -->
-  <link name="world"/>
-  <xacro:mobile_base_system parent="world"/>
-
-  <!-- Solar Panels -->
-  <xacro:solar_panels parent="link_14_s0_truss"/>
-
-  <!-- Canadarm2 and Dextre -->
-  <xacro:dextre parent="canadarm2_link_7"/>
-  <xacro:canadarm2 parent="mobile_base_system"/>
-
-  <!-- ETV-CG Cameras -->
-  <xacro:etvcg_cameras parent="root"/>
-
+  <xacro:mobile_servicing_system etv_cg_cameras="$(arg etv_cg_cameras)" 
+                                 pt_cameras="$(arg pt_cameras)">
+  </xacro:mobile_servicing_system>
+  
 </robot>
