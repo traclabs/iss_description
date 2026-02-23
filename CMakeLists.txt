@@ -44,7 +44,7 @@ install(PROGRAMS
 
 install(
   DIRECTORY
-  launch rviz meshes robots urdf config worlds
+  launch rviz meshes robots urdf config worlds models
   DESTINATION share/${PROJECT_NAME}
 )
 
