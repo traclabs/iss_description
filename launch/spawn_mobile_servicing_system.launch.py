@@ -13,14 +13,14 @@ import xacro
 def evaluate_rsp(context, *args, **kwargs):
 
     simulate_cameras = LaunchConfiguration("simulate_cameras").perform(context)
-
+    urdf_path = LaunchConfiguration("urdf_file").perform(context)
+    
     # URDF
-    mss_urdf = os.path.join(get_package_share_directory("iss_description"), "robots", "mobile_servicing_system.urdf.xacro")
     mappings = {
       'etv_cg_cameras' : simulate_cameras,
       'pt_cameras' : simulate_cameras
     }
-    mss_doc = xacro.process_file(mss_urdf, mappings=mappings)
+    mss_doc = xacro.process_file(urdf_path, mappings=mappings)
     mss_urdf_content = mss_doc.toprettyxml(
         indent="  "
     )
@@ -42,9 +42,12 @@ def evaluate_rsp(context, *args, **kwargs):
 
 def generate_launch_description():
 
+  mss_urdf = os.path.join(get_package_share_directory("iss_description"), "robots", "mobile_servicing_system.urdf.xacro")
+
   launch_args = [
     DeclareLaunchArgument(name="simulate_cameras", default_value="True"),
     DeclareLaunchArgument(name="move_demo", default_value="False"),
+    DeclareLaunchArgument(name="urdf_file", default_value=mss_urdf)
   ]
 
   # Common parameters for all nodes

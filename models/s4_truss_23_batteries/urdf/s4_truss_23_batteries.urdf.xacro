@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<robot name="link_23_s4_truss_batteries" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Batteries that are not going to be manipulated -->
+  <link name="link_23_s4_truss_batteries">
+
+   <inertial>
+     <origin xyz="0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+
+   <!-- Battery Mid Right -->
+   <visual>
+     <origin xyz="-2.1381 -1.1503 -0.11272" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_battery_mid_right.dae" scale="1 1 1"/>
+     </geometry>
+   </visual>
+
+   <collision>
+     <origin xyz="-2.1381 -1.1503 -0.11272" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_battery_mid_right.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+
+   <!-- Battery Bottom Right  -->
+   <visual>
+     <origin xyz="-2.1381 -0.94274 -0.95647" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_battery_bottom_right.dae" scale="1 1 1"/>
+     </geometry>
+   </visual>
+
+   <collision>
+     <origin xyz="-2.1381 -0.94274 -0.95647" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_battery_bottom_right.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+
+   <!-- Battery Middle  -->
+   <visual>
+     <origin xyz="-3.6924 -1.0769 -0.081281" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_battery_middle.dae" scale="1 1 1"/>
+     </geometry>
+   </visual>
+
+   <collision>
+     <origin xyz="-3.6924 -1.0769 -0.081281" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_battery_middle.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+
+
+   <!-- Battery Mid Left -->
+   <visual>
+     <origin xyz="-5.1678 -1.1385 -0.11288" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_battery_mid_left.dae" scale="1 1 1"/>
+     </geometry>
+   </visual>
+
+   <collision>
+     <origin xyz="-5.1678 -1.1385 -0.11288" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_battery_mid_left.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+
+   <!-- Battery Bottom Left  -->
+   <visual>
+     <origin xyz="-5.1678 -0.93013 -0.95659" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_battery_bottom_left.dae" scale="1 1 1"/>
+     </geometry>
+   </visual>
+
+   <collision>
+     <origin xyz="-5.1678 -0.93013 -0.95659" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/s4_truss_23_battery_bottom_left.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+
+  </link>
+
+  <!--<joint name="joint_23_s4_truss_batteries" type="fixed">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <parent link="link_23_s4_truss"/>
+      <child link="link_23_s4_truss_batteries"/>
+  </joint>-->
+
+
+</robot>

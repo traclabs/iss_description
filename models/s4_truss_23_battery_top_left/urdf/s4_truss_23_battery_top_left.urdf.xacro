@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<robot name="link_23_s4_truss_battery_top_left" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+   <!-- Battery Top Left -->
+  <link name="link_23_s4_truss_battery_top_left">
+
+    <inertial>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://iss_description/meshes/s4_truss_23_battery_top_left.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://iss_description/meshes/s4_truss_23_battery_top_left.dae" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+  </link>
+
+  <!--<joint name="joint_23_s4_truss_battery_top_left" type="fixed">
+      <origin rpy="0 0 0" xyz="-5.1678 -1.1385 0.82541"/>
+      <parent link="link_23_s4_truss"/>
+      <child link="link_23_s4_truss_battery_top_left"/>
+  </joint>-->
+
+
+</robot>
