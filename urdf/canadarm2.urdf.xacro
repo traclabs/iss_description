@@ -263,27 +263,13 @@
       <origin xyz="-4.591 0.259 0.0" rpy="1.5708 0.0 1.5708"/>
     </xacro:pt_camera>
 
-    <xacro:pt_camera_gazebo
-      prefix="boom_a_clpa"
-      image_width="1024"
-      image_height="1024"
-      horizontal_fov="0.896"
-      update_rate="30.0"
-      enable_lens_flare="true"
-      lens_flare_scale="5.0"/>
+    <xacro:pt_camera_gazebo prefix="boom_a_clpa"/>
 
     <xacro:pt_camera prefix="boom_b_clpa" parent_link="canadarm2_link_4">
       <origin xyz="0.142 -0.847 2.735" rpy="0.0 0.0 0.0"/>
     </xacro:pt_camera>
 
-    <xacro:pt_camera_gazebo
-      prefix="boom_b_clpa"
-      image_width="1024"
-      image_height="1024"
-      horizontal_fov="0.896"
-      update_rate="30.0"
-      enable_lens_flare="true"
-      lens_flare_scale="5.0"/>
+    <xacro:pt_camera_gazebo prefix="boom_b_clpa"/>
   </xacro:if>
 
  </xacro:macro>
