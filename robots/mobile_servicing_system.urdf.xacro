@@ -2,7 +2,6 @@
 <robot name="mobile_servicing_system" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <xacro:include filename="$(find iss_description)/urdf/mobile_servicing_system.macro.xacro"/>
-  <xacro:include filename="$(find iss_description)/models/htv1/urdf/htv1_external_pallet.macro.xacro"/>  
 
   <xacro:arg name="etv_cg_cameras" default="True"/>
   <xacro:arg name="pt_cameras" default="True"/>
@@ -10,6 +9,6 @@
   <xacro:mobile_servicing_system etv_cg_cameras="$(arg etv_cg_cameras)" 
                                  pt_cameras="$(arg pt_cameras)">
   </xacro:mobile_servicing_system>
-
+>>>>>>> master
   
 </robot>

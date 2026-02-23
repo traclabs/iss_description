@@ -1,4 +1,6 @@
 <?xml version="1.0"?>
+
+<!-- Model of ISS with the external pallet attached to the Mobile Base System -->
 <robot name="mobile_servicing_system" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <xacro:include filename="$(find iss_description)/urdf/mobile_servicing_system.macro.xacro"/>
