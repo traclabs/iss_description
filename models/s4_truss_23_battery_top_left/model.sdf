@@ -2,7 +2,53 @@
 <sdf version="1.9">
 
   <model name="s4_truss_23_battery_top_left">
-    <static>True</static>
+
+    <!-- get the battery into TF -->
+    <plugin
+      filename="gz-sim-pose-publisher-system"
+      name="gz::sim::systems::PosePublisher">
+      <publish_link_pose>false</publish_link_pose>
+      <publish_model_pose>true</publish_model_pose>
+      <use_pose_vector_msg>true</use_pose_vector_msg>
+      <update_frequency>50</update_frequency>
+    </plugin>
+
+    <!-- default attach to the MSS here-->
+    <plugin
+      filename="gz-sim-detachable-joint-system"
+      name="gz::sim::systems::DetachableJoint">
+      <parent_link>base_link</parent_link>
+      <child_model>mobile_servicing_system</child_model>
+      <child_link>link_23_s4_truss</child_link>
+      <attach_topic>/model/s4_truss_23_battery_top_left/mobile_servicing_system/attach</attach_topic>
+      <detach_topic>/model/s4_truss_23_battery_top_left/mobile_servicing_system/detach</detach_topic>
+      <initial_attach>true</initial_attach>
+    </plugin>
+
+    <!-- dextre 1 attach -->
+    <plugin
+      filename="gz-sim-detachable-joint-system"
+      name="gz::sim::systems::DetachableJoint">
+      <parent_link>base_link</parent_link>
+      <child_model>mobile_servicing_system</child_model>
+      <child_link>dextre_arm_1_wrist_roll</child_link>
+      <attach_topic>/model/s4_truss_23_battery_top_left/dextre_arm_1/attach</attach_topic>
+      <detach_topic>/model/s4_truss_23_battery_top_left/dextre_arm_1/detach</detach_topic>
+      <initial_attach>false</initial_attach>
+    </plugin>
+
+    <!-- dextre 2 attach -->
+    <plugin
+      filename="gz-sim-detachable-joint-system"
+      name="gz::sim::systems::DetachableJoint">
+      <parent_link>base_link</parent_link>
+      <child_model>mobile_servicing_system</child_model>
+      <child_link>dextre_arm_1_wrist_roll</child_link>
+      <attach_topic>/model/s4_truss_23_battery_top_left/dextre_arm_2/attach</attach_topic>
+      <detach_topic>/model/s4_truss_23_battery_top_left/dextre_arm_2/detach</detach_topic>
+      <initial_attach>false</initial_attach>
+    </plugin>
+
       <link name='base_link'>
         <inertial> <!--inertial properties of the link mass, inertia matix-->
           <mass>0.010</mass>
@@ -29,7 +75,7 @@
               <scale>1 1 1</scale>
               <uri>model://iss_description/meshes/s4_truss_23_battery_top_left.dae</uri>
             </mesh>
-          </geometry>        
+          </geometry>
         </collision>
       </link>
     </model>
