@@ -1,28 +1,22 @@
 <?xml version="1.0"?>
 
 <!-- Model of ISS with the external pallet attached to the Mobile Base System -->
-<robot name="mobile_servicing_system" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="mobile_servicing_system_with_pallet" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:include filename="$(find iss_description)/urdf/mobile_servicing_system.macro.xacro"/>
-  <xacro:include filename="$(find iss_description)/models/htv1/urdf/htv1_external_pallet.macro.xacro"/>  
+  <xacro:include filename="$(find iss_description)/robots/setups/mobile_servicing_system_with_detached_batteries.urdf.xacro"/>
+
+  <xacro:include filename="$(find space_resources)/models/htv_transfer_vehicle/urdf/htv1_external_pallet.macro.xacro"/>  
   
-  <xacro:arg name="etv_cg_cameras" default="True"/>
-  <xacro:arg name="pt_cameras" default="True"/>
+  <link name="connector_pallet" />
 
-  <xacro:mobile_servicing_system etv_cg_cameras="$(arg etv_cg_cameras)" 
-                                 pt_cameras="$(arg pt_cameras)">
-  </xacro:mobile_servicing_system>
-  
-  <link name="pdgf_pallet" />
-
-  <joint name="joint_pdgf_pallet" type="fixed">
-      <origin rpy="-0.05 0 0.2" xyz="1.4347 -0.19847 1.5901"/>
+  <joint name="joint_connector_pallet" type="fixed">
+      <origin rpy="1.6057 0.1396 6.1086" xyz="4.5623 -2.2503 0.10106"/>
       <parent link="mobile_base_system"/>
-      <child link="pdgf_pallet"/>
+      <child link="connector_pallet"/>
   </joint>
   
-  <xacro:htv1_external_pallet_macro parent="pdgf_pallet">
-    <origin xyz="0 0 0" rpy="1.5708 0 3.1416" />
+  <xacro:htv1_external_pallet_macro parent="connector_pallet">
+    <origin xyz="0 0 0" rpy="0 0 0" />
   </xacro:htv1_external_pallet_macro>  
     
 </robot>

@@ -37,7 +37,7 @@
         </gz-gui>
         <engine>ogre2</engine>
         <scene>scene</scene>
-        <camera_pose>-10.0 -12 8.0 0 0.5 0.3</camera_pose>
+        <camera_pose>-6.25 -48.11 17.37 0.0 0.0 1.64</camera_pose>
       </plugin>
       <plugin filename="GzSceneManager" name="Scene Manager">
         <gz-gui>
