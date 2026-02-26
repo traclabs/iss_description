@@ -49,6 +49,19 @@
       <initial_attach>false</initial_attach>
     </plugin>
 
+    <!-- attach to the Exposed Pallet -->
+    <!-- since it's not an independent model attach to the mobile base system where the EP is attached -->
+    <plugin
+      filename="gz-sim-detachable-joint-system"
+      name="gz::sim::systems::DetachableJoint">
+      <parent_link>base_link</parent_link>
+      <child_model>mobile_servicing_system</child_model>
+      <child_link>mobile_base_system</child_link>
+      <attach_topic>/model/s4_truss_23_battery_top_left/exposed_pallet/attach</attach_topic>
+      <detach_topic>/model/s4_truss_23_battery_top_left/exposed_pallet/detach</detach_topic>
+      <initial_attach>false</initial_attach>
+    </plugin>
+
       <link name='base_link'>
         <inertial> <!--inertial properties of the link mass, inertia matix-->
           <mass>0.010</mass>

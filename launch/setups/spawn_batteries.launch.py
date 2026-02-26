@@ -11,7 +11,7 @@ import os
 import xacro
 
 
-BRIDGE_FIXTURES = ['mobile_servicing_system', 'dextre_arm_1', 'dextre_arm_2']
+BRIDGE_FIXTURES = ['mobile_servicing_system', 'dextre_arm_1', 'dextre_arm_2', 'exposed_pallet']
 BRIDGE_CMDS = ['attach', 'detach']
 
 def generate_launch_description():

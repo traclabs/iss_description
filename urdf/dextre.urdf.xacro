@@ -131,7 +131,7 @@
       <parent link="dextre_base"/>
       <child link="dextre_body"/>
       <axis xyz="0 0 1"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- *********************  -->
@@ -287,7 +287,7 @@
       <parent link="dextre_body"/>
       <child link="dextre_arm_1_shoulder_roll"/>
       <axis xyz="1 0 0"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- joint arm 1 shoulder yaw -->
@@ -296,7 +296,7 @@
       <parent link="dextre_arm_1_shoulder_roll"/>
       <child link="dextre_arm_1_shoulder_yaw"/>
       <axis xyz="0 0 1"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- joint arm 1 shoulder pitch -->
@@ -305,7 +305,7 @@
       <parent link="dextre_arm_1_shoulder_yaw"/>
       <child link="dextre_arm_1_shoulder_pitch"/>
       <axis xyz="0 1 0"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- joint arm 1 elbow pitch -->
@@ -314,7 +314,7 @@
       <parent link="dextre_arm_1_shoulder_pitch"/>
       <child link="dextre_arm_1_elbow_pitch"/>
       <axis xyz="0 1 0"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- joint arm 1 wrist pitch yaw -->
@@ -323,7 +323,7 @@
       <parent link="dextre_arm_1_elbow_pitch"/>
       <child link="dextre_arm_1_wrist_pitch_yaw"/>
       <axis xyz="0 1 0"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- joint arm 1 wrist roll -->
@@ -332,7 +332,7 @@
       <parent link="dextre_arm_1_wrist_pitch_yaw"/>
       <child link="dextre_arm_1_wrist_roll"/>
       <axis xyz="0 0 1"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- *********************  -->
@@ -489,7 +489,7 @@
       <parent link="dextre_body"/>
       <child link="dextre_arm_2_shoulder_roll"/>
       <axis xyz="1 0 0"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
 
@@ -499,7 +499,7 @@
       <parent link="dextre_arm_2_shoulder_roll"/>
       <child link="dextre_arm_2_shoulder_yaw"/>
       <axis xyz="0 0 1"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- joint arm 2 shoulder pitch -->
@@ -508,7 +508,7 @@
       <parent link="dextre_arm_2_shoulder_yaw"/>
       <child link="dextre_arm_2_shoulder_pitch"/>
       <axis xyz="0 1 0"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- joint arm 2 elbow pitch -->
@@ -517,7 +517,7 @@
       <parent link="dextre_arm_2_shoulder_pitch"/>
       <child link="dextre_arm_2_elbow_pitch"/>
       <axis xyz="0 1 0"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- joint arm 2 wrist pitch yaw -->
@@ -526,7 +526,7 @@
       <parent link="dextre_arm_2_elbow_pitch"/>
       <child link="dextre_arm_2_wrist_pitch_yaw"/>
       <axis xyz="0 1 0"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- joint arm 2 wrist roll -->
@@ -535,7 +535,7 @@
       <parent link="dextre_arm_2_wrist_pitch_yaw"/>
       <child link="dextre_arm_2_wrist_roll"/>
       <axis xyz="0 0 1"/>
-      <limit effort="1000.0" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
 

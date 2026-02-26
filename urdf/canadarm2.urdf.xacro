@@ -207,7 +207,7 @@
       <parent link="canadarm2_base"/>
       <child link="canadarm2_link_1"/>
       <axis xyz="0 1 0"/>
-      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="0.04"/>
+      <limit effort="100000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <joint name="joint_canadarm2_2" type="revolute">
@@ -215,7 +215,7 @@
       <parent link="canadarm2_link_1"/>
       <child link="canadarm2_link_2"/>
       <axis xyz="0 0 1"/>
-      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="0.04"/>
+      <limit effort="100000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <joint name="joint_canadarm2_3" type="revolute">
@@ -223,7 +223,7 @@
       <parent link="canadarm2_link_2"/>
       <child link="canadarm2_link_3"/>
       <axis xyz="0 1 0"/>
-      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="0.04"/>
+      <limit effort="100000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <joint name="joint_canadarm2_4" type="revolute">
@@ -231,7 +231,7 @@
       <parent link="canadarm2_link_3"/>
       <child link="canadarm2_link_4"/>
       <axis xyz="0 1 0"/>
-      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="0.04"/>
+      <limit effort="100000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <joint name="joint_canadarm2_5" type="revolute">
@@ -239,7 +239,7 @@
       <parent link="canadarm2_link_4"/>
       <child link="canadarm2_link_5"/>
       <axis xyz="0 1 0"/>
-      <limit effort="5000.0" lower="-3.1416" upper="3.1416" velocity="0.04"/>
+      <limit effort="50000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <joint name="joint_canadarm2_6" type="revolute">
@@ -247,7 +247,7 @@
       <parent link="canadarm2_link_5"/>
       <child link="canadarm2_link_6"/>
       <axis xyz="1 0 0"/>
-      <limit effort="5000.0" lower="-3.1416" upper="3.1416" velocity="0.04"/>
+      <limit effort="50000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <joint name="joint_canadarm2_7" type="revolute">
@@ -255,7 +255,7 @@
       <parent link="canadarm2_link_6"/>
       <child link="canadarm2_link_7"/>
       <axis xyz="0 0 1"/>
-      <limit effort="5000.0" lower="-3.1416" upper="3.1416" velocity="0.04"/>
+      <limit effort="50000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <xacro:if value="${pt_cameras}">
