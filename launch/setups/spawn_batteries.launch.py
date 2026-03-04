@@ -1,14 +1,11 @@
 from launch import LaunchDescription
-from launch.actions import RegisterEventHandler, DeclareLaunchArgument, OpaqueFunction, IncludeLaunchDescription
-from launch_ros.actions import Node, SetParameter
-from launch.event_handlers import OnProcessExit
-from launch.conditions import IfCondition, UnlessCondition
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, ExecuteProcess, TimerAction
+from launch_ros.actions import Node
 from launch.substitutions import PathJoinSubstitution, LaunchConfiguration
 from launch_ros.substitutions import FindPackageShare
 from ament_index_python.packages import get_package_share_directory
 
 import os
-import xacro
 
 
 BRIDGE_FIXTURES = ['mobile_servicing_system', 'dextre_arm_1', 'dextre_arm_2', 'exposed_pallet']
@@ -120,6 +117,43 @@ def generate_launch_description():
     "R": "1.047"}.items()
   )
 
+  # set the start states
+  battery_cmds = []
+  for name in ["dextre_arm_1", "dextre_arm_2", "exposed_pallet"]:
+    for side in ["left", "right"]:
+      battery_cmds.append(
+        ExecuteProcess
+        (
+          cmd=["ros2", "topic", "pub", f"/s4_truss_23_battery_top_{side}/{name}/detach",
+               "std_msgs/Empty", "{}", "--once", "--max-wait-time-secs", "30.0"],
+          output="screen"
+        )
+      )
+
+  # initialize them attached to the MSS truss
+  battery_cmds.append(
+    ExecuteProcess
+    (
+      cmd=["ros2", "topic", "pub", "/s4_truss_23_battery_top_left/mobile_servicing_system/attach",
+           "std_msgs/Empty", "{}", "--once"],
+      output="screen"
+    )
+  )
+  battery_cmds.append(
+    ExecuteProcess
+    (
+      cmd=["ros2", "topic", "pub", "/s4_truss_23_battery_top_right/mobile_servicing_system/attach",
+           "std_msgs/Empty", "{}", "--once"],
+      output="screen"
+    )
+  )
+
+  init_battery_plugins = TimerAction(
+    period=10.0,
+    actions=battery_cmds
+  )
+
+
   return LaunchDescription( launch_args + [
     spawn_top_right_battery,
     bridge_top_right_battery_tf,
@@ -128,4 +162,5 @@ def generate_launch_description():
     bridge_top_left_battery_tf,
     *bridge_top_left_cmds,
     spawn_batteries_rest,
+    init_battery_plugins
   ])
