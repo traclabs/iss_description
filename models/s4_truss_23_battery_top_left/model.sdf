@@ -47,7 +47,7 @@
       name="gz::sim::systems::DetachableJoint">
       <parent_link>base_link</parent_link>
       <child_model>mobile_servicing_system</child_model>
-      <child_link>dextre_arm_1_wrist_roll</child_link>
+      <child_link>dextre_arm_2_wrist_roll</child_link>
       <attach_topic>/model/s4_truss_23_battery_top_left/dextre_arm_2/attach</attach_topic>
       <detach_topic>/model/s4_truss_23_battery_top_left/dextre_arm_2/detach</detach_topic>
       <output_topic>/model/s4_truss_23_battery_top_left/dextre_arm_2/state</output_topic>

@@ -125,7 +125,7 @@ def generate_launch_description():
         ExecuteProcess
         (
           cmd=["ros2", "topic", "pub", f"/s4_truss_23_battery_top_{side}/{name}/detach",
-               "std_msgs/Empty", "{}", "--once", "--max-wait-time-secs", "30.0"],
+               "std_msgs/Empty", "{}", "--times", "2", "--max-wait-time-secs", "30.0"],
           output="screen"
         )
       )
