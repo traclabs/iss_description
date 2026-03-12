@@ -15,7 +15,7 @@
             <izz>0.476646</izz>
           </inertia>
         </inertial>
-       
+
         <!-- Battery Mid Right -->
         <visual name='visual_mid_right'>
           <pose>-2.1381 -1.1503 -0.11272 0 0 0</pose>
@@ -27,16 +27,16 @@
           </geometry>
         </visual>
         <collision name='collision_mid_right'>
-          <pose>-2.1381 -1.1503 -0.11272 0 0 0</pose>        
+          <pose>-2.1381 -1.1503 -0.11272 0 0 0</pose>
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
               <uri>model://iss_description/meshes/s4_truss_23_battery_mid_right.dae</uri>
             </mesh>
-          </geometry>        
+          </geometry>
         </collision>
-        
-        
+
+
         <!-- Battery Bottom Right  -->
         <visual name='visual_bottom_right'>
           <pose>-2.1381 -0.94274 -0.95647 0 0 0</pose>
@@ -48,13 +48,13 @@
           </geometry>
         </visual>
         <collision name='collision_bottom_right'>
-          <pose>-2.1381 -0.94274 -0.95647 0 0 0</pose>        
+          <pose>-2.1381 -0.94274 -0.95647 0 0 0</pose>
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
               <uri>model://iss_description/meshes/s4_truss_23_battery_bottom_right.dae</uri>
             </mesh>
-          </geometry>        
+          </geometry>
         </collision>
 
         <!-- Battery Middle  -->
@@ -68,13 +68,13 @@
           </geometry>
         </visual>
         <collision name='collision_battery_middle'>
-          <pose>-3.6924 -1.0769 -0.081281 0 0 0</pose>        
+          <pose>-3.6924 -1.0769 -0.081281 0 0 0</pose>
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
               <uri>model://iss_description/meshes/s4_truss_23_battery_middle.dae</uri>
             </mesh>
-          </geometry>        
+          </geometry>
         </collision>
 
         <!-- Battery Mid Left -->
@@ -88,13 +88,13 @@
           </geometry>
         </visual>
         <collision name='collision_mid_left'>
-          <pose>-5.1678 -1.1385 -0.11288 0 0 0</pose>        
+          <pose>-5.1678 -1.1385 -0.11288 0 0 0</pose>
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
               <uri>model://iss_description/meshes/s4_truss_23_battery_mid_left.dae</uri>
             </mesh>
-          </geometry>        
+          </geometry>
         </collision>
 
         <!-- Battery Bottom Left  -->
@@ -108,16 +108,16 @@
           </geometry>
         </visual>
         <collision name='collision_bottom_left'>
-          <pose>-5.1678 -0.93013 -0.95659 0 0 0</pose>        
+          <pose>-5.1678 -0.93013 -0.95659 0 0 0</pose>
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
               <uri>model://iss_description/meshes/s4_truss_23_battery_bottom_left.dae</uri>
             </mesh>
-          </geometry>        
+          </geometry>
         </collision>
-        
-        
+
+
       </link>
     </model>
 </sdf>

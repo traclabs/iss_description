@@ -16,11 +16,11 @@ def generate_launch_description():
   launch_args = [
     DeclareLaunchArgument(name="gz_gui", default_value="True"),
     DeclareLaunchArgument(name="rviz", default_value="True"),
-    DeclareLaunchArgument(name="simulate_cameras", default_value="True")  
+    DeclareLaunchArgument(name="simulate_cameras", default_value="True")
   ]
 
   pkg_dir = get_package_share_directory("iss_description")
-  
+
   # World
   leo_sdf = os.path.join(pkg_dir, "worlds/leo_with_controls.sdf")
 
@@ -52,7 +52,10 @@ def generate_launch_description():
   )
 
   # Spawn Mobile Servicing System with batteries detached
-  mss_urdf = os.path.join(get_package_share_directory("iss_description"), "robots", "setups", "mobile_servicing_system_with_detached_batteries.urdf.xacro")  
+  mss_urdf = os.path.join(get_package_share_directory("iss_description"),
+                         "robots",
+                         "setups",
+                         "mobile_servicing_system_with_detached_batteries.urdf.xacro")
   mss = IncludeLaunchDescription(
     PathJoinSubstitution([
       FindPackageShare("iss_description"), "launch", "spawn_mobile_servicing_system.launch.py"
@@ -60,7 +63,7 @@ def generate_launch_description():
     launch_arguments={"simulate_cameras": LaunchConfiguration("simulate_cameras"),
     "urdf_file": mss_urdf}.items()
   )
-  
+
   # Spawn batteries
   spawn_batteries = IncludeLaunchDescription(
     PathJoinSubstitution([
@@ -70,6 +73,7 @@ def generate_launch_description():
 
   # Make the /clock topic available in ROS
   gz_sim_bridge = Node(
+    name="bridge_ros_gz_clock",
     package="ros_gz_bridge",
     executable="parameter_bridge",
     arguments=[
@@ -77,7 +81,7 @@ def generate_launch_description():
     ],
     output="screen",
   )
-  
+
   # Rviz
   rviz_config = os.path.join(pkg_dir, "rviz/iss.rviz")
   rviz = Node(
@@ -90,10 +94,10 @@ def generate_launch_description():
       {"use_sim_time": True}
       ],
       condition=IfCondition(LaunchConfiguration('rviz'))
-  )  
+  )
 
   return LaunchDescription(
-    launch_args + 
+    launch_args +
     [
       gz_launch_gui,
       gz_launch_headless,
