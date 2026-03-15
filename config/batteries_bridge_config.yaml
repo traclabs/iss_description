@@ -1,0 +1,21 @@
+- ros_topic_name: "/tf"
+  gz_topic_name: "/model/s4_truss_23_battery_top_right/pose"
+  ros_type_name: "tf2_msgs/msg/TFMessage"
+  gz_type_name: "gz.msgs.Pose_V"
+  direction: "GZ_TO_ROS"
+  frame_id: "world" # override frame_id in ROS message header
+
+- ros_topic_name: "/tf"
+  gz_topic_name: "/model/s4_truss_23_battery_top_left/pose"
+  ros_type_name: "tf2_msgs/msg/TFMessage"
+  gz_type_name: "gz.msgs.Pose_V"
+  direction: "GZ_TO_ROS"
+  frame_id: "world"
+
+#- ros_topic_name: "/tf"
+#  gz_topic_name: "/model/spare_battery/pose"
+#  ros_type_name: "tf2_msgs/msg/TFMessage"
+#  gz_type_name: "gz.msgs.Pose_V"
+#  direction: "GZ_TO_ROS"
+#  frame_id: "world"
+

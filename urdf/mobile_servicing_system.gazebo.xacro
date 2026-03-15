@@ -34,6 +34,17 @@
       </xacro:if>
     </ros2_control>
 
+    <!-- Plugin to attach/detach objects to Dextre arm 1 -->
+    <gazebo>
+      <plugin filename="libDynamicDetachableJoint.so"
+              name="gz::sim::systems::DynamicDetachableJoint">
+        <parent_link>dextre_arm_1_wrist_roll</parent_link>
+        <service_name>/payload/attach_detach</service_name>
+        <output_topic>/payload/child_state</output_topic>
+        <attach_distance>10.0</attach_distance> <!-- 10 cm -->
+      </plugin>
+    </gazebo>
+  
   <gazebo>
       <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
         <parameters>$(find iss_description)/config/mobile_servicing_system_control.yaml</parameters>

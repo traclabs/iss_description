@@ -101,7 +101,8 @@
       - joint_dextre_arm_1_shoulder_yaw
       - joint_dextre_arm_1_shoulder_pitch
       - joint_dextre_arm_1_elbow_pitch
-      - joint_dextre_arm_1_wrist_pitch_yaw
+      - joint_dextre_arm_1_wrist_pitch
+      - joint_dextre_arm_1_wrist_yaw      
       - joint_dextre_arm_1_wrist_roll
     interface_name: position
     command_interfaces:
@@ -124,7 +125,8 @@
       - joint_dextre_arm_2_shoulder_yaw
       - joint_dextre_arm_2_shoulder_pitch
       - joint_dextre_arm_2_elbow_pitch
-      - joint_dextre_arm_2_wrist_pitch_yaw
+      - joint_dextre_arm_2_wrist_pitch
+      - joint_dextre_arm_2_wrist_yaw
       - joint_dextre_arm_2_wrist_roll
     interface_name: position
     command_interfaces:

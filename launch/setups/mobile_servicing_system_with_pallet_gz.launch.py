@@ -22,7 +22,7 @@ def generate_launch_description():
   pkg_dir = get_package_share_directory("iss_description")
   
   # World
-  leo_sdf = os.path.join(pkg_dir, "worlds/leo_with_controls.sdf")
+  leo_sdf = os.path.join(pkg_dir, "worlds/leo.sdf") #leo_with_controls.sdf
 
   # Launch gazebo world
   gz_launch_gui = IncludeLaunchDescription(

@@ -230,8 +230,8 @@
    </collision>
   </link>
 
-  <!-- ******* Link Arm 1 Wrist Pitch Yaw *******  -->
-  <link name="dextre_arm_1_wrist_pitch_yaw">
+  <!-- ******* Link Arm 1 Wrist Pitch *******  -->
+  <link name="dextre_arm_1_wrist_pitch">
    <inertial>
      <origin xyz="0 0 0.0" rpy="0 0 0"/>
      <mass value="1"/>
@@ -241,14 +241,37 @@
    <visual>
      <origin xyz="0 0 0" rpy="0 0 0" />
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre/arm_1/wrist_pitch_yaw.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_1/wrist_pitch.dae" scale="1 1 1"/>
      </geometry>
    </visual>
 
    <collision>
      <origin xyz="0 0 0" rpy="0 0 0"/>
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre/arm_1/wrist_pitch_yaw.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_1/wrist_pitch.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+  </link>
+
+  <!-- ******* Link Arm 1 Wrist Yaw *******  -->
+  <link name="dextre_arm_1_wrist_yaw">
+   <inertial>
+     <origin xyz="0 0.0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 -0.11 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre/arm_1/wrist_yaw.dae" scale="1 1 1"/>
+     </geometry>
+   </visual>
+
+   <collision>
+     <origin xyz="0 -0.11 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre/arm_1/wrist_yaw.dae" scale="1 1 1"/>
      </geometry>
    </collision>
   </link>
@@ -317,19 +340,28 @@
       <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
-  <!-- joint arm 1 wrist pitch yaw -->
-  <joint name="joint_dextre_arm_1_wrist_pitch_yaw" type="revolute">
+  <!-- joint arm 1 wrist pitch -->
+  <joint name="joint_dextre_arm_1_wrist_pitch" type="revolute">
       <origin rpy="0 0 0" xyz="-1.0873 0.3271 -0.012581"/>
       <parent link="dextre_arm_1_elbow_pitch"/>
-      <child link="dextre_arm_1_wrist_pitch_yaw"/>
+      <child link="dextre_arm_1_wrist_pitch"/>
       <axis xyz="0 1 0"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
+  </joint>
+
+  <!-- joint arm 1 wrist yaw -->
+  <joint name="joint_dextre_arm_1_wrist_yaw" type="revolute">
+      <origin rpy="0 0 0" xyz="-0.01 0.11 0.0"/>
+      <parent link="dextre_arm_1_wrist_pitch"/>
+      <child link="dextre_arm_1_wrist_yaw"/>
+      <axis xyz="1 0 0"/>
       <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- joint arm 1 wrist roll -->
   <joint name="joint_dextre_arm_1_wrist_roll" type="revolute">
       <origin rpy="0 0 0" xyz="-0.28177 0.11183 -0.12003"/>
-      <parent link="dextre_arm_1_wrist_pitch_yaw"/>
+      <parent link="dextre_arm_1_wrist_yaw"/>
       <child link="dextre_arm_1_wrist_roll"/>
       <axis xyz="0 0 1"/>
       <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
@@ -432,8 +464,8 @@
    </collision>
   </link>
 
-  <!-- ******* Link Arm 2 Wrist Pitch Yaw *******  -->
-  <link name="dextre_arm_2_wrist_pitch_yaw">
+  <!-- ******* Link Arm 2 Wrist Pitch *******  -->
+  <link name="dextre_arm_2_wrist_pitch">
    <inertial>
      <origin xyz="0 0 0.0" rpy="0 0 0"/>
      <mass value="1"/>
@@ -443,14 +475,37 @@
    <visual>
      <origin xyz="0 0 0" rpy="0 0 0" />
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre/arm_2/wrist_pitch_yaw.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_2/wrist_pitch.dae" scale="1 1 1"/>
      </geometry>
    </visual>
 
    <collision>
      <origin xyz="0 0 0" rpy="0 0 0"/>
      <geometry>
-       <mesh filename="package://iss_description/meshes/dextre/arm_2/wrist_pitch_yaw.dae" scale="1 1 1"/>
+       <mesh filename="package://iss_description/meshes/dextre/arm_2/wrist_pitch.dae" scale="1 1 1"/>
+     </geometry>
+   </collision>
+  </link>
+
+  <!-- ******* Link Arm 2 Wrist Yaw *******  -->
+  <link name="dextre_arm_2_wrist_yaw">
+   <inertial>
+     <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 -0.11 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre/arm_2/wrist_yaw.dae" scale="1 1 1"/>
+     </geometry>
+   </visual>
+
+   <collision>
+     <origin xyz="0 -0.11 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://iss_description/meshes/dextre/arm_2/wrist_yaw.dae" scale="1 1 1"/>
      </geometry>
    </collision>
   </link>
@@ -521,18 +576,27 @@
   </joint>
 
   <!-- joint arm 2 wrist pitch yaw -->
-  <joint name="joint_dextre_arm_2_wrist_pitch_yaw" type="revolute">
+  <joint name="joint_dextre_arm_2_wrist_pitch" type="revolute">
       <origin rpy="0 0 0" xyz="1.0873 0.3271 -0.012577"/>
       <parent link="dextre_arm_2_elbow_pitch"/>
-      <child link="dextre_arm_2_wrist_pitch_yaw"/>
+      <child link="dextre_arm_2_wrist_pitch"/>
       <axis xyz="0 1 0"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
+  </joint>
+
+  <!-- joint arm 2 wrist yaw -->
+  <joint name="joint_dextre_arm_2_wrist_yaw" type="revolute">
+      <origin rpy="0 0 0" xyz="0.01 0.11 0.0"/>
+      <parent link="dextre_arm_2_wrist_pitch"/>
+      <child link="dextre_arm_2_wrist_yaw"/>
+      <axis xyz="1 0 0"/>
       <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
 
   <!-- joint arm 2 wrist roll -->
   <joint name="joint_dextre_arm_2_wrist_roll" type="revolute">
       <origin rpy="0 0 0" xyz="0.28178 0.11183 -0.12001"/>
-      <parent link="dextre_arm_2_wrist_pitch_yaw"/>
+      <parent link="dextre_arm_2_wrist_yaw"/>
       <child link="dextre_arm_2_wrist_roll"/>
       <axis xyz="0 0 1"/>
       <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
