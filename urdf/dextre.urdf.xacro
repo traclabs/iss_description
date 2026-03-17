@@ -366,6 +366,14 @@
       <axis xyz="0 0 1"/>
       <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
   </joint>
+  <link name="dextre_arm_1_ee_ref"/>
+  <joint name="joint_dextre_arm_1_ee_ref" type="fixed">
+      <origin rpy="-1.5708 0.0 1.5708" xyz="0.0 0.0 -1.0"/>
+      <parent link="dextre_arm_1_wrist_roll"/>
+      <child link="dextre_arm_1_ee_ref"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="10000.0" lower="-3.1416" upper="3.1416" velocity="1.0"/>
+  </joint>
 
   <!-- *********************  -->
   <!-- ******* ARM 2 *******  -->
