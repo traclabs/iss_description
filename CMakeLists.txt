@@ -39,9 +39,9 @@ set(GZ_RENDERING_VER ${gz-rendering8_VERSION_MAJOR})
 
 gz_find_package(gz-sim8 REQUIRED)
 set(GZ_SIM_VER ${gz-sim8_VERSION_MAJOR})
-  
+
 find_package(gz-sensors8 REQUIRED)
-set(GZ_SENSORS_VER ${gz-sensors8_VERSION_MAJOR})  
+set(GZ_SENSORS_VER ${gz-sensors8_VERSION_MAJOR})
 
 find_package(gz-msgs10 REQUIRED)
 set(GZ_MSGS_VER ${gz-msgs10_VERSION_MAJOR})
@@ -68,9 +68,9 @@ add_library(DynamicDetachableJoint SHARED
   plugins/DynamicDetachableJoint.cc
 )
 
-target_link_libraries(DynamicDetachableJoint PRIVATE 
+target_link_libraries(DynamicDetachableJoint PRIVATE
   gz-common${GZ_COMMON_VER}::gz-common${GZ_COMMON_VER}
-  gz-rendering${GZ_RENDERING_VER}::gz-rendering${GZ_RENDERING_VER}  
+  gz-rendering${GZ_RENDERING_VER}::gz-rendering${GZ_RENDERING_VER}
   gz-sim${GZ_SIM_VER}::gz-sim${GZ_SIM_VER}
   ${PROJECT_NAME}-gz_custom_msgs
 )
@@ -91,7 +91,7 @@ install(TARGETS
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION lib/${PROJECT_NAME}
-)  
+)
 
 #install(DIRECTORY include/
 #  DESTINATION include/
@@ -101,6 +101,12 @@ install(
   DIRECTORY
   launch rviz meshes robots urdf config worlds models
   DESTINATION share/${PROJECT_NAME}
+)
+
+# Install the generated .gz_desc file for the custom messages
+install(FILES
+  ${CMAKE_BINARY_DIR}/${PROJECT_NAME}-gz_custom_msgs.gz_desc
+  DESTINATION share/gz/protos
 )
 
 ament_environment_hooks("${CMAKE_CURRENT_SOURCE_DIR}/hooks/${PROJECT_NAME}.dsv.in")

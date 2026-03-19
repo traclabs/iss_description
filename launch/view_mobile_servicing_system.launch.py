@@ -20,8 +20,7 @@ def generate_launch_description():
     # Urdf
     robot_dir = get_package_share_directory("iss_description")
     urdf_string = xacro.process_file(
-        os.path.join(robot_dir, "robots/mobile_servicing_system.urdf.xacro"),
-        #mappings ={'hand': 'true'}
+        os.path.join(robot_dir, "robots/setups/mobile_servicing_system_with_htv_pallet.urdf.xacro"),
     )
     robot_description = {"robot_description": urdf_string.toxml()}
 

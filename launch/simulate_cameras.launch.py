@@ -28,34 +28,33 @@ def generate_launch_description():
   ]
 
   camera_bridges = []
-  for camera_name in camera_names:
-    # Bridge image_raw topic to temporary topic (frame_id will be wrong)
-    camera_bridges.append(
-      Node(
-        package="ros_gz_image",
-        executable="image_bridge",
-        name=f"{camera_name}_image_bridge",
-        arguments=[f"/{camera_name}/image_raw"],
-        output="screen",
-        parameters=[{
-          "use_sim_time": True,
-        }],
-      )
-    )
-    # IN DRAGOMAN, disable the bridge because it wakes up the lazy Gazebo cameras, consuming CPU.
-    # Bridge camera_info topic to temporary topic (frame_id will be wrong)
-    # camera_bridges.append(
-    #   Node(
-    #     package="ros_gz_bridge",
-    #     executable="parameter_bridge",
-    #     arguments=[f"/{camera_name}/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo"],
-    #     output="screen",
-    #     name=f"{camera_name}_info_bridge",
-    #     parameters=[{
-    #       'use_sim_time': True,
-    #     }]
-    #   )
-    # )
+  # IN DRAGOMAN, disable the bridge because it wakes up the lazy Gazebo cameras, consuming CPU.
+  # for camera_name in camera_names:
+  #   # Bridge image_raw topic to temporary topic (frame_id will be wrong)
+  #   camera_bridges.append(
+  #     Node(
+  #       package="ros_gz_image",
+  #       executable="image_bridge",
+  #       name=f"{camera_name}_image_bridge",
+  #       arguments=[f"/{camera_name}/image_raw"],
+  #       output="screen",
+  #       parameters=[{
+  #         "use_sim_time": True,
+  #       }],
+  #     )
+  #   )
+  #   camera_bridges.append(
+  #     Node(
+  #       package="ros_gz_bridge",
+  #       executable="parameter_bridge",
+  #       arguments=[f"/{camera_name}/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo"],
+  #       output="screen",
+  #       name=f"{camera_name}_info_bridge",
+  #       parameters=[{
+  #         'use_sim_time': True,
+  #       }]
+  #     )
+  #   )
 
   camera_joint_controller_spawner = Node(
     package="controller_manager",
