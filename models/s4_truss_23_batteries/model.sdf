@@ -26,7 +26,7 @@
             </mesh>
           </geometry>
         </visual>
-        <collision name='collision_mid_right'>
+        <!-- <collision name='collision_mid_right'>
           <pose>-2.1381 -1.1503 -0.11272 0 0 0</pose>
           <geometry>
             <mesh>
@@ -34,7 +34,7 @@
               <uri>model://iss_description/meshes/s4_truss_23_battery_mid_right.dae</uri>
             </mesh>
           </geometry>
-        </collision>
+        </collision> -->
 
 
         <!-- Battery Bottom Right  -->
@@ -47,7 +47,7 @@
             </mesh>
           </geometry>
         </visual>
-        <collision name='collision_bottom_right'>
+        <!-- <collision name='collision_bottom_right'>
           <pose>-2.1381 -0.94274 -0.95647 0 0 0</pose>
           <geometry>
             <mesh>
@@ -55,7 +55,7 @@
               <uri>model://iss_description/meshes/s4_truss_23_battery_bottom_right.dae</uri>
             </mesh>
           </geometry>
-        </collision>
+        </collision> -->
 
         <!-- Battery Middle  -->
         <visual name='visual_battery_middle'>
@@ -67,7 +67,7 @@
             </mesh>
           </geometry>
         </visual>
-        <collision name='collision_battery_middle'>
+        <!-- <collision name='collision_battery_middle'>
           <pose>-3.6924 -1.0769 -0.081281 0 0 0</pose>
           <geometry>
             <mesh>
@@ -75,7 +75,7 @@
               <uri>model://iss_description/meshes/s4_truss_23_battery_middle.dae</uri>
             </mesh>
           </geometry>
-        </collision>
+        </collision> -->
 
         <!-- Battery Mid Left -->
         <visual name='visual_mid_left'>
@@ -87,7 +87,7 @@
             </mesh>
           </geometry>
         </visual>
-        <collision name='collision_mid_left'>
+        <!-- <collision name='collision_mid_left'>
           <pose>-5.1678 -1.1385 -0.11288 0 0 0</pose>
           <geometry>
             <mesh>
@@ -95,7 +95,7 @@
               <uri>model://iss_description/meshes/s4_truss_23_battery_mid_left.dae</uri>
             </mesh>
           </geometry>
-        </collision>
+        </collision> -->
 
         <!-- Battery Bottom Left  -->
         <visual name='visual_bottom_left'>
@@ -107,7 +107,7 @@
             </mesh>
           </geometry>
         </visual>
-        <collision name='collision_bottom_left'>
+        <!-- <collision name='collision_bottom_left'>
           <pose>-5.1678 -0.93013 -0.95659 0 0 0</pose>
           <geometry>
             <mesh>
@@ -115,12 +115,9 @@
               <uri>model://iss_description/meshes/s4_truss_23_battery_bottom_left.dae</uri>
             </mesh>
           </geometry>
-        </collision>
+        </collision> -->
 
 
       </link>
     </model>
 </sdf>
-
-
-
