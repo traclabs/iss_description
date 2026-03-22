@@ -1,1 +1,2 @@
 prepend-non-duplicate;GZ_SIM_RESOURCE_PATH;share
+prepend-non-duplicate;GZ_DESCRIPTOR_PATH;share/gz/protos
