@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.16.3)
 project(iss_description)
 
-add_compile_options(-std=c++17)
 
 find_package(ament_cmake REQUIRED)
 find_package(ament_cmake_python REQUIRED)
