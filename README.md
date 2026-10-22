@@ -25,11 +25,13 @@ Instructions
     ros2 launch iss_description mobile_servicing_system_gz.launch.py
    ```
    
-   To move the DOFs you can use the services offered by the node in  scripts/move_mss. This script is run by default with the launch file above. It offers services for moving the Canadarm2, Dextre and the mobile system, e.g.:
-   
+   To run a motion demo, add `move_demo:=true`. This starts `scripts/move_mss`, which sends a few preset `FollowJointTrajectory` goals to the Canadarm2 and Mobile Base System controllers and then exits:
+
    ```
-   ros2 service call /canadarm2_pose_1  std_srvs/srv/Empty    
-   ``` 
+   ros2 launch iss_description mobile_servicing_system_gz.launch.py move_demo:=true
+   ```
+
+   To command your own poses, send `FollowJointTrajectory` goals to `/canadarm2_joint_trajectory_controller/follow_joint_trajectory` or `/mobile_base_system_joint_trajectory_controller/follow_joint_trajectory`.
    
    ![Mobile Servicing System in Gazebo](assets/images/mobile_servicing_system_gazebo.png)
 
